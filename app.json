@@ -1,21 +1,21 @@
 {
-  "name": "Esther Bot",
-  "description": "Esther, bot.",
-  "keywords": ["esther", "bot", "express"],
-  "website": "https://estherbot.com",
-  "repository": "https://github.com/esthercrawford/smooch-bot-example",
-  "logo": "http://www.estherbot.com/wp-content/uploads/2016/03/EstherBot-photo.png",
+  "name": "Independer Bot",
+  "description": "Independer, bot.",
+  "keywords": ["Independer", "bot", "express"],
+  "website": "https://www.independer.nl",
+  "repository": "https://github.com/bieg/independer",
+  "logo": "https://www.independer-static.nl/images/logos/IndependerLogo_standaard.jpg",
   "env": {
     "SMOOCH_APP_TOKEN": {
-      "description": "Your Smooch app token which is used to initialize the web widget.",
+      "description": "0eylebnc5mjasq5cclclquh18",
       "required": true
     },
     "SMOOCH_KEY_ID": {
-      "description": "Your Smooch key ID, used to talk to the Smooch API",
+      "description": "app_578407f7f2689d9601505d5e",
       "required": true
     },
     "SMOOCH_SECRET": {
-      "description": "Your Smooch secret, used to talk to the Smooch API",
+      "description": "brGI2JS3If7RpBJlJmlRnzOz",
       "required": true
     }
   }
