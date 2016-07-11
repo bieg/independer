@@ -7,15 +7,15 @@
   "logo": "https://www.independer-static.nl/images/logos/IndependerLogo_standaard.jpg",
   "env": {
     "SMOOCH_APP_TOKEN": {
-      "description": "0eylebnc5mjasq5cclclquh18",
+      "description": "5vyxec5l3ims0hpyywpqhkodq",
       "required": true
     },
     "SMOOCH_KEY_ID": {
-      "description": "app_578407f7f2689d9601505d5e",
+      "description": "app_578415001934778a019f9778",
       "required": true
     },
     "SMOOCH_SECRET": {
-      "description": "brGI2JS3If7RpBJlJmlRnzOz",
+      "description": "bpqr2nmOUHIWBOKeCSVXYiQQ",
       "required": true
     }
   }
