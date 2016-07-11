@@ -3,7 +3,7 @@
   "description": "Independer, bot.",
   "keywords": ["Independer", "bot", "express"],
   "website": "https://www.independer.nl",
-  "repository": "https://github.com/bieg/independer",
+  "repository": "https://github.com/bieg/independerChat",
   "logo": "https://www.independer-static.nl/images/logos/IndependerLogo_standaard.jpg",
   "env": {
     "SMOOCH_APP_TOKEN": {
