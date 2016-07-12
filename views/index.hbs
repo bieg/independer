@@ -1,13 +1,28 @@
-<html>
-<head
-  <meta name="304workaround" content="2013-10-24 21:17:23">
-  <script src="https://cdn.smooch.io/smooch.min.js"></script>
+<!-- The following line is essential for the "position: fixed" property to work correctly in IE -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="304workaround" content="2013-10-24 21:17:23">
+    <script src="https://cdn.smooch.io/smooch.min.js"></script>
 <script>
-Smooch.init({ appToken: '5vyxec5l3ims0hpyywpqhkodq' });
+Smooch.init({
+  appToken: '5vyxec5l3ims0hpyywpqhkodq', 
+  customText: {
+                headerText: 'Heb je hulp nodig?',
+                inputPlaceholder: 'wat wil je weten?',
+                sendButtonText: 'verstuur',
+                introductionText: 'Wij maken verzekeren gemakkelijk. Heb je een vraag? Wil je schade melden?',
+                introAppText: 'Laat een berichtje achter via je favoriete app - we horen het graag van je.',
+                settingsText: 'Laat je email adres achter en we nemen contact met je op.'
+            },
+  soundNotificationEnabled: false,
+  emailCaptureEnabled: true
+});
 </script>
 
 </head>
-<body>
-    <h2>Henk</h2>
-</body>
+<body style="background: url(http://www.nltimes.nl/wp-content/uploads/2014/09/Screen-Shot-2014-09-15-at-1.12.25-PM.png) no-repeat 0 0;background-size: 100%;">
+
 </html>
