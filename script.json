@@ -1,9 +1,12 @@
 { 
  "HOI": "Hoi!\nIk ben de bot van Independer en sta dag en nacht voor je klaar.\nWil je weten wat Independer allemaal kan doen voor je? \nHeb je schade? Wil je advies of zoek je een verzekering?\n %[Ik heb schade](postback:SCHADE) %[Ik heb advies nodig](postback:advies) %[Ik zoek een verzekering](postback:verzekering) %[One random fact!](postback:random_fact)",
- "HEY": "HEY \nIk ben de bot van Independer en sta dag en nacht voor je klaar.\nWil je weten wat Independer allemaal kan doen voor je? \nHeb je schade? Wil je advies of zoek je een verzekering?\n %[Ik heb schade](postback:SCHADE) %[Ik heb advies nodig](postback:advies) %[Ik zoek een verzekering](postback:verzekering) %[One random fact!](postback:random_fact)",
+ "HEY": "Hey!\nIk ben de bot van Independer en sta dag en nacht voor je klaar.\nWil je weten wat Independer allemaal kan doen voor je? \nHeb je schade? Wil je advies of zoek je een verzekering?\n %[Ik heb schade](postback:schade) %[Ik heb advies nodig](postback:advies) %[Ik zoek een verzekering](postback:verzekering) %[One random fact!](postback:random_fact)",
 
-"SCHADE": "Sorry - dat vind ik vervelend voor je. Is alles ok? \n%[Nee, ik had een ongeluk](postback: schade_notok) %[Gelukkig wel!](postback: schade_ok)",
-    "I'M READY TO MOVE ON": "No prob. I can tell you a bunch of stuff about Esther. Let me know what’s interesting to you. %[Childhood](postback:childhood) %[Education](postback:education) %[Career](postback:career)\nWhen you're ready you can always say 'connect' to talk to Esther. %[Connect with Esther](postback:connect_me)",
+"SCHADE": "Sorry - dat vind ik vervelend voor je. Is alles ok? \n%[Nee, ik had een ongeluk](postback: SCHADE_NOT_OK) %[Gelukkig wel!](postback: SCHADE_GEEN_LETSEL)",
+
+"SCHADE_NOT_OK" : "Bah - dat is naar.",
+"SCHADE_GEEN_LETSEL" : "Een geluk dat je ok bent!",
+"I'M READY TO MOVE ON": "No prob. I can tell you a bunch of stuff about Esther. Let me know what’s interesting to you. %[Childhood](postback:childhood) %[Education](postback:education) %[Career](postback:career)\nWhen you're ready you can always say 'connect' to talk to Esther. %[Connect with Esther](postback:connect_me)",
     "I'D LIKE TO": "Cool. If you want, I can email you instructions for creating your own bot for free. %[Awesome](http://estherbot.us3.list-manage.com/subscribe?u=747676a510e61e338b488bc17&id=b41a573523) %[Nah...](postback:NAH...)",
     "NOT YET": "Hmm… it seems like you’re in research mode. I get that. Here’s an article Esther wrote about why and how she built me. %[Read Article](https://medium.com/life-learning/how-i-turned-my-resume-into-a-bot-and-how-you-can-too-f03847352baa)\nDid that scratch your itch for bot news? %[More bots!](postback:MORE_BOTS) %[I'm ready to move on](postback:move_on)",
     "NAH...":  "Ok, no worries. Now's a good time to go find out more about Esther anyways. %[Learn about Esther](postback:learn_about_esther)",
