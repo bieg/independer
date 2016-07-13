@@ -2,7 +2,7 @@
  "HOI": "Hoi!\nIk ben de bot van Independer en sta dag en nacht voor je klaar.\nWil je weten wat Independer allemaal kan doen voor je? \nHeb je schade? Wil je advies of zoek je een verzekering?\n %[Ik heb schade](postback:SCHADE) %[Ik heb advies nodig](postback:advies) %[Ik zoek een verzekering](postback:verzekering) %[One random fact!](postback:random_fact)",
  "HEY": "Hey!\nIk ben de bot van Independer en sta dag en nacht voor je klaar.\nWil je weten wat Independer allemaal kan doen voor je? \nHeb je schade? Wil je advies of zoek je een verzekering?\n %[Ik heb schade](postback:schade) %[Ik heb advies nodig](postback:advies) %[Ik zoek een verzekering](postback:verzekering) %[One random fact!](postback:random_fact)",
 
-"SCHADE": "Sorry - dat vind ik vervelend voor je. Is alles ok? \n%[Nee, ik had een ongeluk](postback: SCHADE_NOT_OK) %[Gelukkig wel!](postback: SCHADE_GEEN_LETSEL)",
+"SCHADE": "Sorry - dat vind ik vervelend voor je. Is alles ok? \n% [Nee, ik had een ongeluk](postback:SCHADE_NOT_OK) %[Gelukkig wel!](postback:SCHADE_GEEN_LETSEL)",
 
 "SCHADE_NOT_OK" : "Bah - dat is naar.",
 "SCHADE_GEEN_LETSEL" : "Een geluk dat je ok bent!",
