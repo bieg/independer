@@ -9,8 +9,8 @@
 
 <script>
 Smooch.init({
-  appToken: '5vyxec5l3ims0hpyywpqhkodq', 
-  customText: {
+    appToken: '5vyxec5l3ims0hpyywpqhkodq', 
+    customText: {
                 headerText: 'Hoi - heb je hulp nodig?',
                 inputPlaceholder: 'wat wil je weten?',
                 sendButtonText: 'verstuur',
@@ -18,11 +18,15 @@ Smooch.init({
                 introAppText: 'Laat een berichtje achter via je favoriete app - we horen het graag van je.',
                 settingsText: 'Laat je email adres achter en we nemen contact met je op.'
             },
-      soundNotificationEnabled: false,
-postback : {
-'track' : 'SCHADE_NOT_OK'
-},
-  emailCaptureEnabled: true
+    soundNotificationEnabled: false,
+    givenName: 'Independer',
+    email: 'wbiegstraaten@independer.nl',
+    jwt: 'JWT',
+    properties: PROPERTIES,
+    postback : {
+            track : 'SCHADE_NOT_OK'
+                },
+    emailCaptureEnabled: true
 });
 </script>
 
