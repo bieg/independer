@@ -93,8 +93,5 @@ module.exports = new Script({
             return bot.say(`Zoek je een verzekering %[Ja](postback:verzekering_gezocht) %[Wil je schade melden?](postback:schade_melden)`))
             .then(() => 'speak');
         }
-    },
-    
-  
-    
+    }
 });
