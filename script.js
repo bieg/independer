@@ -90,7 +90,8 @@ module.exports = new Script({
     
     opNieuw: {
         prompt: (bot) => bot.say('Hoe kan ik je helpen?'),
-            return bot.say(`Zoek je een verzekering %[Ja](postback:verzekering_gezocht) %[Wil je schade melden?](postback:schade_melden)`))
+            return bot.say(`Zoek je een verzekering %[Ja](postback:verzekering_gezocht) 
+            %[Wil je schade melden?](postback:schade_melden)`)
             .then(() => 'speak');
         }
     }
