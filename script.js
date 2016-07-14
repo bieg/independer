@@ -22,6 +22,17 @@ module.exports = new Script({
     start: {
         receive: (bot) => {
             return bot.say('Hoi...')
+                .then(() => 'askName');
+        }
+    },
+    
+    askName: {
+        prompt: (bot) => bot.say('What\'s your name?'),
+        receive: (bot, message) => {
+            const name = message.text;
+            return bot.setProp('name', name)
+                .then(() => bot.say(`Great! I'll call you ${name}
+Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
                 .then(() => 'speak');
         }
     },
@@ -33,8 +44,6 @@ module.exports = new Script({
 
             function updateSilent() {
                 switch (upperText) {
-                    case "SCHADE NOT OK":
-                        return bot.setProp("silent", true);
                     case "CONNECT ME":
                         return bot.setProp("silent", true);
                     case "DISCONNECT":
