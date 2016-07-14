@@ -15,7 +15,7 @@ function wait(ms) {
 
 module.exports = new Script({
     processing: {
-        //prompt: (bot) => bot.say('Beep boop...'),
+        prompt: (bot) => bot.say('...'),
         receive: () => 'processing'
     },
 
@@ -27,12 +27,11 @@ module.exports = new Script({
     },
     
     askName: {
-        prompt: (bot) => bot.say('What\'s your name?'),
+        prompt: (bot) => bot.say('Ik ben Independer. En wie ben jij?'),
         receive: (bot, message) => {
             const name = message.text;
             return bot.setProp('name', name)
-                .then(() => bot.say(`Great! I'll call you ${name}
-Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
+                .then(() => bot.say(`Hoi ${name}. Bezwaar als ik je ${name} noem? %[Nee hoor](postback:no) %[Eigenlijk wel](postback:yes)`))
                 .then(() => 'speak');
         }
     },
@@ -63,7 +62,7 @@ Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`Sorry - maar ik begrijp je even niet`).then(() => 'finish');
+                    return bot.say(`Sorry - maar ik begrijp je even niet`).then(() => 'opNieuw');
                 }
 
                 var response = scriptRules[upperText];
@@ -86,6 +85,13 @@ Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
             return updateSilent()
                 .then(getSilent)
                 .then(processMessage);
+        }
+    },
+    
+    opNieuw: {
+        prompt: (bot) => bot.say('Hoe kan ik je helpen?'),
+            return bot.say(`Zoek je een verzekering %[Ja](postback:verzekering_gezocht) %[Wil je schade melden?](postback:schade_melden)`))
+            .then(() => 'speak');
         }
     },
     
