@@ -31,7 +31,8 @@ module.exports = new Script({
         receive: (bot, message) => {
             const name = message.text;
             return bot.setProp('name', name)
-                .then(() => bot.say(`Hoi ${name}. Bezwaar als ik je ${name} noem? %[Nee hoor](postback:no) %[Eigenlijk wel](postback:yes)`))
+                .then(() => bot.say(`Hoi ${name}. Bezwaar als ik je ${name} noem? %[Nee hoor](postback:no)+
+                %[Eigenlijk wel](postback:yes)`))
                 .then(() => 'speak');
         }
     },
@@ -62,7 +63,8 @@ module.exports = new Script({
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`Sorry - maar ik begrijp je even niet`).then(() => 'opNieuw');
+                    return bot.say(`Sorry - maar ik begrijp je even niet`).then(
+                        () => 'opNieuw');
                 }
 
                 var response = scriptRules[upperText];
@@ -90,7 +92,7 @@ module.exports = new Script({
     
     opNieuw: {
         prompt: (bot) => bot.say('Hoe kan ik je helpen?'),
-            return bot.say(`Zoek je een verzekering %[Ja](postback:verzekering_gezocht) 
+            return bot.say(`Zoek je een verzekering %[Ja](postback:verzekering_gezocht)+
             %[Wil je schade melden?](postback:schade_melden)`)
             .then(() => 'speak');
         }
