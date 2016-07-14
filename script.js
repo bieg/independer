@@ -19,20 +19,21 @@ module.exports = new Script({
         receive: () => 'processing'
     },
 
+function wait(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+}
+
+module.exports = new Script({
+    processing: {
+        //prompt: (bot) => bot.say('Beep boop...'),
+        receive: () => 'processing'
+    },
+
     start: {
         receive: (bot) => {
-            return bot.say('Hoi...')
-                .then(() => 'askName');
-        }
-    },
-    
-    askName: {
-        prompt: (bot) => bot.say('Ik ben Independer. En wie ben jij?'),
-        receive: (bot, message) => {
-            const name = message.text;
-            return bot.setProp('name', name)
-                .then(() => bot.say(`Hoi ${name}. Bezwaar als ik je ${name} noem? %[Nee hoor](postback:no)+
-                %[Eigenlijk wel](postback:yes)`))
+            return bot.say('Get started by saying BOT.')
                 .then(() => 'speak');
         }
     },
@@ -63,8 +64,7 @@ module.exports = new Script({
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`Sorry - maar ik begrijp je even niet`).then(
-                        () => 'opNieuw');
+                    return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
                 }
 
                 var response = scriptRules[upperText];
@@ -75,7 +75,7 @@ module.exports = new Script({
                     line = line.trim();
                     p = p.then(function() {
                         console.log(line);
-                        return wait(80).then(function() {
+                        return wait(50).then(function() {
                             return bot.say(line);
                         });
                     });
@@ -87,14 +87,6 @@ module.exports = new Script({
             return updateSilent()
                 .then(getSilent)
                 .then(processMessage);
-        }
-    },
-    
-    opNieuw: {
-        prompt: (bot) => bot.say('Hoe kan ik je helpen?'),
-            return bot.say(`Zoek je een verzekering %[Ja](postback:verzekering_gezocht)+
-            %[Wil je schade melden?](postback:schade_melden)`)
-            .then(() => 'speak');
         }
     }
 });
