@@ -20,10 +20,21 @@ module.exports = new Script({
     start: {
         receive: (bot) => {
             return bot.say('Hoi...')
-                .then(() => 'speak');
+                .then(() => 'vraagNaam');
         }
     },
 
+    vraagNaam: {
+        prompt: (bot) => bot.say('Met wie heb ik het genoegen?'),
+        receive: (bot, message) => {
+            const name = message.text;
+            return bot.setProp('name', name)
+                .then(() => bot.say(`Top! Welkom ${name} - Bezwaar als ik je bij je voornaam noem?
+                %[Prima](postback:yes) %[Liever niet](postback:no)`))
+                .then(() => 'speak');
+        }
+    },
+    
     speak: {
         receive: (bot, message) => {
 
@@ -31,8 +42,6 @@ module.exports = new Script({
 
             function updateSilent() {
                 switch (upperText) {
-                    case "SCHADE NOT OK":
-                        return bot.setProp("silent", true);
                     case "CONNECT ME":
                         return bot.setProp("silent", true);
                     case "DISCONNECT":
@@ -75,6 +84,13 @@ module.exports = new Script({
             return updateSilent()
                 .then(getSilent)
                 .then(processMessage);
+        }
+    }
+    
+    finish: {
+        receive: (bot, message) => {
+           // return bot.getProp('name')
+            .then(() => 'finish');
         }
     }
 });
