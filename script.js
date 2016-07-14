@@ -11,6 +11,8 @@ function wait(ms) {
     });
 }
 
+
+
 module.exports = new Script({
     processing: {
         //prompt: (bot) => bot.say('Beep boop...'),
@@ -20,21 +22,10 @@ module.exports = new Script({
     start: {
         receive: (bot) => {
             return bot.say('Hoi...')
-                .then(() => 'vraagNaam');
-        }
-    },
-
-    vraagNaam: {
-        prompt: (bot) => bot.say('Met wie heb ik het genoegen?'),
-        receive: (bot, message) => {
-            const name = message.text;
-            return bot.setProp('name', name)
-                .then(() => bot.say(`Top! Welkom ${name} - Bezwaar als ik je bij je voornaam noem?
-                %[Prima](postback:yes) %[Liever niet](postback:no)`))
                 .then(() => 'speak');
         }
     },
-    
+
     speak: {
         receive: (bot, message) => {
 
@@ -42,6 +33,8 @@ module.exports = new Script({
 
             function updateSilent() {
                 switch (upperText) {
+                    case "SCHADE NOT OK":
+                        return bot.setProp("silent", true);
                     case "CONNECT ME":
                         return bot.setProp("silent", true);
                     case "DISCONNECT":
@@ -61,7 +54,7 @@ module.exports = new Script({
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`Sorry - maar ik begrijp je even niet`).then(() => 'speak');
+                    return bot.say(`Sorry - maar ik begrijp je even niet`).then(() => 'finish');
                 }
 
                 var response = scriptRules[upperText];
@@ -85,12 +78,15 @@ module.exports = new Script({
                 .then(getSilent)
                 .then(processMessage);
         }
-    }
+    },
     
     finish: {
         receive: (bot, message) => {
-           // return bot.getProp('name')
-            .then(() => 'finish');
+            return bot.getProp('name')
+                .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
+                        'teach me how to do anything else!'))
+                .then(() => 'finish');
         }
     }
+    
 });
