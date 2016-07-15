@@ -19,7 +19,17 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say('Hoi. Hoe ist het?')
+            return bot.say(
+                'Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is.'+
+                '\nTrouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.'
+            )
+
+            const naam = message.text;
+            return bot.setProp('name', naam)
+                .then(() => bot.say(
+                `Hoi ${naam}. Bezwaar als ik jou ${naam} noem? Kun jij me Indy noemen. Is dat ok?\n' +
+                '%[Prima](postback:yes) %[Liever niet](postback:no)`
+                ))
                 .then(() => 'speak');
         }
     },
@@ -61,7 +71,7 @@ module.exports = new Script({
                     line = line.trim();
                     p = p.then(function() {
                         console.log(line);
-                        return wait(50).then(function() {
+                        return wait(80).then(function() {
                             return bot.say(line);
                         });
                     });
@@ -75,4 +85,27 @@ module.exports = new Script({
                 .then(processMessage);
         }
     }
+
+    
+       askName: {
+        prompt: (bot) => bot.say('What\'s your name?'),
+        receive: (bot, message) => {
+            const name = message.text;
+            return bot.setProp('name', name)
+                .then(() => bot.say(`Great! I'll call you ${name}
+Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
+                .then(() => 'finish');
+        }
+    },
+
+    finish: {
+        receive: (bot, message) => {
+            return bot.getProp('name')
+                .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
+                        'teach me how to do anything else!'))
+                .then(() => 'finish');
+        }
+    }
+    
+    
 });
