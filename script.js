@@ -13,13 +13,13 @@ function wait(ms) {
 
 module.exports = new Script({
     processing: {
-        prompt: (bot) => bot.say('Beep boop...'),
+        // prompt: (bot) => bot.say('Beep boop...'),
         receive: () => 'processing'
     },
 
     start: {
         receive: (bot) => {
-            return bot.say('Get started by saying BOT.')
+            return bot.say('Hoi. Hoe ist het?')
                 .then(() => 'speak');
         }
     },
@@ -50,7 +50,7 @@ module.exports = new Script({
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
+                    return bot.say(`Sorry - dat begreep ik niet. Kun je het nog een keer zeggen?`).then(() => 'speak');
                 }
 
                 var response = scriptRules[upperText];
