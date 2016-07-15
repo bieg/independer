@@ -85,15 +85,16 @@ module.exports = new Script({
 
         receive: (bot, message) => {
             return bot.setProp('name', name)
-            .then( ()  => bot.say('Hoi') )
+            .then(() => bot.say('Hoi') )
             .then(() => 'finish');
         }
     },
 
-    finish: {
+        finish: {
         receive: (bot, message) => {
             return bot.getProp('name')
-                .then((name) => bot.say(`Sorry ${name}, etc'))
+                .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
+                        'teach me how to do anything else!'))
                 .then(() => 'finish');
         }
     }
