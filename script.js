@@ -85,11 +85,9 @@ module.exports = new Script({
         
         prompt: (bot) => bot.say('Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.'),
         receive: (bot, message) => {
-            return bot.setProp('name', naam)
-                .then(() => bot.say(
-                `Hoi ${naam}. Bezwaar als ik jou ${naam} noem? Kun jij me Indy noemen. Is dat ok?\n' +
-                '%[Prima](postback:yes) %[Liever niet](postback:no)`
-                ))
+                return bot.setProp('name', naam)
+                .then(() => bot.say(`Hoi ${naam}. Bezwaar als ik jou ${naam} noem? Kun jij me Indy noemen \n'+
+                  'Is dat ok?\n %[Prima](postback:yes) %[Liever niet](postback:no)` ))
                 .then(() => 'finish');
         }
     },
