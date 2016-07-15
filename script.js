@@ -79,15 +79,14 @@ module.exports = new Script({
     
     
     vraagNaam: {
-
         const name = message.text;
-        
+
         prompt: (bot) => bot.say('Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.'),
+
         receive: (bot, message) => {
-                return bot.setProp('name', name)
-                .then(() => bot.say(`Hoi ${name}. Bezwaar als ik jou ${name} noem? Kun jij me Indy noemen \n'+
-                  'Is dat ok?\n %[Prima](postback:yes) %[Liever niet](postback:no)` ))
-                .then(() => 'finish');
+            return bot.setProp('name', name)
+            .then( ()  => bot.say('Hoi') )
+            .then(() => 'vraagNaam');
         }
     },
 
@@ -98,6 +97,5 @@ module.exports = new Script({
                 .then(() => 'finish');
         }
     }
-    
-    
+     
 });
