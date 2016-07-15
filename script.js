@@ -75,11 +75,11 @@ module.exports = new Script({
         }
     },
     
-    
     vraagNaam: {
-       const name = message.text;
 
-        prompt receive(: (bot) => bot.say('Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.'),
+        prompt: (bot) => bot.say('Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.'),
+
+        const name = message.text;
 
         receive: (bot, message) => {
             return bot.setProp('name', name)
