@@ -9,7 +9,7 @@ function wait(ms) {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);
     });
-}
+},
 
 module.exports = new Script({
     processing: {
@@ -110,7 +110,7 @@ module.exports = new Script({
             .then(() => 'finish');
         } 
             
-    }
+    },
 
     finish: {
         receive: () => 'finish' 
