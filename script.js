@@ -91,13 +91,7 @@ module.exports = new Script({
 
     leesNaam: {
     
-        receive: (bot, message) => {
-        
-        const getname = message.text;
-            // return bot.setProp('name', getname)
-            // .then(()  => bot.say('Hebbes'))
-            // .then(() => 'finish');
-        }
+        receive: () => 'leesNaam' 
     },
 
     naam: {
