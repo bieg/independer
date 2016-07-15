@@ -83,20 +83,20 @@ module.exports = new Script({
         receive: (bot, message) => {
             
             const name = message.text;
-                return bot.setProp('name', name)
-                .then(()  => bot.say('Hoi'))
-                .then(() => 'finish');
+                // return bot.setProp('name', name)
+                // .then(()  => bot.say('Hoi'))
+                // .then(() => 'finish');
         }
     },
 
     leesNaam: {
     
-    receive: (bot, message) => {
+        receive: (bot, message) => {
         
         const getname = message.text;
-            return bot.setProp('name', getname)
-            .then(()  => bot.say('Hebbes'))
-            .then(() => 'finish');
+            // return bot.setProp('name', getname)
+            // .then(()  => bot.say('Hebbes'))
+            // .then(() => 'finish');
         }
     },
 
