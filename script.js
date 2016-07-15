@@ -85,7 +85,18 @@ module.exports = new Script({
             const name = message.text;
                 return bot.setProp('name', name)
                 .then(()  => bot.say('Hoi'))
-            // .then(() => 'finish');
+                .then(() => 'finish');
+        }
+    },
+
+    leesNaam: {
+    
+    receive: (bot, message) => {
+        
+        const getname = message.text;
+            return bot.setProp('name', getname)
+            .then(()  => bot.say('Hebbes'))
+            .then(() => 'finish');
         }
     },
 
