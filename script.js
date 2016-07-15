@@ -100,6 +100,18 @@ module.exports = new Script({
         }
     },
 
+    naam: {
+           
+        receive: (bot, message) => {
+        
+        const naam = message.text;
+            return bot.setProp('naam', naam)
+            .then(()  => bot.say('voila'))
+            .then(() => 'finish');
+        } 
+            
+    }
+
     finish: {
         receive: () => 'finish' 
     }
