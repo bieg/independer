@@ -20,17 +20,9 @@ module.exports = new Script({
     start: {
         receive: (bot) => {
             return bot.say(
-                'Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is.'+
-                '\nTrouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.'
+                'Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is.'
             )
-
-            const naam = message.text;
-            return bot.setProp('name', naam)
-                .then(() => bot.say(
-                `Hoi ${naam}. Bezwaar als ik jou ${naam} noem? Kun jij me Indy noemen. Is dat ok?\n' +
-                '%[Prima](postback:yes) %[Liever niet](postback:no)`
-                ))
-                .then(() => 'speak');
+            .then(() => 'vraagNaam');
         }
     },
 
@@ -84,16 +76,20 @@ module.exports = new Script({
                 .then(getSilent)
                 .then(processMessage);
         }
-    }
-
+    },
     
-       askName: {
-        prompt: (bot) => bot.say('What\'s your name?'),
+    
+    vraagNaam: {
+
+        const naam = message.text;
+        
+        prompt: (bot) => bot.say('Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.'),
         receive: (bot, message) => {
-            const name = message.text;
-            return bot.setProp('name', name)
-                .then(() => bot.say(`Great! I'll call you ${name}
-Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
+            return bot.setProp('name', naam)
+                .then(() => bot.say(
+                `Hoi ${naam}. Bezwaar als ik jou ${naam} noem? Kun jij me Indy noemen. Is dat ok?\n' +
+                '%[Prima](postback:yes) %[Liever niet](postback:no)`
+                ))
                 .then(() => 'finish');
         }
     },
@@ -101,8 +97,7 @@ Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
     finish: {
         receive: (bot, message) => {
             return bot.getProp('name')
-                .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
-                        'teach me how to do anything else!'))
+                .then((name) => bot.say(`Sorry ${name}, etc'))
                 .then(() => 'finish');
         }
     }
