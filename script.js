@@ -81,22 +81,10 @@ module.exports = new Script({
     vraagNaam: {
         const name = message.text;
 
-        prompt: (bot) => bot.say('Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.'),
-
-        receive: (bot, message) => {
-            return bot.setProp('name', name)
-            .then(() => bot.say('Hoi') )
-            .then(() => 'finish');
-        }
     },
 
-        finish: {
-        receive: (bot, message) => {
-            return bot.getProp('name')
-                .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
-                        'teach me how to do anything else!'))
-                .then(() => 'finish');
-        }
+    finish: {
+        
     }
 
 });
