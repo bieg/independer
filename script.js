@@ -18,9 +18,7 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say(
-                'Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is.'
-            )
+            return bot.say('Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is.')
             .then(() => 'vraagNaam');
         }
     },
@@ -79,12 +77,11 @@ module.exports = new Script({
     
     
     vraagNaam: {
-        const name = message.text;
-
+       receive: () => 'vraagNaam' 
     },
 
     finish: {
-        
+        receive: () => 'finish' 
     }
 
 });
