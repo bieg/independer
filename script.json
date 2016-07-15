@@ -1,6 +1,6 @@
 { 
  "HOI": "Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is. \nTrouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker. %[](postback: leesNaam)",
-  "HALLO": "Hallo - ik ben de bot van Independer. Als er wat is kun je me dag en nacht aanschieten. \nTrouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker. %[Childhood](postback:leesNaam)",
+  "HALLO": "Hallo - ik ben de bot van Independer. Als er wat is kun je me dag en nacht aanschieten. \nTrouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker. %[Childhood](postback:naam)",
   "HEY": "Hey! Ik ben de bot van Independer. Dag en nacht sta ik voor je klaar als er iets is. \nTrouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
 
     "CONNECT ME": "",
