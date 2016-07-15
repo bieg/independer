@@ -18,7 +18,9 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say('Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is.')
+            return bot.say('Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is.' + 
+            'Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.')
+
             .then(() => 'vraagNaam');
         }
     },
@@ -77,8 +79,6 @@ module.exports = new Script({
     
     vraagNaam: {
         const name = message.text;
-        prompt:(bot) => bot.say('Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.'),
-
         receive: (bot, message) => {
             // return bot.setProp('name', name)
             // .then(()  => bot.say('Hoi'))
