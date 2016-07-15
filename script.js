@@ -86,7 +86,7 @@ module.exports = new Script({
         receive: (bot, message) => {
             return bot.setProp('name', name)
             .then( ()  => bot.say('Hoi') )
-            .then(() => 'vraagNaam');
+            .then(() => 'finish');
         }
     },
 
@@ -97,5 +97,5 @@ module.exports = new Script({
                 .then(() => 'finish');
         }
     }
-     
+
 });
