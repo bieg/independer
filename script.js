@@ -18,8 +18,7 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say('Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is.' 
-            )
+            return bot.say('Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is.')
             .then(() => 'vraagNaam');
         }
     },
@@ -78,36 +77,15 @@ module.exports = new Script({
     
     vraagNaam: {
         
-        prompt: (bot) => bot.say('Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.'),
+        prompt: (bot) => bot.say('Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.');
         
-        receive: (bot, message) => {
+        receive: (bot, message) => 'vraagNaam' {
             
             //const name = message.text;
               //   return bot.setProp('name', name);
                 // .then(()  => bot.say('Hoi'))
                 // .then(() => 'finish');
         }
-    },
-
-    leesNaam: {
-    
-                receive: (bot, message) => {
-            
-            //const name = message.text;
-            //  return bot.setProp('name', leesNaam)
-
-                }
-    },
-
-    naam: {
-           
-       receive: (bot, message) => {
-            
-            //const name = message.text;
-            //  return bot.setProp('name', leesNaam)
-
-                }
-            
     },
 
     finish: {
