@@ -30,8 +30,8 @@ module.exports = new Script({
         receive: (bot, message) => {
             const name = message.text;
             return bot.setProp('name', name)
-                .then(() => bot.say(`Aangenaam! Bezwaar als ik je bij voornaam noem ${name}?
-Is dat ok? %[Prima](postback:yes) %[Liever niet](postback:no)`))
+                .then(() => bot.say(`Aangenaam! Bezwaar als ik je bij voornaam noem ${name}?'+
+'Is dat ok? %[Prima](postback:yes) %[Liever niet](postback:no)`))
                 .then(() => 'finish');
         }
     },
