@@ -19,10 +19,25 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say('Get started by saying BOT.')
-                .then(() => 'speak');
+            return bot.say('Hoi, ')
+                .then(() => 'askName');
         }
     },
+    
+    
+    askName: {
+        prompt: (bot) => bot.say('Hoe heet je eigenlijk? Dat maakt het praten wel wat makkelijker'),
+        receive: (bot, message) => {
+            const name = message.text;
+            return bot.setProp('name', name)
+                .then(() => bot.say(`Aangenaam! Bezwaar als ik je bij voornaam noem ${name}?
+Is dat ok? %[Prima](postback:yes) %[Liever niet](postback:no)`))
+                .then(() => 'finish');
+        }
+    },
+    
+
+
 
     speak: {
         receive: (bot, message) => {
@@ -50,7 +65,7 @@ module.exports = new Script({
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
+                    return bot.say(`Sorry - maar dat begreep ik niet. Zeg het nog eens?`).then(() => 'speak');
                 }
 
                 var response = scriptRules[upperText];
@@ -74,5 +89,14 @@ module.exports = new Script({
                 .then(getSilent)
                 .then(processMessage);
         }
+    },
+
+finish: {
+        receive: (bot, message) => {
+            return bot.getProp('name')
+                .then((name) => bot.say(`Sorry ${name}, ik moet even stoppen: koffie toilet - je kent het wel'))
+                .then(() => 'finish');
+        }
     }
+
 });
