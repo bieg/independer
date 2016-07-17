@@ -9,17 +9,18 @@ function wait(ms) {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);
     });
-},
+}
 
 module.exports = new Script({
     processing: {
+        //prompt: (bot) => bot.say('Beep boop...'),
         receive: () => 'processing'
     },
 
     start: {
         receive: (bot) => {
-            return bot.say('Hoi! Ik ben de bot van Independer. Je kunt me dag en nacht aanschieten als er iets is.')
-            .then(() => 'vraagNaam');
+            return bot.say('Get started by saying BOT.')
+                .then(() => 'speak');
         }
     },
 
@@ -49,7 +50,7 @@ module.exports = new Script({
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`Sorry - dat begreep ik niet. Kun je het nog een keer zeggen?`).then(() => 'speak');
+                    return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
                 }
 
                 var response = scriptRules[upperText];
@@ -60,7 +61,7 @@ module.exports = new Script({
                     line = line.trim();
                     p = p.then(function() {
                         console.log(line);
-                        return wait(80).then(function() {
+                        return wait(50).then(function() {
                             return bot.say(line);
                         });
                     });
@@ -73,25 +74,5 @@ module.exports = new Script({
                 .then(getSilent)
                 .then(processMessage);
         }
-    },
-    
-    vraagNaam: {
-        
-        prompt: (bot) => bot.say('Trouwens, hoe heet je eigenlijk? Dat maakt het praten een stuk makkelijker.'),
-        
-        receive: () => 'finish' 
-        
-        //receive: (bot, message) => 'vraagNaam' {
-            
-            //const name = message.text;
-              //   return bot.setProp('name', name);
-                // .then(()  => bot.say('Hoi'))
-                // .then(() => 'finish');
-        //}
-    },
-
-    finish: {
-        receive: () => 'finish' 
     }
-
 });
