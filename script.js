@@ -9,20 +9,6 @@ const MemoryStore = smoochBot.MemoryStore;
 const MemoryLock = smoochBot.MemoryLock;
 const Bot = smoochBot.Bot;
 const StateMachine = smoochBot.StateMachine;
-//
-class ConsoleBot extends Bot {
-    constructor(options) {
-        super(options);
-    }
-
-    say(text) {
-        return new Promise((resolve) => {
-            console.log(text);
-            resolve();
-        });
-    }
-}
-
 
 function wait(ms) {
     return new Promise((resolve) => {
