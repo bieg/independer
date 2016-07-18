@@ -1,9 +1,28 @@
 'use strict';
 
 const _ = require('lodash');
-const Script = require('smooch-bot').Script;
-
+const Script = require('smooch-bot').Script
 const scriptRules = require('./script.json');
+//
+const smoochBot = require('smooch-bot');
+const MemoryStore = smoochBot.MemoryStore;
+const MemoryLock = smoochBot.MemoryLock;
+const Bot = smoochBot.Bot;
+const StateMachine = smoochBot.StateMachine;
+//
+class ConsoleBot extends Bot {
+    constructor(options) {
+        super(options);
+    }
+
+    say(text) {
+        return new Promise((resolve) => {
+            console.log(text);
+            resolve();
+        });
+    }
+}
+
 
 function wait(ms) {
     return new Promise((resolve) => {
@@ -96,4 +115,29 @@ Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
                 .then(processMessage);
         }
     }
+});
+
+const userId = 'testUserId';
+const store = new MemoryStore();
+const lock = new MemoryLock();
+const bot = new ConsoleBot({
+    store,
+    lock,
+    userId
+});
+
+const stateMachine = new StateMachine({
+    script,
+    bot,
+    userId
+});
+
+process.stdin.on('data', function(data) {
+    stateMachine.receiveMessage({
+        text: data.toString().trim()
+    })
+        .catch((err) => {
+            console.error(err);
+            console.error(err.stack);
+        });
 });
