@@ -3,12 +3,6 @@
 const _ = require('lodash');
 const Script = require('smooch-bot').Script
 const scriptRules = require('./script.json');
-//
-const smoochBot = require('smooch-bot');
-const MemoryStore = smoochBot.MemoryStore;
-const MemoryLock = smoochBot.MemoryLock;
-const Bot = smoochBot.Bot;
-const StateMachine = smoochBot.StateMachine;
 
 function wait(ms) {
     return new Promise((resolve) => {
