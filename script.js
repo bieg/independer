@@ -21,13 +21,18 @@ module.exports = new Script({
             return bot.say('Hoi. Kan ik iets voor je doen?')
                  .then(() => bot.say('%[Ik wil schade melden](postback:damage)'))
                  .then(() => bot.say('%[Ik had een ongeluk](postback:accident)'))
-                 .then(() => bot.say('%[Ik zoek informatie](postback:information)'));
-                 
+                 .then(() => bot.say('%[Ik zoek informatie](postback:information)'))
+                 .then(() => 'watKanIkDoen');
         }
     },
     
-    damage: {
-        prompt: (bot) => bot.say('Leef je nog')
+    watKanIkDoen: {
+        receive: (bot, message) => {
+            const wat = message.text;
+            return bot.setProp('wat', wat)
+                .then(() => bot.say( ${wat} ))
+                .then(()=> 'finish');
+        }
     },
     
     askName: {
