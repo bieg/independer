@@ -6,6 +6,7 @@
   "HEY": "Hey! Dag en nacht sta ik voor je klaar als er iets is.\nWil je schade melden? \n%[Graag](damage)\nOf heb je zelf een ongeluk gehad%[Ja](accident)\nOf zoek je informatie[Inderdaad](information)\n",
 
 "DAMAGE": "Dat is vervelend.\n Ben jij nog heel? \n %[Gelukkig wel](self_ok) \n %[Nee, ik heb zelf ook wat](self_not_ok)", 
+"SCHADE": "Dat is vervelend.\n Ben jij nog heel? \n %[Gelukkig wel](self_ok) \n %[Nee, ik heb zelf ook wat](self_not_ok)", 
 
   "damage": "wwww Dat is vervelend. \n  cccc Ben jij nog heel? \n  %[Gelukkig wel](self_ok) \n  %[Nee, ik heb zelf ook wat](self_not_ok)", 
 
