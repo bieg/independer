@@ -54,7 +54,7 @@ Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
     finish: {
         receive: (bot, message) => {
             return bot.getProp('name')
-                .then((name) => bot.say(`Sorry ${name}, dat was niet duidelijk voor me. Kun je het nog eens zeggen?'))
+                .then((name) => bot.say(`Sorry ${name}, dat was niet duidelijk voor me. Kun je het nog eens zeggen?`))
                 .then(() => 'finish');
         }
     },
@@ -86,7 +86,7 @@ Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
+                    return bot.say(`Hey, zeg dat nog eens? Want dat ging even niet goed.`).then(() => 'speak');
                 }
 
                 var response = scriptRules[upperText];
