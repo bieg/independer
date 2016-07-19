@@ -23,7 +23,7 @@ Smooch.init({
     emailCaptureEnabled: true
 });
 //Smooch.track("damage");
-Smooch.on(track("damage"), function(message) {
+Smooch.on('track("damage")', function(message) {
           console.log('tracking damage');
         });
         
