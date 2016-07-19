@@ -8,8 +8,6 @@
 "DAMAGE": "Dat is vervelend.\n Ben jij nog heel? \n %[Gelukkig wel](self_ok) \n %[Nee, ik heb zelf ook wat](self_not_ok)", 
 "SCHADE": "Dat is vervelend.\n Ben jij nog heel? \n %[Gelukkig wel](self_ok) \n %[Nee, ik heb zelf ook wat](self_not_ok)", 
 
-  "damage": "wwww Dat is vervelend. \n  cccc Ben jij nog heel? \n  %[Gelukkig wel](self_ok) \n  %[Nee, ik heb zelf ook wat](self_not_ok)", 
-
 "SELF OK" : "Trouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
 "SELF NOT OK" : "Trouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
 
