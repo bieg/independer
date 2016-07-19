@@ -10,8 +10,6 @@
 
   "damage": "wwww Dat is vervelend. \n  cccc Ben jij nog heel? \n  %[Gelukkig wel](self_ok) \n  %[Nee, ik heb zelf ook wat](self_not_ok)", 
 
-"1962a379c390344ba55c417d4283079fb0a2d7e5" : "damage",
-
 "SELF_OK" : "Trouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
 "SELF_NOT_OK" : "Trouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
 
