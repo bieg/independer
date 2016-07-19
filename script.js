@@ -19,9 +19,9 @@ module.exports = new Script({
     start: {
         receive: (bot) => {
             return bot.say('Hoi. Kan ik iets voor je doen?')
-                 .then(() => bot.say('Wil je schade melden? %[Graag](postback:damage)'))
-                 .then(() => bot.say('Of heb je zelf een ongeluk gehad? %[Ja](postback:accident)'))
-                 .then(() => bot.say('Of zoek je informatie? %[Inderdaad](postback:information)'));
+                 .then(() => bot.say('%[Ik wil schade melden](postback:damage)'))
+                 .then(() => bot.say('%[Ik had een ongeluk](postback:accident)'))
+                 .then(() => bot.say('%[Ik zoek informatie](postback:information)'));
         }
     },
     
