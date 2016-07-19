@@ -19,7 +19,7 @@ module.exports = new Script({
     start: {
         receive: (bot) => {
             return bot.say('Hoi. Kan ik iets voor je doen?')
-                 .then(() => bot.say('%[Graag, ik wil schade melden](damage) '))
+                 .then(() => bot.say('%[Graag, ik wil schade melden](postback:damage) '))
                  .then(() => bot.say('%[Zeker, ik had een ongeluk](postback:accident)'))
                  .then(() => bot.say('%[Ja, ik zoek informatie](postback:information)'))
                  .then(() => 'watKanIkDoen');
@@ -54,8 +54,7 @@ Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
     finish: {
         receive: (bot, message) => {
             return bot.getProp('name')
-                .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
-                        'teach me how to do anything else!'))
+                .then((name) => bot.say(`Sorry ${name}, dat was niet duidelijk voor me. Kun je het nog eens zeggen?'))
                 .then(() => 'finish');
         }
     },
