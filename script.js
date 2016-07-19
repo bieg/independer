@@ -27,7 +27,9 @@ module.exports = new Script({
     },
     
     damage: {
-            prompt: (bot) => bot.say('Leef je nog'),
+        receive: (bot, message) => {
+            return => bot.say('Leef je nog');
+        }
     },
     
     askName: {
