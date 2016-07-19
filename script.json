@@ -10,8 +10,8 @@
 
   "damage": "wwww Dat is vervelend. \n  cccc Ben jij nog heel? \n  %[Gelukkig wel](self_ok) \n  %[Nee, ik heb zelf ook wat](self_not_ok)", 
 
-"SELF_OK" : "Trouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
-"SELF_NOT_OK" : "Trouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
+"SELF OK" : "Trouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
+"SELF NOT OK" : "Trouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
 
     "CONNECT ME": "",
     "DISCONNECT": "Ok - tot ziens - IndependerBot is back." 
