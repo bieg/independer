@@ -23,6 +23,8 @@ module.exports = new Script({
         }
     },
     
+    
+    
     askName: {
         prompt: (bot) => bot.say('What\'s your name?'),
         receive: (bot, message) => {
