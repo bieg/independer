@@ -27,11 +27,11 @@ module.exports = new Script({
     },
     
     watKanIkDoen: {
-        receive: (bot, message) => {
+        receive: (message) => {
             const wat = message.text;
             return bot.setProp('wat', wat)
-                .then(() => bot.say( ${wat} ))
-                .then(()=> 'finish');
+                .then(() => bot.say('${wat}'))
+                .then(() => 'finish');
         }
     },
     
