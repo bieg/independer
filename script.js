@@ -28,7 +28,7 @@ module.exports = new Script({
     
     damage: {
             prompt: (bot) => bot.say('Leef je nog')
-            .then(() => 'speak');
+            .then(() => 'finish');
     },
     
     askName: {
