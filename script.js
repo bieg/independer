@@ -18,12 +18,12 @@ module.exports = new Script({
 
     start: {
         receive: (bot) => {
-            return bot.say('Hoi.')
-                 .then(() => 'askName');
+            return bot.say('Hoi. Kan ik iets voor je doen?')
+                 .then(() => bot.say('Wil je schade melden? %[Graag](postback:damage)'))
+                 .then(() => bot.say('Of heb je zelf een ongeluk gehad? %[Ja](postback:accident)'))
+                 .then(() => bot.say('Of zoek je informatie? %[Inderdaad](postback:information)'));
         }
     },
-    
-    
     
     askName: {
         prompt: (bot) => bot.say('What\'s your name?'),
