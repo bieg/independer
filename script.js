@@ -19,7 +19,7 @@ module.exports = new Script({
     start: {
         receive: (bot) => {
             return bot.say('Hoi. Kan ik iets voor je doen?')
-                 .then(() => bot.say('%[Graag, ik wil schade melden](Smooch.track("damage") )'))
+                 .then(() => bot.say('%[Graag, ik wil schade melden](Smooch.track("damage") '))
                  .then(() => bot.say('%[Zeker, ik had een ongeluk](postback:accident)'))
                  .then(() => bot.say('%[Ja, ik zoek informatie](postback:information)'))
                  .then(() => 'watKanIkDoen');
