@@ -37,7 +37,7 @@ module.exports = new Script({
     
     damage : {
       prompt: (bot) => bot.say('helemaal stuk jongen'),
-        receive: () => 'processing'
+        receive: () => 'damage'
     },
     
     askName: {
