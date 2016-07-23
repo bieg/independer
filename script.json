@@ -1,19 +1,6 @@
 { 
- "HOI": "Je kunt me dag en nacht aanschieten als er iets is.\n Wil je schade melden? \n %[Graag](postback:damage)\nOf heb je zelf een ongeluk gehad %[Ja](accident)\nOf zoek je informatie %[Inderdaad](information)\n",
-
-"HALLO": "Hallo. Als er wat is kun je me dag en nacht aanschieten.\nWil je schade melden? \n%[Graag](postback:damage)\nOf heb je zelf een ongeluk gehad%[Ja](accident)\nOf zoek je informatie[Inderdaad](information)\n",
-
-  "HEY": "Hey! Dag en nacht sta ik voor je klaar als er iets is.\nWil je schade melden? \n%[Graag](postback:damage)\nOf heb je zelf een ongeluk gehad%[Ja](accident)\nOf zoek je informatie[Inderdaad](information)\n",
-
-"DAMAGE": "Dat is vervelend.\n Ben jij nog heel? \n %[Gelukkig wel](self_ok) \n %[Nee, ik heb zelf ook wat](postback:self_not_ok)", 
-"SCHADE": "Dat is vervelend.\n Ben jij nog heel? \n %[Gelukkig wel](self_ok) \n %[Nee, ik heb zelf ook wat](postback:self_not_ok)", 
-
-"IK HEB SCHADE": "Dat is vervelend.\n Ben jij nog heel? \n %[Gelukkig wel](self_ok) \n %[Nee, ik heb zelf ook wat](postback:self_not_ok)", 
-"IK WIL SCHADE MELDEN": "Vervelend om te horen.\n Ben jij nog heel? \n %[Gelukkig wel](self_ok) \n %[Nee, ik heb zelf ook wat](postback:self_not_ok)", 
-
-"SELF OK" : "Trouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
-"SELF NOT OK" : "Trouwens, hoe heet je eigenlijk? Dat maakt het praten wat makkelijker.",
-
+ "HOI": "Hoi, hoe kan ik helpen?";
+ 
     "CONNECT ME": "",
     "DISCONNECT": "Ok - tot ziens - IndependerBot is back." 
 }
