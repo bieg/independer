@@ -13,7 +13,10 @@ function wait(ms) {
 module.exports = new Script({
     processing: {
         //prompt: (bot) => bot.say('Beep boop...'),
-        receive: () => 'processing'
+        receive: (bot) => {
+            return bot.say('Hiya')
+            .then(() => 'finish');
+        }
     },
 
     start: {
@@ -53,8 +56,9 @@ Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
 
     finish: {
         receive: (bot, message) => {
-            return bot.getProp('name')
-                .then((name) => bot.say(`Sorry ${name}, dat was niet duidelijk voor me. Kun je het nog eens zeggen?`))
+            const answer = message.text;
+            return bot.getProp('answer')
+                .then((answer) => bot.say(`Sorry ${name}, dat was niet duidelijk voor me. Kun je het nog eens zeggen?`))
                 .then(() => 'finish');
         }
     },
