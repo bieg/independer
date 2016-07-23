@@ -13,10 +13,12 @@ function wait(ms) {
 module.exports = new Script({
     processing: {
         //prompt: (bot) => bot.say('Beep boop...'),
-        receive: (bot) => {
-            return bot.say('Hiya')
-            .then(() => 'finish');
-        }
+        // receive: (bot) => {
+        //     return bot.say('Hiya')
+        //     .then(() => 'finish');
+        // }
+                receive: () => 'processing'
+
     },
 
     start: {
