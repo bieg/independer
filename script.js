@@ -1,7 +1,9 @@
+
 'use strict';
 
 const _ = require('lodash');
-const Script = require('smooch-bot').Script
+const Script = require('smooch-bot').Script;
+
 const scriptRules = require('./script.json');
 
 function wait(ms) {
@@ -13,58 +15,15 @@ function wait(ms) {
 module.exports = new Script({
     processing: {
         //prompt: (bot) => bot.say('Beep boop...'),
-        // receive: (bot) => {
-        //     return bot.say('Hiya')
-        //     .then(() => 'finish');
-        // }
-                receive: () => 'processing'
-
+        receive: () => 'processing'
     },
 
     start: {
         receive: (bot) => {
-            return bot.say('Hoi. Kan ik iets voor je doen?')
-                 .then(() => bot.say('%[Graag, ik wil schade melden](postback:damage) '))
-                 .then(() => bot.say('%[Zeker, ik had een ongeluk](postback:accident)'))
-                 .then(() => bot.say('%[Ja, ik zoek informatie](postback:information)'))
-                 .then(() => 'watKanIkDoen');
+            return bot.say('Get started by saying BOT.')
+                .then(() => 'speak');
         }
     },
-    
-    watKanIkDoen: {
-        receive: (message) => {
-            const wat = message.text;
-            return bot.setProp('wat', wat)
-                .then(() => bot.say('${wat}'))
-                .then(() => 'finish');
-        }
-    },
-    
-    damage : {
-      prompt: (bot) => bot.say('helemaal stuk jongen'),
-        receive: () => 'damage'
-    },
-    
-    askName: {
-        prompt: (bot) => bot.say('What\'s your name?'),
-        receive: (bot, message) => {
-            const name = message.text;
-            return bot.setProp('name', name)
-                .then(() => bot.say(`Great! I'll call you ${name}
-Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
-                .then(() => 'finish');
-        }
-    },
-
-    finish: {
-        receive: (bot, message) => {
-            const answer = message.text;
-            return bot.getProp('answer')
-                .then((answer) => bot.say(`Sorry ${name}, dat was niet duidelijk voor me. Kun je het nog eens zeggen?`))
-                .then(() => 'finish');
-        }
-    },
-    
 
     speak: {
         receive: (bot, message) => {
@@ -92,7 +51,7 @@ Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
                 }
 
                 if (!_.has(scriptRules, upperText)) {
-                    return bot.say(`Hey, zeg dat nog eens? Want dat ging even niet goed.`).then(() => 'speak');
+                    return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
                 }
 
                 var response = scriptRules[upperText];
