@@ -19,11 +19,22 @@ module.exports = new Script({
     },
 
     start: {
-        receive: (bot) => {
-            return bot.say('Get started by saying BOT.')
-                .then(() => 'speak');
-        }
-    },
+            receive: (bot) => {
+                return bot.say('Hoi.')
+                     .then(() => 'askName');
+            }
+        },
+
+        askName: {
+                prompt: (bot) => bot.say('Hoe heet je - want maakt praten een stuk eenvoudiger'),
+                receive: (bot, message) => {
+                    const name = message.text;
+                    return bot.setProp('name', name)
+                        .then(() => bot.say(`Great! I'll call you ${name}
+        Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
+                        .then(() => 'finish');
+                }
+            },
 
     speak: {
         receive: (bot, message) => {
