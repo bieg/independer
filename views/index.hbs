@@ -9,7 +9,7 @@
 
 <script>
 Smooch.init({
-    appToken: '5vyxec5l3ims0hpyywpqhkodq', 
+    appToken: '5vyxec5l3ims0hpyywpqhkodq',
     customText: {
                 headerText: 'Hoi, kan ik je helpen?',
                 inputPlaceholder: 'wat wil je weten?',
@@ -17,6 +17,7 @@ Smooch.init({
                 introductionText: 'Je kunt me dag en nacht aanschieten als er iets is. Heb je een vraag? Wil je schade melden?',
                 introAppText: 'Laat het me weten via je favoriete app!',
                 settingsText: 'Laat je email adres achter en ik neem contact met je op.'
+                connectNotificationText: 'Blijf op de hoogte - ook binnen je andere apps'
             },
     soundNotificationEnabled: false,
     email: 'wbiegstraaten@independer.nl',
@@ -26,7 +27,7 @@ Smooch.init({
 Smooch.on('track("damage")', function(message) {
           console.log('tracking damage');
         });
-        
+
 </script>
 
 </head>
