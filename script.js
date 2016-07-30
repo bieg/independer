@@ -26,12 +26,12 @@ module.exports = new Script({
         },
 
         askName: {
-                prompt: (bot) => bot.say('Hoe heet je eigenlijk - want dat maakt de chat een stuk eenvoudiger'),
+                prompt: (bot) => bot.say('Hoe heet je eigenlijk?'),
                 receive: (bot,message) => {
                     const name = message.text;
                     return bot.setProp('name', name)
-                        .then(() => bot.say(`OK. Hoe kan ik je helpen ${name}?
-        Is that OK? %[Yes](postback:yes) %[No](postback:no)`))
+                        .then(() => bot.say(`Hoe kan ik je helpen ${name}?
+                        %[Heb je schade"](postback:yes_schade)\n %[Ik zoek een verzekering](postback:zoekverzekering) `)
                         .then(() => 'finish');
                 }
             },
