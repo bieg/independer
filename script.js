@@ -30,8 +30,8 @@ module.exports = new Script({
                 receive: (bot,message) => {
                     const name = message.text;
                     return bot.setProp('name', name)
-                        .then(() => bot.say(`Hoe kan ik je helpen ${name}?
-                        %[Heb je schade](postback:yes_schade)   %[Ik zoek een verzekering](postback:zoekverzekering) `)
+                        .then(() => bot.say(`Hoe kan ik je helpen ${name}?`))
+                        %[Ik heb schade](postback:schade_yes) %[Ik zoek een verzekering](postback:gezocht_verzekering) ''
                         .then(() => 'finish');
                 }
             },
