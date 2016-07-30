@@ -27,7 +27,7 @@ module.exports = new Script({
 
         askName: {
                 prompt: (bot) => bot.say('Hoe heet je eigenlijk - want dat maakt de chat een stuk eenvoudiger'),
-                receive: (message) => {
+                receive: (bot,message) => {
                     const name = message.text;
                     return bot.setProp('name', name)
                         .then(() => bot.say(`OK. Hoe kan ik je helpen ${name}?
