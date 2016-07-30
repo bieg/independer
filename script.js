@@ -39,9 +39,13 @@ module.exports = new Script({
             finish: {
     receive: (bot, message) => {
         return bot.getProp('name')
-            .then((name) => bot.say(`Sorry `))
-            .then(() => 'finish');
+            .then((name) => bot.say(`Sorry`))
+            .then(() => 'done');
     }
+},
+
+done: {
+    receive: () => 'done'
 },
 
     speak: {
