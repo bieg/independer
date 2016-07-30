@@ -36,6 +36,11 @@ module.exports = new Script({
                 }
             },
 
+            error: {
+        prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
+        receive: () => 'start'
+    },
+
             finish: {
     receive: (bot, message) => {
         return bot.getProp('name')
