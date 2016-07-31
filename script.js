@@ -6,6 +6,29 @@ const Script = require('smooch-bot').Script;
 
 const scriptRules = require('./script.json');
 
+var myDate = new Date();
+var groet = '';
+
+/* hour is before noon */
+if ( myDate.getHours() < 12 )
+{
+    groet = "Good Morning!";
+}
+else  /* Hour is from noon to 5pm (actually to 5:59 pm) */
+if ( myDate.getHours() >= 12 && myDate.getHours() <= 17 )
+{
+    groet = "Good Afternoon!";
+}
+else  /* the hour is after 5pm, so it is between 6pm and midnight */
+if ( myDate.getHours() > 17 && myDate.getHours() <= 24 )
+{
+    groet = "Good Evening!";
+}
+else  /* the hour is not between 0 and 24, so something is wrong */
+{
+    groet = "I'm not sure what time it is!";
+}
+
 function wait(ms) {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);
@@ -30,7 +53,7 @@ module.exports = new Script({
                 receive: (bot,message) => {
                     const name = message.text;
                     return bot.setProp('name', name)
-                        .then(() => bot.say(`Hoe kan ik je helpen ${name}?
+                        .then(() => bot.say(`${groet}, oe kan ik je helpen ${name}?
                             %[Ik heb schade](postback:schade_yes) %[No](postback:no)
                           `))
                         .then(() => 'finish');
