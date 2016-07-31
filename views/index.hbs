@@ -29,7 +29,13 @@ Smooch.init({
     emailCaptureEnabled: true
 });
 //Smooch.track("damage");
-
+Smooch.on('track("schade")', function(message) {
+          console.log('tracking sch');
+        });
+        // This event triggers when the user sends a message
+        Smooch.on('message:sent', function(message) {
+            console.log('the user sent a message', message);
+        });
 </script>
 
 </head>

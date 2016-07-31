@@ -65,15 +65,6 @@ module.exports = new Script({
         receive: () => 'start'
     },
 
-    schade: {
-          prompt: (bot) => bot.say('Pleasure meeting you'),
-          receive: (bot, message) => {
-
-
-          .then (() => 'processing')
-
-    },
-
             next: {
     receive: (bot, message) => {
       const choice = message.click
