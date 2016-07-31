@@ -56,7 +56,7 @@ module.exports = new Script({
                         .then(() => bot.say(`${groet} ${name}, hoe kan ik je helpen? \n
                          %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
                           `))
-                        .then(() => 'speak');
+                        .then(() => 'next');
                 }
             },
 
@@ -67,9 +67,9 @@ module.exports = new Script({
 
             next: {
     receive: (bot, message) => {
-      const choice = message.click
-        return bot.getProp('name')
-            .then((name) => bot.say(`Sorry`))
+      const choice = button.event
+        return bot.getProp('choice')
+            .then() => bot.say(`Je koos ${choice}`))
             .then(() => 'done');
     }
 },
