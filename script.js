@@ -54,7 +54,7 @@ module.exports = new Script({
                     const name = message.text;
                     return bot.setProp('name', name)
                         .then(() => bot.say(`${groet}, hoe kan ik je helpen ${name}?
-                            %[Ik heb schade](postback:schade_yes) %[No](postback:no)
+                            %[Ik heb schade](postback:schade) %[No](postback:no)
                           `))
                         .then(() => 'finish');
                 }
@@ -63,6 +63,11 @@ module.exports = new Script({
             error: {
         prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
         receive: () => 'start'
+    },
+
+    no : {
+      prompt: (bot) => bot.say('niks'),
+      receive : () => 'done'
     },
 
             finish: {
