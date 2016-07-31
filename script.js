@@ -66,12 +66,7 @@ module.exports = new Script({
     },
 
     schade: {
-          prompt: (bot) => bot.say('Dat is vervelend'),
-          receive: (bot, message) => {
-            const schade = message.text;
-            return bot.getProp('schade', name)
-          .then (() => 'done');
-  }
+          prompt: (bot) => bot.say('Dat is vervelend')
     },
 
             next: {
