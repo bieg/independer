@@ -28,10 +28,10 @@ Smooch.init({
     email: 'wbiegstraaten@independer.nl',
     emailCaptureEnabled: true
 });
-//Smooch.track("damage");
-Smooch.on('track("schade")', function(message) {
-          console.log('tracking schade');
-        });
+// This event triggers when the user sends a message
+Smooch.on('message:sent', function(message) {
+    console.log('the user sent a message', message);
+});
 
 </script>
 
