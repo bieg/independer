@@ -54,7 +54,7 @@ module.exports = new Script({
                     const name = message.text;
                     return bot.setProp('name', name)
                         .then(() => bot.say(`${groet} ${name}, hoe kan ik je helpen? \n
-                         %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
+                        .then(() => bot.say(`    %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
                           `))
                         .then(() => 'done');
                 }
@@ -68,6 +68,8 @@ module.exports = new Script({
     schade: {
           prompt: (bot) => bot.say('Pleasure meeting you'),
           receive: (bot, message) => {
+
+
           .then (() => 'processing')
 
     },
