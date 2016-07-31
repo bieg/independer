@@ -60,11 +60,6 @@ module.exports = new Script({
                 }
             },
 
-            done: {
-                receive: () => 'done'
-            },
-
-
             error: {
         prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
         receive: () => 'start'
