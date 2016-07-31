@@ -65,8 +65,8 @@ module.exports = new Script({
         receive: () => 'start'
     },
 
-    no : {
-      prompt: (bot) => bot.say('niks'),
+    schade: {
+      prompt: (bot) => bot.say('schade'),
       receive : () => 'done'
     },
 
