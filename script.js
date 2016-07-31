@@ -60,7 +60,6 @@ module.exports = new Script({
                 }
             },
 
-
             error: {
         prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
         receive: () => 'start'
@@ -68,7 +67,6 @@ module.exports = new Script({
 
     schade: {
           prompt: (bot) => bot.say('Dat is vervelend')
-          receive: () => 'done'
     },
 
             next: {
