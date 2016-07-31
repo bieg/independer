@@ -68,6 +68,8 @@ module.exports = new Script({
     schade: {
           prompt: (bot) => bot.say('Pleasure meeting you'),
           receive: (bot, message) => {
+
+
           .then (() => 'processing')
 
     },
