@@ -12,21 +12,21 @@ var groet = '';
 /* hour is before noon */
 if ( myDate.getHours() < 12 )
 {
-    groet = "Good Morning!";
+    groet = "Goedemorgen";
 }
 else  /* Hour is from noon to 5pm (actually to 5:59 pm) */
 if ( myDate.getHours() >= 12 && myDate.getHours() <= 17 )
 {
-    groet = "Good Afternoon!";
+    groet = "Goedendag";
 }
 else  /* the hour is after 5pm, so it is between 6pm and midnight */
 if ( myDate.getHours() > 17 && myDate.getHours() <= 24 )
 {
-    groet = "Good Evening!";
+    groet = "Goedenavond";
 }
 else  /* the hour is not between 0 and 24, so something is wrong */
 {
-    groet = "I'm not sure what time it is!";
+    groet = "Welkom";
 }
 
 function wait(ms) {
@@ -43,21 +43,25 @@ module.exports = new Script({
 
     start: {
             receive: (bot) => {
-                return bot.say('Hoi.')
+                return bot.say('Hoi - welkom bij Independer')
                      .then(() => 'askName');
             }
         },
 
         askName: {
-                prompt: (bot) => bot.say('Hoe heet je eigenlijk?'),
+                prompt: (bot) => bot.say('Hoe heet je?'),
                 receive: (bot,message) => {
                     const name = message.text;
                     return bot.setProp('name', name)
-                        .then(() => bot.say(`${groet}, oe kan ik je helpen ${name}?
+                        .then(() => bot.say(`${groet}, hoe kan ik je helpen ${name}?
                             %[Ik heb schade](postback:schade_yes) %[No](postback:no)
                           `))
                         .then(() => 'finish');
                 }
+            },
+
+            schade_yes: {
+              console.log("schade");
             },
 
             error: {
