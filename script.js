@@ -56,7 +56,7 @@ module.exports = new Script({
                         .then(() => bot.say(`${groet} ${name}, hoe kan ik je helpen? \n
                          %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
                           `))
-                        .then(() => 'done');
+                        .then(() => 'speak');
                 }
             },
 
