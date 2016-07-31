@@ -65,6 +65,10 @@ module.exports = new Script({
         receive: () => 'start'
     },
 
+    schade: {
+            prompt: (bot) => bot.say('schade'),
+            },
+                    
             next: {
           receive: (bot, message) => {
             const choice = button.event;
