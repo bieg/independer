@@ -29,8 +29,8 @@ Smooch.init({
     emailCaptureEnabled: true
 });
 // This event triggers when the user clicks a button
-Smooch.on('button:clicked', function(message) {
-    console.log('the user clicked', message);
+Smooch.on('button:clicked', function(button) {
+    console.log('the user clicked', button);
 });
 
         // This event triggers when the user sends a message
