@@ -56,7 +56,8 @@ module.exports = new Script({
                         .then(() => bot.say(`${groet} ${name}, hoe kan ik je helpen? \n
                          %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
                           `))
-                        .then(() => 'next');
+
+                                          .then(() => 'finish');
                 }
             },
 
@@ -88,9 +89,12 @@ done: {
 },
 
 finish: {
-    receive: () => 'finish'
-},
-
+        receive: (bot, message) => {
+            return bot.getProp('name')
+                .then((name) => bot.say(`Sorry ${name}...`))
+                .then(() => 'finish');
+        }
+    }
     speak: {
         receive: (bot, message) => {
 
