@@ -60,6 +60,11 @@ module.exports = new Script({
                 }
             },
 
+            zoek: {
+                    prompt: (bot) => bot.say('Postback is working'),
+                    receive: () => 'processing'
+                },
+
             error: {
         prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
         receive: () => 'start'
@@ -68,7 +73,7 @@ module.exports = new Script({
     schade: {
             prompt: (bot) => bot.say('schade'),
             },
-                    
+
             next: {
           receive: (bot, message) => {
             const choice = button.event;
