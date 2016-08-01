@@ -54,7 +54,7 @@ module.exports = new Script({
                     const name = message.text;
                     return bot.setProp('name', name)
                         .then(() => bot.say(`${groet} ${name}, hoe kan ik je helpen? \n
-                         %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
+                         %[Heb je schade](reply:schade) %[Zoek je een verzekering](reply:zoek)
                           `))
                         .then(() => 'finish');
                 },
