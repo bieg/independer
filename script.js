@@ -53,7 +53,7 @@ prompt: (bot) => bot.say('Postback is working'),
 receive: () => 'processing'
 },
 
-
+/*
 askName: {
 prompt: (bot) => bot.say('Hoe heet je?'),
 receive: (bot,message) => {
@@ -63,6 +63,19 @@ return bot.setProp('name', name)
 %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)`))
 .then(() => 'processing');
 },
+},
+*/
+
+
+askName: {
+    prompt: (bot) => bot.say('Postback is working. What\'s your name?'),
+    receive: (bot, message) => {
+        const name = message.text;
+        return bot.setProp('name', name)
+            .then(() => bot.say(`Great! I'll call you ${name}
+Is that OK? %[Yes](postback:bye) %[No](postback:bye)`))
+            .then(() => 'finish');
+    }
 },
 
 zoek: {
