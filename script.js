@@ -43,8 +43,8 @@ module.exports = new Script({
 
     start: {
             receive: (bot) => {
-                return bot.say('${groet} - welkom bij Independer')
-                     .then(() => 'askName');
+                return bot.say(`${groet} - welkom bij Independer`)
+                     .then(() => `askName`);
             }
         },
 
