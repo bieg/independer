@@ -43,7 +43,7 @@ module.exports = new Script({
 
     start: {
             receive: (bot) => {
-                return bot.say('Hoi - welkom bij Independer')
+                return bot.say('${groet} - welkom bij Independer')
                      .then(() => 'askName');
             }
         },
@@ -53,7 +53,7 @@ module.exports = new Script({
                 receive: (bot,message) => {
                     const name = message.text;
                     return bot.setProp('name', name)
-                        .then(() => bot.say(`${groet} ${name}, hoe kan ik je helpen? \n
+                        .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
                          %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
                           `))
                         .then(() => 'finish');
