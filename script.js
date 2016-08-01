@@ -56,7 +56,7 @@ module.exports = new Script({
                         .then(() => bot.say(`${groet} ${name}, hoe kan ik je helpen? \n
                          %[Heb je schade](reply:bye) %[Zoek je een verzekering](postback:zoek)
                           `))
-                        .then(() => 'processing');
+                        .then(() => 'next');
                 },
             },
 
@@ -64,11 +64,6 @@ module.exports = new Script({
                 prompt: (bot) => bot.say('Postback is working'),
                 receive: () => 'processing'
             },
-
-            zoek: {
-                    prompt: (bot) => bot.say('Postback is working'),
-                    receive: () => 'processing'
-                },
 
             error: {
         prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
