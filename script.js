@@ -38,7 +38,7 @@ function wait(ms) {
 module.exports = new Script({
     processing: {
         prompt: (bot) => bot.say('${groet}'),
-        receive: () => 'processing'
+        receive: () => 'start'
     },
 
     start: {
