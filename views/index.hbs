@@ -13,7 +13,7 @@
     </style>
 
 <script>
-Smooch.init({
+var skPromise = Smooch.init({
     appToken: '5vyxec5l3ims0hpyywpqhkodq',
     customText: {
                 headerText: 'Hoi, kan ik je helpen?',
@@ -44,6 +44,18 @@ Smooch.on('widget:opened', function(message) {
 Smooch.on('widget:closed', function(message) {
   console.log('Widget closed');
 });
+
+
+skPromise.then(function() {
+    // do something
+});
+
+// pass it around...
+
+skPromise.then(function() {
+    //do something else
+});
+
 </script>
 
 </head>
