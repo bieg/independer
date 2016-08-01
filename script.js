@@ -53,7 +53,9 @@ module.exports = new Script({
                 receive: (bot,message) => {
                     const name = message.text;
                     return bot.setProp(`name`, name)
-                        .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? `)
+                        .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen?
+
+                          `)
                         .then(() => `speak`);
                         );
                 },
@@ -62,7 +64,7 @@ module.exports = new Script({
             error: {
         prompt: (bot) => bot.say(`Sorry - kun je dat nog eens zeggen?  Er ging iets mis...`),
         receive: () => `start`
-      },
+    },
 
 done: {
     receive: () => 'done'
@@ -75,12 +77,9 @@ finish: {
     speak: {
         receive: (bot, message) => {
 
-          return bot.say('%[Heb je schade](postback:schade) %[Zoek je een verzekering](reply:zoek)'),
-        },
+            let upperText = message.text.trim().toUpperCase();
 
-          let upperText = message.text.trim().toUpperCase();
-
-          function updateSilent() {
+            function updateSilent() {
                 switch (upperText) {
                     case "CONNECT ME":
                         return bot.setProp("silent", true);
@@ -99,8 +98,6 @@ finish: {
                 if (isSilent) {
                     return Promise.resolve("speak");
                 }
-
-
 
                 if (!_.has(scriptRules, upperText)) {
                     return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
