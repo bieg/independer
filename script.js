@@ -76,6 +76,7 @@ finish: {
         receive: (bot, message) => {
 
           return bot.say('%[Heb je schade](postback:schade) %[Zoek je een verzekering](reply:zoek)'),
+        },
 
           let upperText = message.text.trim().toUpperCase();
 
