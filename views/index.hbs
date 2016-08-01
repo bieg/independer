@@ -45,7 +45,7 @@ Smooch.on('widget:closed', function(message) {
 
 
 skPromise.then( function() {
-  return `Is that OK? %[Yes](postback:bye) %[No](postback:bye)`; 
+  return (`Is that OK? %[Yes](postback:bye) %[No](postback:bye)`); 
 }) ;
 
 // pass it around...
