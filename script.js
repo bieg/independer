@@ -12,21 +12,21 @@ var groet = '';
 /* hour is before noon */
 if ( myDate.getHours() < 12 )
 {
-groet = "goeiemorgen";
+groet = "Goeiemorgen";
 }
 else  /* Hour is from noon to 5pm (actually to 5:59 pm) */
 if ( myDate.getHours() >= 12 && myDate.getHours() <= 17 )
 {
-groet = "goedendag";
+groet = "Goedendag";
 }
 else  /* the hour is after 5pm, so it is between 6pm and midnight */
 if ( myDate.getHours() > 17 && myDate.getHours() <= 24 )
 {
-groet = "goedenavond";
+groet = "Goedenavond";
 }
 else  /* the hour is not between 0 and 24, so something is wrong */
 {
-groet = "welkom";
+groet = "Welkom";
 }
 
 function wait(ms) {
@@ -37,8 +37,6 @@ setTimeout(resolve, ms);
 
 module.exports = new Script({
 processing: {
-//  prompt: (bot) => bot.say('Postback is working')
-
 //prompt: (bot) => bot.say('Beep boop...'),
 receive: () => 'processing'
 },
@@ -120,7 +118,7 @@ return Promise.resolve("speak");
 }
 
 if (!_.has(scriptRules, upperText)) {
-return bot.say(`Wanna move on %[yes](ja) %[no](no)?`).then(() => 'speak');
+return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
 }
 
 var response = scriptRules[upperText];
