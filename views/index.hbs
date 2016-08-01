@@ -26,8 +26,10 @@ Smooch.init({
             },
     soundNotificationEnabled: false,
     email: 'wbiegstraaten@independer.nl',
-    emailCaptureEnabled: true
+    emailCaptureEnabled: true,
 });
+
+Smooch.track('schade');
 
 // This event triggers when the user sends a message
 Smooch.on('message:sent', function(message) {
