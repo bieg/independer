@@ -60,28 +60,6 @@ module.exports = new Script({
                 },
             },
 
-            error: {
-        prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
-        receive: () => 'start'
-    },
-
-            next: {
-          receive: (bot, button) => {
-            const choice = button.event;
-              return bot.getProp('choice', choice)
-                  .then(() => bot.say(`Je koos ${choice}`))
-                  .then(() => 'done');
-          }
-      },
-
-done: {
-    receive: () => 'done'
-},
-
-finish: {
-    receive: () => 'finish'
-},
-
     speak: {
         receive: (bot, message) => {
 
@@ -133,4 +111,28 @@ finish: {
                 .then(processMessage);
         }
     }
+
+
+                error: {
+            prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
+            receive: () => 'start'
+        },
+
+                next: {
+              receive: (bot, button) => {
+                const choice = button.event;
+                  return bot.getProp('choice', choice)
+                      .then(() => bot.say(`Je koos ${choice}`))
+                      .then(() => 'done');
+              }
+          },
+
+    done: {
+        receive: () => 'done'
+    },
+
+    finish: {
+        receive: () => 'finish'
+    },
+
 });
