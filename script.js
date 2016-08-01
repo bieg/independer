@@ -49,21 +49,25 @@ module.exports = new Script({
         },
 
         askName: {
-                prompt: (bot) => bot.say(`Hoe heet je?`),
+                prompt: (bot) => bot.say('Hoe heet je?'),
                 receive: (bot,message) => {
                     const name = message.text;
-                    return bot.setProp(`name`, name)
+                    return bot.setProp('name', name)
                         .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
-                         %[Heb je schade](postback:schade) %[Zoek je een verzekering](reply:zoek)
-                          `)
-                              .then(() => `askName`);
-                        );
+                         %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
+                          `))
+                        .then(() => 'finish');
                 },
             },
 
+            zoek: {
+                    prompt: (bot) => bot.say('Postback is working'),
+                    receive: () => 'processing'
+                },
+
             error: {
-        prompt: (bot) => bot.say(`Sorry - kun je dat nog eens zeggen?  Er ging iets mis...`),
-        receive: () => `start`
+        prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
+        receive: () => 'start'
     },
 
             next: {
