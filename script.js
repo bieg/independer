@@ -28,8 +28,6 @@ else  /* the hour is not between 0 and 24, so something is wrong */
 {
 groet = "welkom";
 }
-${groet}
-
 
 function wait(ms) {
 return new Promise((resolve) => {
