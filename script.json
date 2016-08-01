@@ -1,7 +1,7 @@
 {
 
-  "TEST": "phrase here %[buttonlabel](postback:buttonlabel)",
-  "BUTTONLABEL": "text from when buttons pushed",
+  "TEST": "phrase here %[buttonlabel](postback:btn)",
+  "buttonlabel": "text from when buttons pushed",
 
  "schade" : "Ok schade",
  "SCHADE" : "Ok schade",
