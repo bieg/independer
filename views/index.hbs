@@ -28,20 +28,20 @@ Smooch.init({
     email: 'wbiegstraaten@independer.nl',
     emailCaptureEnabled: true
 }
-SmoochOptions();
+SmoochOptions;
 );
 
 SmoochOptions = {
-    serviceUrl: 'ROOT_URL',
-    appToken: 'APP_TOKEN',
-    givenName: 'GIVEN_NAME',
-    surname: 'SURNAME',
-    email: 'EMAIL',
-    jwt: 'JWT',
-    userId: 'USER_ID',
-    properties: PROPERTIES,
-    emailCaptureEnabled: true
-};
+            serviceUrl: 'ROOT_URL',
+            appToken: 'APP_TOKEN',
+            givenName: 'GIVEN_NAME',
+            surname: 'SURNAME',
+            email: 'EMAIL',
+            jwt: 'JWT',
+            userId: 'USER_ID',
+            properties: PROPERTIES,
+            emailCaptureEnabled: true
+        };
 
 Smooch.on('message:received', function(message) {
   console.log('Message received', message);
@@ -55,6 +55,7 @@ Smooch.on('widget:opened', function(message) {
 Smooch.on('widget:closed', function(message) {
   console.log('Widget closed');
 });
+Smooch.init(SmoochOptions);
 </script>
 
 </head>
