@@ -1,5 +1,9 @@
 {
 
+  "TEST": "phrase here %[me](postback:buttonlabel)",
+  "BUTTONLABEL": "text from when buttons pushed",
+
+
  "schade" : "Ok schade",
  "SCHADE" : "Ok schade",
  "boe" : "ja joh?",
