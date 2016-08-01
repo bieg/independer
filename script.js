@@ -110,22 +110,13 @@ module.exports = new Script({
                 .then(getSilent)
                 .then(processMessage);
         }
-    }
+    },
 
 
                 error: {
             prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
             receive: () => 'start'
         },
-
-                next: {
-              receive: (bot, button) => {
-                const choice = button.event;
-                  return bot.getProp('choice', choice)
-                      .then(() => bot.say(`Je koos ${choice}`))
-                      .then(() => 'done');
-              }
-          },
 
     done: {
         receive: () => 'done'
