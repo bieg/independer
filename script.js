@@ -71,9 +71,9 @@ module.exports = new Script({
     },
 
             next: {
-          receive: (bot, button) => {
-            const choice = button.event;
-              return bot.getProp('choice', choice)
+              receive: (bot,message) => {
+                  const choice = message.text;
+                  return bot.setProp('choice', choice)
                   .then(() => bot.say(`Je koos ${choice}`))
                   .then(() => 'done');
           }
