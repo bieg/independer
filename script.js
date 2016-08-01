@@ -58,6 +58,11 @@ module.exports = new Script({
                           `))
                         .then(() => 'processing');
                 }
+
+                schade: {
+                        prompt: (bot) => bot.say('schade dus'),
+                        receive: () => 'processing'
+                        },
             },
 
             zoek: {
@@ -69,11 +74,6 @@ module.exports = new Script({
         prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
         receive: () => 'start'
     },
-
-    schade: {
-            prompt: (bot) => bot.say('schade'),
-            receive: () => 'processing'
-            },
 
             next: {
           receive: (bot, button) => {
