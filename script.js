@@ -53,10 +53,10 @@ module.exports = new Script({
                 receive: (bot,message) => {
                     const name = message.text;
                     return bot.setProp(`name`, name)
-                        .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen?
-
+                        .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
+                         %[Heb je schade](postback:schade) %[Zoek je een verzekering](reply:zoek)
                           `)
-                        .then(() => `speak`);
+                              .then(() => `askName`);
                         );
                 },
             },
@@ -65,6 +65,15 @@ module.exports = new Script({
         prompt: (bot) => bot.say(`Sorry - kun je dat nog eens zeggen?  Er ging iets mis...`),
         receive: () => `start`
     },
+
+            next: {
+          receive: (bot, button) => {
+            const choice = button.event;
+              return bot.getProp('choice', choice)
+                  .then(() => bot.say(`Je koos ${choice}`))
+                  .then(() => 'done');
+          }
+      },
 
 done: {
     receive: () => 'done'
