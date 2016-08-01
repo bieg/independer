@@ -44,7 +44,7 @@ Smooch.on('widget:closed', function(message) {
 });
 
 
-skPromise.then(() => bot.say(`Great! I'll call you ${name}
+skPromise.then( return (`Great! I'll call you ${name}
 Is that OK? %[Yes](postback:bye) %[No](postback:bye)`) );
 
 // pass it around...
