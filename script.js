@@ -55,10 +55,31 @@ module.exports = new Script({
                     return bot.setProp('name', name)
                         .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
                          %[Heb je schade](postback:schade) %[Zoek je een verzekering](reply:zoek)
-                          `))
-                        .then(() => 'speak');
+                          `));
                 },
             },
+
+            error: {
+        prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
+        receive: () => 'start'
+    },
+
+            next: {
+          receive: (bot, button) => {
+            const choice = button.event;
+              return bot.getProp('choice', choice)
+                  .then(() => bot.say(`Je koos ${choice}`))
+                  .then(() => 'done');
+          }
+      },
+
+done: {
+    receive: () => 'done'
+},
+
+finish: {
+    receive: () => 'finish'
+},
 
     speak: {
         receive: (bot, message) => {
@@ -110,20 +131,5 @@ module.exports = new Script({
                 .then(getSilent)
                 .then(processMessage);
         }
-    },
-
-
-                error: {
-            prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
-            receive: () => 'start'
-        },
-
-    done: {
-        receive: () => 'done'
-    },
-
-    finish: {
-        receive: () => 'finish'
-    },
-
+    }
 });
