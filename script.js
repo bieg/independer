@@ -54,10 +54,15 @@ module.exports = new Script({
                     const name = message.text;
                     return bot.setProp('name', name)
                         .then(() => bot.say(`${groet} ${name}, hoe kan ik je helpen? \n
-                         %[Heb je schade](reply:schade) %[Zoek je een verzekering](postback:zoek)
+                         %[Heb je schade](reply:bye) %[Zoek je een verzekering](postback:zoek)
                           `))
                         .then(() => 'finish');
                 },
+            },
+
+            bye: {
+                prompt: (bot) => bot.say('Postback is working'),
+                receive: () => 'processing'
             },
 
             zoek: {
