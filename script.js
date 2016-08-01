@@ -37,13 +37,14 @@ function wait(ms) {
 
 module.exports = new Script({
     processing: {
-        prompt: (bot) => bot.say('Hey ${groet}'),
+        prompt: (bot) => bot.say('${groet}'),
         receive: () => 'start'
     },
 
     start: {
-            receive: (bot) => {
-                return bot.say('Welkom bij Independer')
+      prompt: (bot) => bot.say('Welkom bij Independer'),
+      receive: (bot,message) => {
+                return console.console.log("vraag naar naam")
                      .then(() => 'askName');
             }
         },
@@ -52,8 +53,10 @@ module.exports = new Script({
                 prompt: (bot) => bot.say('Hoe heet je?'),
                 receive: (bot,message) => {
                     const name = message.text;
-                    return bot.setProp('name', name)
-                        .then(() => bot.say('Ok ${name}, hoe kan ik je helpen? \n  %[Heb je schade](postback:schade) \n%[Zoek je een verzekering](postback:zoek)'
+                    return bot.setProp(`name`, name)
+                        .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
+                         %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
+                          `)
                         )}
                 },
             },
