@@ -29,15 +29,15 @@ Smooch.init({
     emailCaptureEnabled: true
 });
 
-
+// This event triggers when the user sends a message
+Smooch.on('message:sent', function(message) {
+    console.log('the user sent a message', message);
+});
 Smooch.on('message:received', function(message) {
   console.log('Message received', message);
 });
-Smooch.on('message:sent', function(message) {
-  console.log('Message sent', message);
-});
 Smooch.on('widget:opened', function(message) {
-  console.log('Widget opened');
+  console.log('Widget opened', message);
 });
 Smooch.on('widget:closed', function(message) {
   console.log('Widget closed');
