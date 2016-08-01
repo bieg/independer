@@ -43,7 +43,7 @@ receive: () => 'processing'
 
 start: {
 receive: (bot,message) => {
-return bot.say(`${groet} - welkom bij Independer Wil je verder? %[Yes](postback:askName) %[No](postback:bye)`)
+return bot.say(`${groet} - welkom bij Independer.`)
 .then(() => 'askName');
 }
 },
