@@ -37,7 +37,7 @@ function wait(ms) {
 
 module.exports = new Script({
     processing: {
-        //prompt: (bot) => bot.say('Beep boop...'),
+        prompt: (bot) => bot.say('Beep boop...'),
         receive: () => 'processing'
     },
 
