@@ -42,14 +42,14 @@ receive: () => 'processing'
 },
 
 start: {
-receive: (bot) => {
+receive: (bot,message) => {
 return bot.say(`${groet} - welkom bij Independer Wil je verder? %[Yes](postback:askName) %[No](postback:bye)`)
 .then(() => 'askName');
 }
 },
 
 bye: {
-prompt: (bot) => bot.say('Postback is working'),
+prompt: (bot) => bot.say('Geen probleem.'),
 receive: () => 'processing'
 },
 
@@ -74,7 +74,7 @@ askName: {
         return bot.setProp('name', name)
             .then(() => bot.say(`Great! I'll call you ${name}
 Is that OK? %[Yes](postback:bye) %[No](postback:bye)`))
-            .then(() => 'finish');
+            .then(() => 'processing');
     }
 },
 
