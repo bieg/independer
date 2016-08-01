@@ -37,13 +37,13 @@ function wait(ms) {
 
 module.exports = new Script({
     processing: {
-        prompt: (bot) => bot.say('${groet}'),
-        receive: () => 'start'
+        //prompt: (bot) => bot.say('Beep boop...'),
+        receive: () => 'processing'
     },
 
     start: {
             receive: (bot) => {
-                return bot.say(`Welkom bij Independer`)
+                return bot.say(`${groet} - welkom bij Independer`)
                      .then(() => `askName`);
             }
         },
@@ -55,7 +55,9 @@ module.exports = new Script({
                     return bot.setProp(`name`, name)
                         .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
                          %[Heb je schade](postback:schade) %[Zoek je een verzekering](reply:zoek)
-                          `));
+                          `)
+                        .then(() => `speak`);
+                        );
                 },
             },
 
