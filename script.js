@@ -57,7 +57,7 @@ module.exports = new Script({
                          %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
                           `))
                         .then(() => 'processing');
-                }
+                },
 
                 schade: {
                         prompt: (bot) => bot.say('schade dus'),
