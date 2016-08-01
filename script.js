@@ -61,7 +61,7 @@ const name = message.text;
 return bot.setProp('name', name)
 .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
 %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)`))
-.then(() => 'finish');
+.then(() => 'processing');
 },
 },
 
