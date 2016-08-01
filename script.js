@@ -1,30 +1,10 @@
-'use strict';
 
-const smoochBot = require('smooch-bot');
-const MemoryStore = smoochBot.MemoryStore;
-const MemoryLock = smoochBot.MemoryLock;
-const Bot = smoochBot.Bot;
-const StateMachine = smoochBot.StateMachine;
+'use strict';
 
 const _ = require('lodash');
 const Script = require('smooch-bot').Script;
 
 const scriptRules = require('./script.json');
-
-
-class ConsoleBot extends Bot {
-    constructor(options) {
-        super(options);
-    }
-
-    say(text) {
-        return new Promise((resolve) => {
-            console.log(text);
-            resolve();
-        });
-    }
-}
-
 
 var myDate = new Date();
 var groet = '';
@@ -32,21 +12,21 @@ var groet = '';
 /* hour is before noon */
 if ( myDate.getHours() < 12 )
 {
-groet = "Goeiemorgen";
+groet = "goeiemorgen";
 }
 else  /* Hour is from noon to 5pm (actually to 5:59 pm) */
 if ( myDate.getHours() >= 12 && myDate.getHours() <= 17 )
 {
-groet = "Goedendag";
+groet = "goedendag";
 }
 else  /* the hour is after 5pm, so it is between 6pm and midnight */
 if ( myDate.getHours() > 17 && myDate.getHours() <= 24 )
 {
-groet = "Goedenavond";
+groet = "goedenavond";
 }
 else  /* the hour is not between 0 and 24, so something is wrong */
 {
-groet = "Welkom";
+groet = "welkom";
 }
 ${groet}
 
@@ -59,6 +39,8 @@ setTimeout(resolve, ms);
 
 module.exports = new Script({
 processing: {
+  prompt: (bot) => bot.say('Postback is working'),
+
 //prompt: (bot) => bot.say('Beep boop...'),
 receive: () => 'processing'
 },
@@ -165,32 +147,4 @@ return updateSilent()
 .then(processMessage);
 }
 }
-});
-
-
-
-
-const userId = 'testUserId';
-const store = new MemoryStore();
-const lock = new MemoryLock();
-const bot = new ConsoleBot({
-    store,
-    lock,
-    userId
-});
-
-const stateMachine = new StateMachine({
-    script,
-    bot,
-    userId
-});
-
-process.stdin.on('data', function(data) {
-    stateMachine.receiveMessage({
-        text: data.toString().trim()
-    })
-        .catch((err) => {
-            console.error(err);
-            console.error(err.stack);
-        });
 });
