@@ -29,8 +29,6 @@ var skPromise = Smooch.init({
     emailCaptureEnabled: true,
 });
 
-Smooch.track('schade');
-
 // This event triggers when the user sends a message
 Smooch.on('message:sent', function(message) {
     console.log('the user sent a message', message);
