@@ -73,7 +73,9 @@ askName: {
         const name = message.text;
         return bot.setProp('name', name)
             .then(() => bot.say(`Great! I'll call you ${name}
-Is that OK? %[Yes](postback:bye) %[No](postback:bye)`));
+Is that OK? %[Yes](postback:bye) %[No](postback:bye)`))
+.then() => 'processing'
+
         //    .then(() => 'processing');
     }
 },
