@@ -37,25 +37,24 @@ function wait(ms) {
 
 module.exports = new Script({
     processing: {
-        //prompt: (bot) => bot.say('Beep boop...'),
-        receive: () => 'processing'
+        prompt: (bot) => bot.say('Hey ${groet}'),
+        receive: () => 'start'
     },
 
     start: {
             receive: (bot) => {
-                return bot.say(`${groet} - welkom bij Independer`)
-                     .then(() => `askName`);
+                return bot.say('Welkom bij Independer')
+                     .then(() => 'askName');
             }
         },
 
         askName: {
-                prompt: (bot) => bot.say(`Hoe heet je?`),
+                prompt: (bot) => bot.say('Hoe heet je?'),
                 receive: (bot,message) => {
                     const name = message.text;
-                    return bot.setProp(`name`, name)
-                        .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
-                         %[Heb je schade](postback:schade) %[Zoek je een verzekering](reply:zoek)
-                          `));
+                    return bot.setProp('name', name)
+                        .then(() => bot.say('Ok ${name}, hoe kan ik je helpen? \n  %[Heb je schade](postback:schade) \n%[Zoek je een verzekering](postback:zoek)'
+                        )}
                 },
             },
 
