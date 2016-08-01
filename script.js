@@ -38,26 +38,24 @@ function wait(ms) {
 module.exports = new Script({
     processing: {
         prompt: (bot) => bot.say('${groet}'),
-        receive: () => 'start'
+        receive: () => 'processing'
     },
 
     start: {
-      prompt: (bot) => bot.say('Welkom bij Independer'),
-      receive: (bot,message) => {
-                return console.console.log("vraag naar naam")
-                     .then(() => 'askName');
+            receive: (bot) => {
+                return bot.say(`Welkom bij Independer`)
+                     .then(() => `askName`);
             }
         },
 
         askName: {
-                prompt: (bot) => bot.say('Hoe heet je?'),
+                prompt: (bot) => bot.say(`Hoe heet je?`),
                 receive: (bot,message) => {
                     const name = message.text;
                     return bot.setProp(`name`, name)
                         .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
-                         %[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)
-                          `)
-                        )}
+                         %[Heb je schade](postback:schade) %[Zoek je een verzekering](reply:zoek)
+                          `));
                 },
             },
 
@@ -71,16 +69,16 @@ module.exports = new Script({
             const choice = button.event;
               return bot.getProp('choice', choice)
                   .then(() => bot.say(`Je koos ${choice}`))
-                  .then(() => `done`);
+                  .then(() => 'done');
           }
       },
 
 done: {
-    receive: () => `done`
+    receive: () => 'done'
 },
 
 finish: {
-    receive: () => `finish`
+    receive: () => 'finish'
 },
 
     speak: {
