@@ -49,10 +49,10 @@ module.exports = new Script({
         },
 
         askName: {
-                prompt: (bot) => bot.say('Hoe heet je?'),
+                prompt: (bot) => bot.say(`Hoe heet je?`),
                 receive: (bot,message) => {
                     const name = message.text;
-                    return bot.setProp('name', name)
+                    return bot.setProp(`name`, name)
                         .then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
                          %[Heb je schade](postback:schade) %[Zoek je een verzekering](reply:zoek)
                           `));
@@ -60,8 +60,8 @@ module.exports = new Script({
             },
 
             error: {
-        prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
-        receive: () => 'start'
+        prompt: (bot) => bot.say(`Sorry - kun je dat nog eens zeggen?  Er ging iets mis...`),
+        receive: () => `start`
     },
 
             next: {
@@ -69,16 +69,16 @@ module.exports = new Script({
             const choice = button.event;
               return bot.getProp('choice', choice)
                   .then(() => bot.say(`Je koos ${choice}`))
-                  .then(() => 'done');
+                  .then(() => `done`);
           }
       },
 
 done: {
-    receive: () => 'done'
+    receive: () => `done`
 },
 
 finish: {
-    receive: () => 'finish'
+    receive: () => `finish`
 },
 
     speak: {
