@@ -92,7 +92,7 @@ receive: (bot, message) => {
 
 let upperText = message.text.trim().toUpperCase();
 
-console.log("t = "+ upperText);
+console.log("t = "+ message);
 
 function updateSilent() {
 switch (upperText) {
