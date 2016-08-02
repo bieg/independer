@@ -3,7 +3,7 @@
   "TEST": "phrase here %[buttonlabel](postback:btn)",
   "buttonlabel": "text from when buttons pushed",
 "MORE" : "meer",
- "schade" : "Ok schade",
+ "schade" : "Ok schade %[buttonlabel](postback:yes)",
  "SCHADE" : "Ok schade",
  "boe" : "ja joh?",
  "hello" : "Hey",
