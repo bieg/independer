@@ -92,8 +92,6 @@ receive: (bot, message) => {
 
 let upperText = message.text.trim().toUpperCase();
 
-console.log('msg :' + upperText);
-
 function updateSilent() {
 switch (upperText) {
 case "CONNECT ME":
@@ -115,7 +113,9 @@ return Promise.resolve("speak");
 }
 
 if (!_.has(scriptRules, upperText)) {
-return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
+  console.log('msg :' + upperText);
+
+return bot.say(`Blamoji and sentences still confuse me. Say 'boe' to chat about something else.`).then(() => 'speak');
 }
 
 var response = scriptRules[upperText];
