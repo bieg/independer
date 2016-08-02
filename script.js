@@ -72,16 +72,9 @@ askName: {
     receive: (bot, message) => {
         const name = message.text;
         return bot.setProp('name', name)
-            .then(() => bot.say(`Great! I'll call you ${name} Is that OK? %[Yes](postback:bye) %[No](postback:bye)`));
-            receive: () => 'processing';
-
-        //    .then(() => 'processing');
+            .then(() => bot.say(`Great! I'll call you ${name} \nIs that OK? %[Yes](postback:bye) %[No](postback:bye)`));
+            .then(() => 'speak');
     }
-},
-
-zoek: {
-prompt: (bot) => bot.say('Postback is working'),
-receive: () => 'processing'
 },
 
 error: {
