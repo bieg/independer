@@ -92,6 +92,8 @@ receive: (bot, message) => {
 
 let upperText = message.text.trim().toUpperCase();
 
+console.log('msg :' + upperText);
+
 function updateSilent() {
 switch (upperText) {
 case "CONNECT ME":
