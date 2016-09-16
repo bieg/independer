@@ -16,15 +16,19 @@
 var skPromise = Smooch.init({
     appToken: '5vyxec5l3ims0hpyywpqhkodq',
     customText: {
-                headerText: 'Hoi, kan ik je helpen?',
+                headerText: 'Waar kan ik je mee helpen?',
                 inputPlaceholder: 'wat wil je weten?',
                 sendButtonText: 'verstuur',
-                introductionText: 'Je kunt me dag en nacht aanschieten als er iets is. Heb je een vraag? Wil je schade melden?',
+                introductionText: 'Je kunt me dag en nacht vragen - daar ben ik de   bot voor. Heb je een vraag? Ben je op zoek naar een startershypotheek',
                 introAppText: 'Laat het me weten via je favoriete app!',
                 settingsText: 'Laat je email adres achter en ik neem contact met je op.',
-                connectNotificationText: 'Blijf op de hoogte - ook binnen je andere apps'
+                connectNotificationText: 'Blijf op de hoogte - ook binnen je andere apps',
+                notificationSettingsChannelsTitle: 'Andere Apps',
+                notificationSettingsChannelsDescription: 'Blijf op de hoogte en gebruik jouw favoriete app.',
+                notificationSettingsConnectedAs: 'Ingelogd als {username}',
+
             },
-    soundNotificationEnabled: false,
+    soundNotificationEnabled: true,
     email: 'wbiegstraaten@independer.nl',
     emailCaptureEnabled: true,
 });
@@ -53,7 +57,7 @@ skPromise.then( function() {
 skPromise.then(function() {
   console.log("two");
 });
-Smooch.track("schade")
+Smooch.track("schade");
 </script>
 
 </head>
