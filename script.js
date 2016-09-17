@@ -48,7 +48,8 @@ return bot.setProp('inh', inh)
 .then(() =>bot.say(`${groet} - ${inh} welkom bij Independer.`))
 .then(() => 'askName');
 }
-},
+}
+
 
 bye: {
 prompt: (bot) => bot.say('Geen probleem.'),
