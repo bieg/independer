@@ -44,6 +44,7 @@ receive: () => 'processing'
 start: {
 receive: (bot,message) => {
 const inh = message.text;
+return bot.setProp('inh', inh)
 return bot.say(`${groet} - ${inh} welkom bij Independer.`)
 .then(() => 'askName');
 }
