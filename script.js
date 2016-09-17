@@ -43,7 +43,7 @@ receive: () => 'processing'
 
 start: {
 receive: (bot,message) => {
-const inh = message.text;
+//const inh = message.text;
 //return bot.setProp('inh', inh)
 .then(() => bot.say(`${groet} - welkom bij Independer.`))
 .then(() => 'askName');
