@@ -43,13 +43,10 @@ receive: () => 'processing'
 
 start: {
 receive: (bot,message) => {
-const inh = message.text;
-return bot.setProp('inh', inh)
-.then(() =>bot.say(`${groet} - welkom bij Independer.`))
+return bot.say(`${groet} - welkom bij Independer.`)
 .then(() => 'askName');
 }
-}
-
+},
 
 bye: {
 prompt: (bot) => bot.say('Geen probleem.'),
