@@ -33,17 +33,16 @@ function wait(ms) {
 return new Promise((resolve) => {
 setTimeout(resolve, ms);
 });
-},
+}
 
 module.exports = new Script({
 processing: {
-//: (bot) => bot.say('...'),
+//prompt: (bot) => bot.say('...'),
 receive: () => 'processing'
 },
 
 start: {
 receive: (bot,message) => {
-  
 return bot.say(`${groet} - welkom bij Independer.`)
 .then(() => 'askName');
 }
