@@ -45,7 +45,7 @@ start: {
 receive: (bot,message) => {
 const inh = message.text;
 return bot.setProp('inh', inh)
-.then(() =>bot.say(`${groet} - ${inh} welkom bij Independer.`)
+.then(() =>bot.say(`${groet} - ${inh} welkom bij Independer.`))
 .then(() => 'askName');
 }
 },
