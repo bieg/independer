@@ -22,9 +22,7 @@
  "no" : "niks",
  "No" : "Niks",
     "CONNECT ME": "",
-"Hypotheek" : "Which do you prefer?
-%[Star Trek](reply:STAR_TREK)
-%[Star Wars](reply:STAR_WARS)", 
+"Hypotheek" : "Which do you prefer? %[Star Trek](reply:STAR_TREK) %[Star Wars](reply:STAR_WARS)", 
 
 
     "DISCONNECT": "Ok - tot ziens - IndependerBot is back."
