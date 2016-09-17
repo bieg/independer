@@ -43,19 +43,30 @@ receive: () => 'processing'
 
 start: {
 receive: (bot,message) => {
-//const inh = message.text;
-//return bot.setProp('inh', inh)
-.then(() => bot.say(`${groet} - welkom bij Independer.`))
+// const inh = message.text;
+// return bot.setProp('inh', inh)
+.then(() =>bot.say(`${groet} welkom bij Independer.`))
 .then(() => 'askName');
 }
 },
-
 
 bye: {
 prompt: (bot) => bot.say('Geen probleem.'),
 receive: () => 'processing'
 },
 
+/*
+askName: {
+prompt: (bot) => bot.say('Hoe heet je?'),
+receive: (bot,message) => {
+const name = message.text;
+return bot.setProp('name', name)
+.then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
+%[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)`))
+.then(() => 'processing');
+},
+},
+*/
 
 
 askName: {
