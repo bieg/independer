@@ -33,7 +33,7 @@ function wait(ms) {
 return new Promise((resolve) => {
 setTimeout(resolve, ms);
 });
-}
+},
 
 module.exports = new Script({
 processing: {
@@ -43,7 +43,8 @@ receive: () => 'processing'
 
 start: {
 receive: (bot,message) => {
-return bot.say(`${groet} - welkom bij Independer.`)
+const inh = message.text;
+return bot.say(`${groet} - ${inh} welkom bij Independer.`)
 .then(() => 'askName');
 }
 },
