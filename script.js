@@ -48,7 +48,7 @@ receive: (bot,message) => {
 .then(() =>bot.say(`${groet} welkom bij Independer.`))
 .then(() => 'askName');
 }
-},
+}
 
 bye: {
 prompt: (bot) => bot.say('Geen probleem.'),
