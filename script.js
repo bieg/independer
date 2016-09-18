@@ -46,10 +46,11 @@ receive: (bot,message) => {
   const name = message.text;
   return bot.setProp('name', name)
 
-  var test = 'Hello World';
+  const test = 'Hello World';
   if( test.indexOf('World') >= 0){
     // Found world
-    console.log("gevonden")
+alert("!!");
+    ///console.log("gevonden")
   }
 
       .then(() => bot.say(`Great! I\'ll call you ${name}`))
