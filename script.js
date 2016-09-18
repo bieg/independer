@@ -43,7 +43,7 @@ receive: () => 'processing'
 },
 
 start: {
-    prompt: (bot) => bot.say("Wat voor soort hypotheek zoek je?"),
+    prompt: (bot) => bot.say('Wat voor soort hypotheek zoek je?'),
     receive: () => 'vraagHypotheek'
 },
 
