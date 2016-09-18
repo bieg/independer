@@ -42,8 +42,15 @@ receive: () => 'processing'
 },
 
 start: {
+    receive: (bot) => {
+        return bot.say('${groet}, hoe kan ik je vandaag helpen?')
+            .then(() => 'vraagHypotheek');
+    }
+},
+
+vraagHypotheek: {
 receive: (bot) => {
-  return bot.say(`Wat voor soort hypotheek zoek je?`))
+  return bot.say(`Wat voor soort hypotheek zoek je?`)
       .then(() =>  bot.say(`
         %[Starters Hypotheek](postback:hypotheek_starter)
         %[Nieuwe Hypotheek](postback:hypotheek_nieuw)
