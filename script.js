@@ -49,7 +49,7 @@ receive: (bot,message) => {
 
   if( test.indexOf('World') >= 0){
     // Found world
-    console.log("gevonden")
+    console.log(test)
   }
 
   const name = message.text;
