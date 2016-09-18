@@ -42,10 +42,8 @@ receive: () => 'processing'
 },
 
 start: {
-    receive: (bot) => {
-       return bot.say('Hi! I\'m Smooch Bot!')
-            .then(() => 'vraagHypotheek');
-    }
+    prompt: (bot) => bot.say("Here are the areas"),
+    receive: () => 'vraagHypotheek')
 },
 
 vraagHypotheek: {
