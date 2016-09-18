@@ -42,7 +42,7 @@ receive: () => 'processing'
 },
 
 start: {
-prompt: (bot) => bot.say(`${groet}`) 
+prompt: (bot) => bot.say(`${groet}`),
 receive: (bot,message) => {
 
   const test = 'Hello World';
