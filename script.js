@@ -42,6 +42,7 @@ receive: () => 'processing'
 },
 
 start: {
+prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
 
 receive: (bot,message) => {
 
@@ -61,7 +62,7 @@ receive: (bot,message) => {
         %[Oversluiten](postback:hypotheek_oversluiten)
         %[Informatie](postback:hypotheek_informatie)
         `))
-      .then(() => 'askName');
+      .then(() => 'doorVragen');
 }
 },
 
@@ -70,21 +71,7 @@ prompt: (bot) => bot.say('Geen probleem.'),
 receive: () => 'processing'
 },
 
-/*
-askName: {
-prompt: (bot) => bot.say('Hoe heet je?'),
-receive: (bot,message) => {
-const name = message.text;
-return bot.setProp('name', name)
-.then(() => bot.say(`Ok ${name}, hoe kan ik je helpen? \n
-%[Heb je schade](postback:schade) %[Zoek je een verzekering](postback:zoek)`))
-.then(() => 'processing');
-},
-},
-*/
-
-
-askName: {
+doorVragen: {
     prompt: (bot) => bot.say('Postback is working. What\'s your name?'),
     receive: (bot, message) => {
         const name = message.text;
