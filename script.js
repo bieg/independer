@@ -43,7 +43,7 @@ receive: () => 'processing'
 
 start: {
     receive: (bot) => {
-        return bot.say('${groet}, hoe kan ik je vandaag helpen?')
+       return bot.say('Hi! I\'m Smooch Bot!')
             .then(() => 'vraagHypotheek');
     }
 },
@@ -61,11 +61,6 @@ receive: (bot) => {
 }
 },
 
-bye: {
-prompt: (bot) => bot.say('Geen probleem.'),
-receive: () => 'processing'
-},
-
 doorVragen: {
     prompt: (bot) => bot.say('Postback is working. What\'s your name?'),
     receive: (bot, message) => {
@@ -80,6 +75,11 @@ doorVragen: {
 error: {
 prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
 receive: () => ''
+},
+
+bye: {
+prompt: (bot) => bot.say('Geen probleem.'),
+receive: () => 'processing'
 },
 
 finish: {
