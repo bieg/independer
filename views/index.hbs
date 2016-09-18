@@ -40,12 +40,13 @@ Smooch.on('message:received', function(message) {
   console.log('Message received', message);
 });
 Smooch.on('widget:opened', function(message) {
-  alert("The beginning");
+//  alert("The beginning");
+message: "xxxxxc";
   console.log('Widget opened', message);
 });
 Smooch.on('widget:closed', function(message) {
   console.log('Widget closed');
-  alert("See you later");
+  // alert("See you later");
 });
 
 
