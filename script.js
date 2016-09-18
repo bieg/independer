@@ -55,6 +55,11 @@ start: {
     }
 },
 
+bye: {
+prompt: (bot) => bot.say('Geen probleem.'),
+receive: () => 'processing'
+},
+
 doorVragen: {
     prompt: (bot) => bot.say('Postback is working. What\'s your name?'),
     receive: (bot, message) => {
@@ -69,11 +74,6 @@ doorVragen: {
 error: {
 prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
 receive: () => ''
-},
-
-bye: {
-prompt: (bot) => bot.say('Geen probleem.'),
-receive: () => 'processing'
 },
 
 finish: {
