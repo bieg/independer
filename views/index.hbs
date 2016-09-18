@@ -26,7 +26,6 @@ var skPromise = Smooch.init({
                 notificationSettingsChannelsTitle: 'Andere Apps',
                 notificationSettingsChannelsDescription: 'Blijf op de hoogte en kies jouw favoriete app.',
                 notificationSettingsConnectedAs: 'Ingelogd als {username}',
-
             },
     soundNotificationEnabled: true,
     email: 'wbiegstraaten@independer.nl',
@@ -52,11 +51,10 @@ skPromise.then( function() {
   console.log("one");
 }) ;
 
-// pass it around...
-
 skPromise.then(function() {
   console.log("two");
 });
+
 Smooch.track("schade");
 </script>
 

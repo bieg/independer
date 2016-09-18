@@ -37,6 +37,8 @@ setTimeout(resolve, ms);
 
 module.exports = new Script({
 processing: {
+  prompt: (bot) => bot.say('Geen probleem.'),
+
 //prompt: (bot) => bot.say('...'),
 receive: () => 'processing'
 },
