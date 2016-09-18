@@ -42,14 +42,13 @@ receive: () => 'processing'
 },
 
 start: {
-    receive: (bot) => {
-        return bot.say('${groet} - hoe kan ik je helpen?'),
-        .then(() => 'soortHypotheek');
-}
+prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
 
-soortHypotheek: {
-receive: (bot) => {
-  return bot.say(`Wat voor soort hypotheek zoek je?`))
+receive: (bot,message) => {
+
+  const name = message.text;
+  return bot.setProp('name', name)
+      .then(() => bot.say(`Wat voor soort hypotheek zoek je?`))
       .then(() =>  bot.say(`
         %[Starters Hypotheek](postback:hypotheek_starter)
         %[Nieuwe Hypotheek](postback:hypotheek_nieuw)
