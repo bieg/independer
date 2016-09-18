@@ -36,13 +36,14 @@ setTimeout(resolve, ms);
 }
 
 module.exports = new Script({
+
 processing: {
-//prompt: (bot) => bot.say('...'),
+prompt: (bot) => bot.say('...'),
 receive: () => 'processing'
 },
 
 start: {
-    prompt: (bot) => bot.say("Here are the areas"),
+    prompt: (bot) => bot.say("Wat voor soort hypotheek zoek je?"),
     receive: () => 'vraagHypotheek'
 },
 
