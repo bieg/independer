@@ -46,7 +46,11 @@ receive: (bot,message) => {
   const name = message.text;
   return bot.setProp('name', name)
 
-if (name.indexOf("schade") >= 0){console.log('woord zit erin')}
+  var test = 'Hello World';
+  if( test.indexOf('World') >= 0){
+    // Found world
+    console.log("gevonden")
+  }
 
       .then(() => bot.say(`Great! I\'ll call you ${name}`))
 .then(() =>  bot.say(`${groet} - welkom bij Independer.  %[Button label here](http://anyurl.com)`))
