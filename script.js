@@ -42,15 +42,14 @@ receive: () => 'processing'
 },
 
 start: {
-prompt: (bot) => bot.say(`${groet}`),
+//prompt: (bot) => bot.say(`${groet}`),
 receive: (bot,message) => {
 
   const test = 'Hello World';
-
   if( test.indexOf('World') >= 0){
     // Found world
     console.log("gevonden")
-  }
+  },
 
   const name = message.text;
   return bot.setProp('name', name)

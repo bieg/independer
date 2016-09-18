@@ -40,7 +40,6 @@ Smooch.on('message:received', function(message) {
   console.log('Message received', message);
 });
 Smooch.on('widget:opened', function(message) {
-  alert('start');
   console.log('Widget opened', message);
 });
 Smooch.on('widget:closed', function(message) {
@@ -49,14 +48,13 @@ Smooch.on('widget:closed', function(message) {
 
 
 skPromise.then( function() {
-  console.log("one");
+  console.log("Say hello as app opens");
 }) ;
 
 skPromise.then(function() {
-  console.log("two");
+  console.log("do something after Hello");
 });
 
-Smooch.track("schade");
 </script>
 
 </head>
