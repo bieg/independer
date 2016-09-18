@@ -37,14 +37,14 @@ setTimeout(resolve, ms);
 
 module.exports = new Script({
 processing: {
-  prompt: (bot) => bot.say('Geen probleem.'),
-
 //prompt: (bot) => bot.say('...'),
 receive: () => 'processing'
 },
 
 start: {
+prompt: (bot) => bot.say(`${groet}`) 
 receive: (bot,message) => {
+
   const test = 'Hello World';
 
   if( test.indexOf('World') >= 0){
