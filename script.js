@@ -54,8 +54,13 @@ receive: (bot,message) => {
 
   const name = message.text;
   return bot.setProp('name', name)
-      .then(() => bot.say(`Great! I\'ll call you ${name}`))
-      .then(() =>  bot.say(`${groet} - welkom bij Independer.  %[Button label here](http://anyurl.com)`))
+      .then(() => bot.say(`Wat voor soort hypotheek zoek je?`))
+      .then(() =>  bot.say(`
+        %[Starters Hypotheek](postback:hypotheek_starter)
+        %[Nieuwe Hypotheek](postback:hypotheek_nieuw)
+        %[Oversluiten](postback:hypotheek_oversluiten)
+        %[Informatie](postback:hypotheek_informatie)
+        `))
       .then(() => 'askName');
 }
 },
