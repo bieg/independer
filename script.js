@@ -44,6 +44,7 @@ receive: () => 'processing'
 start: {
 receive: (bot,message) => {
   const test = 'Hello World';
+
   if( test.indexOf('World') >= 0){
     // Found world
     console.log("gevonden")
@@ -52,8 +53,8 @@ receive: (bot,message) => {
   const name = message.text;
   return bot.setProp('name', name)
       .then(() => bot.say(`Great! I\'ll call you ${name}`))
-.then(() =>  bot.say(`${groet} - welkom bij Independer.  %[Button label here](http://anyurl.com)`))
-.then(() => 'askName');
+      .then(() =>  bot.say(`${groet} - welkom bij Independer.  %[Button label here](http://anyurl.com)`))
+      .then(() => 'askName');
 }
 },
 
