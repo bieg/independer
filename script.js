@@ -49,7 +49,7 @@ receive: (bot,message) => {
 //  if (name.indexOf("schade") >= 0){console.log('woord zit erin')}
 
       .then(() => bot.say(`Great! I\'ll call you ${name}`))
-.then(() =>  bot.say(`${groet} - welkom bij Independer.%[Star Trek](reply:STAR_TREK) %[Button label here](http://anyurl.com)`))
+.then(() =>  bot.say(`${groet} - welkom bij Independer.%[Star Trek](reply:STAR_TREK)`))
 .then(() => 'askName');
 }
 },
