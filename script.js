@@ -48,9 +48,8 @@ start: {
 }
 
 soortHypotheek: {
-receive: (bot,message) => {
-  return bot.setProp('name', name)
-      .then(() => bot.say(`Wat voor soort hypotheek zoek je?`))
+receive: (bot) => {
+  return bot.say(`Wat voor soort hypotheek zoek je?`))
       .then(() =>  bot.say(`
         %[Starters Hypotheek](postback:hypotheek_starter)
         %[Nieuwe Hypotheek](postback:hypotheek_nieuw)
