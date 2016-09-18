@@ -43,7 +43,7 @@ receive: () => 'processing'
 
 start: {
     prompt: (bot) => bot.say("Here are the areas"),
-    receive: () => 'vraagHypotheek')
+    receive: () => 'vraagHypotheek'
 },
 
 vraagHypotheek: {
