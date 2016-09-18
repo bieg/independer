@@ -43,21 +43,16 @@ receive: () => 'processing'
 },
 
 start: {
-    prompt: (bot) => bot.say('Wat voor soort hypotheek zoek je?'),
-    receive: () => 'vraagHypotheek'
-},
-
-vraagHypotheek: {
-receive: (bot) => {
-  return bot.say(`Wat voor soort hypotheek zoek je?`)
-      .then(() =>  bot.say(`
-        %[Starters Hypotheek](postback:hypotheek_starter)
-        %[Nieuwe Hypotheek](postback:hypotheek_nieuw)
-        %[Oversluiten](postback:hypotheek_oversluiten)
-        %[Informatie](postback:hypotheek_informatie)
-        `))
-      .then(() => 'doorVragen');
-}
+    receive: (bot) => {
+      return bot.say(`Wat voor soort hypotheek zoek je?`)
+          .then(() =>  bot.say(`
+            %[Starters Hypotheek](postback:hypotheek_starter)
+            %[Nieuwe Hypotheek](postback:hypotheek_nieuw)
+            %[Oversluiten](postback:hypotheek_oversluiten)
+            %[Informatie](postback:hypotheek_informatie)
+            `))
+          .then(() => 'doorVragen');
+    }
 },
 
 doorVragen: {
