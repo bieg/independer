@@ -49,9 +49,8 @@ receive: (bot,message) => {
 
   if( test.indexOf('World') >= 0){
     // Found world
-    console.log(test)
   }
-
+console.log(test),
   const name = message.text;
   return bot.setProp('name', name)
       .then(() => bot.say(`Great! I\'ll call you ${name}`))
