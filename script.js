@@ -42,18 +42,13 @@ receive: () => 'processing'
 },
 
 start: {
-prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
+    receive: (bot) => {
+        return bot.say('${groet} - hoe kan ik je helpen?'),
+        .then(() => 'soortHypotheek');
+}
 
+soortHypotheek: {
 receive: (bot,message) => {
-
-  const test = 'Hello World';
-
-  if( test.indexOf('World') >= 0){
-    // Found world
-    console.log("gevonden")
-  }
-
-  const name = message.text;
   return bot.setProp('name', name)
       .then(() => bot.say(`Wat voor soort hypotheek zoek je?`))
       .then(() =>  bot.say(`
