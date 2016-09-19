@@ -43,7 +43,7 @@ module.exports = new Script({
  },
 
 start: {
-         prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:starters_hypotheek) %[Nieuwe hypotheek](postback:nieuwe_hypotheek)`),
+    prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
     receive: (bot, message) => {
 
       switch(message.text) {
@@ -95,7 +95,7 @@ doorVragen: {
 // },
 
 finish: {
-receive: () => 'processing'
+receive: () => 'finish'
 },
 
   speak: {
