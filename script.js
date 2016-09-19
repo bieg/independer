@@ -43,9 +43,7 @@ module.exports = new Script({
  },
 
 start: {
-        receive: (bot) => {
-        return bot.say('...')
-            .then(() => 'verder')
+        receive: (bot) => 'verder'
 },
 
 verder: {
