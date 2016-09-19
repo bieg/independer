@@ -46,7 +46,7 @@ start: {
         receive: (bot) => {
       return bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`)
       .then(() => `verder`);
-  }},
+};
 
   verder : {
     receive: (bot, message) => {
@@ -66,6 +66,7 @@ start: {
           break;
       }
     }
+}
 },
 
 hypotheek_starter: {
