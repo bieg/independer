@@ -43,33 +43,38 @@ module.exports = new Script({
  },
 
 start: {
-         prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Yes](postback:askName) %[No](postback:bye)`),
+         prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:starters_hypotheek) %[Nieuwe hypotheek](postback:nieuwe_hypotheek)`),
     receive: (bot, message) => {
 
       switch(message.text) {
-        case 'Yes':
-          return bot.say(`Ok, great!`)
-            .then(() => 'hi')
+        case 'Starters hypotheek':
+          return bot.say(`Daar help ik je graag bij`)
+            .then(() => 'hypotheek_starter')
           break;
-        case 'No':
-          return bot.say(`Ok, no prob!`)
-            .then(() => 'bye')
+        case 'Nieuwe hypotheek':
+          return bot.say(`Laten we eens kijken`)
+            .then(() => 'hypotheek_nieuw')
           break;
         default:
           return bot.say(`hmm...`)
             .then(() => 'processing')
           break;
       }
-}
+    }
 },
 
-hi: {
-    prompt: (bot) => bot.say('Pleasure meeting you'),
+hypotheek_starter: {
+    prompt: (bot) => bot.say('Pleasure meeting you - starter'),
+    receive: () => 'processing'
+},
+
+hypotheek_nieuw: {
+    prompt: (bot) => bot.say('Nice meeting you - nieuw'),
     receive: () => 'processing'
 },
 
 bye: {
-    prompt: (bot) => bot.say('Pleasure meeting you'),
+    prompt: (bot) => bot.say('Bedankt voor je tijd'),
     receive: () => 'processing'
 },
 
@@ -84,13 +89,13 @@ doorVragen: {
     }
 },
 
-error: {
-prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
-receive: () => ''
-},
+// error: {
+// prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
+// receive: () => ''
+// },
 
 finish: {
-receive: () => 'finish'
+receive: () => 'processing'
 },
 
   speak: {
