@@ -43,12 +43,8 @@ module.exports = new Script({
  },
 
 start: {
-receive: (bot,message) => {
-            return bot.say(`Hi! I'm Smooch Bot!`)
-                 .then(() => bot.say(`Continue? %[Yes](postback:askName) %[No](postback:bye)`));
-        }
-
-    receive: (bot, message) => {
+     receive: (bot,message) => {
+      return bot.say(`Wat voor soort hypotheek zoek je? Continue? %[Yes](postback:askName) %[No](postback:bye)`));
 
       switch(message.text) {
         case 'Yes':
@@ -64,7 +60,6 @@ receive: (bot,message) => {
             .then(() => 'processing')
           break;
       }
-    }
 },
 
 hi: {
