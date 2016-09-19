@@ -60,6 +60,7 @@ start: {
             .then(() => 'processing')
           break;
       }
+}
 },
 
 hi: {
