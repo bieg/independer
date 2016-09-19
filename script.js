@@ -43,21 +43,34 @@ receive: () => 'processing'
 },
 
 start: {
-    receive: (bot) => {
-      return bot.say(`Wat voor soort hypotheek zoek je?`)
-          .then(() =>  bot.say(`
-            %[Starters Hypotheek](postback:hypotheek_starter)
-            %[Nieuwe Hypotheek](postback:hypotheek_nieuw)
-            %[Oversluiten](postback:hypotheek_oversluiten)
-            %[Informatie](postback:hypotheek_informatie)
-            `))
-          .then(() => 'doorVragen');
+    prompt: (bot) => bot.say(`Hi! I'm Smooch Bot! Continue? %[Yes](postback:askName) %[No](postback:bye)`),
+    receive: (bot, message) => {
+
+      switch(message.text) {
+        case 'Yes':
+          return bot.say(`Ok, great!`)
+            .then(() => 'hi')
+          break;
+        case 'No':
+          return bot.say(`Ok, no prob!`)
+            .then(() => 'bye')
+          break;
+        default:
+          return bot.say(`hmm...`)
+            .then(() => 'processing')
+          break;
+      }
     }
 },
 
+hi: {
+    prompt: (bot) => bot.say('Pleasure meeting you'),
+    receive: () => 'processing'
+},
+
 bye: {
-prompt: (bot) => bot.say('Geen probleem.'),
-receive: () => 'processing'
+    prompt: (bot) => bot.say('Pleasure meeting you'),
+    receive: () => 'processing'
 },
 
 doorVragen: {

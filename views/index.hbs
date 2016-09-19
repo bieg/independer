@@ -60,6 +60,33 @@ skPromise.then(function() {
 
 </script>
 
+<script>
+  function handlePostback(req, res) {
+
+    const postback = req.body.postbacks[0];
+
+    if (!postback || !postback.action)
+        res.end();
+
+    const stateMachine = new StateMachine({
+        script,
+        bot: createBot(req.body.appUser)
+    });
+
+    const msg = postback;
+
+    // if you want the payload instead just do msg.action.paylod
+    msg.text = msg.action.text;
+
+    stateMachine.receiveMessage(msg)
+      .then(() => res.end())
+      .catch((err) => {
+        console.error('SmoochBot error:', err);
+        res.end();
+      });
+}
+</script>
+
 </head>
 <body style="background: url(http://www.nltimes.nl/wp-content/uploads/2014/09/Screen-Shot-2014-09-15-at-1.12.25-PM.png) no-repeat 0 0;background-size: 100%;">
 </html>
