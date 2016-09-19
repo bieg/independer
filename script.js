@@ -43,7 +43,7 @@ module.exports = new Script({
  },
 
 start: {
-receive: (bot) => {
+receive: (bot,message) => {
             return bot.say(`Hi! I'm Smooch Bot!`)
                  .then(() => bot.say(`Continue? %[Yes](postback:askName) %[No](postback:bye)`));
         }
