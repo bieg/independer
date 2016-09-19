@@ -43,8 +43,8 @@ module.exports = new Script({
  },
 
 start: {
-     receive: (bot,message) => {
-      return bot.say(`Wat voor soort hypotheek zoek je? Continue? %[Yes](postback:askName) %[No](postback:bye)`);
+         prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Yes](postback:askName) %[No](postback:bye)`),
+    receive: (bot, message) => {
 
       switch(message.text) {
         case 'Yes':
