@@ -43,10 +43,13 @@ module.exports = new Script({
  },
 
 start: {
-        receive: (bot) => 'verder'
+            receive: (bot) => {
+        return bot.say('Hi! I\'m Smooch Bot!')
+            .then(() => 'showUserMenu');
+    }
 },
 
-verder: {
+showUserMenu: {
     prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
     receive: (bot, message) => {
 
