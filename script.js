@@ -37,10 +37,10 @@ setTimeout(resolve, ms);
 
 module.exports = new Script({
 
-processing: {
-prompt: (bot) => bot.say('...'),
-receive: () => 'processing'
-},
+// processing: {
+// prompt: (bot) => bot.say('...'),
+// receive: () => 'processing'
+// },
 
 start: {
     prompt: (bot) => bot.say(`Hi! I'm Smooch Bot! Continue? %[Yes](postback:askName) %[No](postback:bye)`),
