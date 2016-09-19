@@ -51,16 +51,6 @@ Smooch.on('widget:closed', function(message) {
 
 
 skPromise.then( function() {
-  console.log("Say hello as app opens");
-}) ;
-
-skPromise.then(function() {
-  console.log("do something after Hello");
-});
-
-</script>
-
-<script>
   function handlePostback(req, res) {
 
     const postback = req.body.postbacks[0];
@@ -84,7 +74,10 @@ skPromise.then(function() {
         console.error('SmoochBot error:', err);
         res.end();
       });
-}
+  }
+}) ;
+
+
 </script>
 
 </head>
