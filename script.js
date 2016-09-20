@@ -60,9 +60,10 @@ showUserMenu: {
             .then(() => '')
         case 'hoi':
             return bot.say(`${groet} zoek je een: %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
-            .then(() => '')
+            .then(() => 'processing')
         case 'Starters hypotheek':
-          return bot.say(`Daar help ik je graag bij deze ${groet}`)
+          return bot.say(`Daar help ik je graag bij.`)
+            .then (() => bot.say(`Wat voor woning is het? ![](https://www.independer.nl/content/images/thema/woonverzekering/typewoning/appartement_paars.svg)`)
             .then(() => 'hypotheek_starter')
           break;
         case 'Nieuwe hypotheek':
@@ -83,7 +84,7 @@ showUserMenu: {
 
 hypotheek_starter: {
     prompt: (bot) => bot.say('Wat voor woning is het? ![](https://www.independer.nl/content/images/thema/woonverzekering/typewoning/appartement_paars.svg)'),
-    receive: () => 'processing'
+    receive: () => ''
 },
 
 hypotheek_nieuw: {
