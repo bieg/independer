@@ -56,7 +56,7 @@ showUserMenu: {
     receive: (bot, message) => {
 
       switch(message.text) {
-        case '':
+        case 'Hoi':
             return bot.say(`${groet} zoek je een:  %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
             .then(() => 'processing')
         case 'Starters hypotheek':
