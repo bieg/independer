@@ -45,7 +45,7 @@ prompt: (bot) => bot.say('...'),
 start: {
     receive: (bot,message) => {
         return bot.say('ik ben de IndependerBot. Met wie heb ik het genoegen?')
-        .then(() => 'showUserMenu');
+        .then(() => 'processing');
     }
 },
 
@@ -54,7 +54,7 @@ showUserMenu: {
         const userName = message.text;
 
     },
-    prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
+    prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je ${userName}? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
     receive: (bot, message) => {
 
       switch(message.text) {
