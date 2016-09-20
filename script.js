@@ -53,13 +53,13 @@ getName :  {
     receive: (bot,message) => {
         const naam = message.text;
         return bot.setProp('naam', naam)
-            .then(() => bot.say(`Wat voor soort hypotheek zoek je ${naam}? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`)
+            // .then(() => bot.say(`Wat voor soort hypotheek zoek je ${naam}? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`)
             .then(() => 'vraagEEN');
     }
 },
 
 vraagEEN: {
-    // prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
+    prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
     receive: (bot, message) => {
 
       switch(message.text) {
