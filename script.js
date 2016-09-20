@@ -44,12 +44,9 @@ prompt: (bot) => bot.say('...'),
 
 start: {
     receive: (bot) => {
-        return bot.say('ik ben de IndependerBot. Met wie heb ik het genoegen?')
-        .then(()=> 'getName');
+        return bot.say('ik ben de IndependerBot. Met wie heb ik het genoegen?');
         }
-},
 
-getName :  {
     receive: (bot,message) => {
         const naam = message.text;
         return bot.setProp('naam', naam)
