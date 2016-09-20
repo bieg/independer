@@ -56,6 +56,9 @@ showUserMenu: {
     receive: (bot, message) => {
 
       switch(message.text) {
+        case '':
+            return bot.say(`${groet} zoek je een:  %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
+            .then(() => 'processing')
         case 'Starters hypotheek':
           return bot.say(`Daar help ik je graag bij`)
             .then(() => 'hypotheek_starter')
@@ -63,6 +66,10 @@ showUserMenu: {
         case 'Nieuwe hypotheek':
           return bot.say(`Laten we eens kijken`)
             .then(() => 'hypotheek_nieuw')
+          break;
+        case 'Iets anders':
+          return bot.say(`Ok... kun je wat specifieker zijn?`)
+            .then(() => 'processing')
           break;
         default:
           return bot.say(`hmm...`)
