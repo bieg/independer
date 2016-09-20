@@ -83,12 +83,12 @@ showUserMenu: {
 },
 
 hypotheek_starter: {
-    prompt: (bot) => bot.say(`%[JA](postback:hypotheek_appartement)`),
+    prompt: (bot) => bot.say(`%[Ja - vertel me meer](postback:hypotheek_appartement)`),
     receive: () => 'processing'
 },
 
 hypotheek_nieuw: {
-    prompt: (bot) => bot.say('Nice meeting you - nieuw'),
+    prompt: (bot) => bot.say(`Momenteel biedt Independer alleen voor Starters een hypotheek. Maar met deze link vindt je wel goede aanbieders %[Toon meer](postback:toon_meer)`),
     receive: () => 'processing'
 },
 
