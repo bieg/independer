@@ -43,8 +43,9 @@ module.exports = new Script({
  },
 
 start: {
+    prompt: (bot) => bot.say('What\'s your name?'),
     receive: (bot,message) => {
-        const opening = body.message.text;
+        const opening = message.text;
         return bot.say('Hi! I\'m Smooch Bot! ${opening}')
         .then(() => 'showUserMenu');
     }
