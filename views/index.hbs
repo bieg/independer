@@ -23,6 +23,7 @@ var skPromise = Smooch.init({
                 introAppText: 'Laat het me weten via jouw favoriete app!',
                 settingsText: 'Laat je email adres achter en ik neem contact met je op.',
                 connectNotificationText: 'Ga verder binnen je favoriete app',
+                frontendEmailChannelDescription: 'Email je liever? Stuur ons dan gewoon een email. Je krijgt dan zsm bericht van ons:',
                 notificationSettingsChannelsTitle: 'Andere Apps',
                 notificationSettingsChannelsDescription: 'Blijf op de hoogte en kies jouw favoriete app.',
                 notificationSettingsConnectedAs: 'Ingelogd als {username}',
@@ -42,7 +43,8 @@ Smooch.on('message:received', function(message) {
 });
 Smooch.on('widget:opened', function(message) {
 //  alert("The beginning");
-Smooch.Message('Hoi');
+Smooch.sendMessage('Hoi');
+
   console.log('Widget opened', message);
 });
 Smooch.on('widget:closed', function(message) {
