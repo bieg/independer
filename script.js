@@ -45,7 +45,7 @@ prompt: (bot) => bot.say('...'),
 start: {
     receive: (bot,message) => {
         const opening = message.text;
-        return bot.say(`${groet}, wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`)
+        return bot.say(`${groet}, wat voor soort hypotheek zoek je? %[Een Starters Hypotheek](postback:askName) %[Een Nieuwe Hypotheek](postback:other)%[Ik wil oversluiten](postback:oversluiten)`)
         .then(() => 'showUserMenu');
     }
 },
@@ -56,10 +56,10 @@ showUserMenu: {
 
       switch(message.text) {
         case 'Hoi':
-            return bot.say(`${groet} zoek je een: %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
+            return bot.say(`${groet} zoek je een: %[Een Starters Hypotheek](postback:startersHypotheek) %[Een Nieuwe Hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
             .then(() => '')
         case 'hoi':
-            return bot.say(`${groet} zoek je een: %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
+            return bot.say(`${groet} zoek je een: %[Een Starters Hypotheek](postback:startersHypotheek) %[Een Nieuwe Hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
             .then(() => '')
         case 'Starters hypotheek':
           return bot.say(`Daar help ik je graag bij.`)
