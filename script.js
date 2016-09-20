@@ -43,7 +43,7 @@ module.exports = new Script({
  },
 
 start: {
-    receive: (bot,messsage) => {
+    receive: (messsage) => {
         const opening = message.text;
         return bot.setProp('opening', opening)
         .then(() => bot.say('Hi! I\'m Smooch Bot! ${opening}'))
