@@ -45,30 +45,31 @@ prompt: (bot) => bot.say('...'),
 start: {
     receive: (bot,message) => {
         const opening = message.text;
-        return bot.say(`${groet}, wat voor soort hypotheek zoek je? %[Een Starters Hypotheek](postback:startersHypotheek) %[Een Nieuwe Hypotheek](postback:nieuweHypotheek)%[Ik wil oversluiten](postback:oversluiten)`)
+        return bot.say(`${groet}, wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:starters_hypotheek) %[Nieuwe hypotheek](postback:nieuwe_hypotheek) %[Oversluiten](postback:oversluiten)`)
         .then(() => 'showUserMenu');
     }
 },
 
 showUserMenu: {
+    // prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
     receive: (bot, message) => {
 
       switch(message.text) {
         case 'Hoi':
-            return bot.say(`${groet} zoek je een: %[Een Starters Hypotheek](postback:startersHypotheek) %[Een Nieuwe Hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
+            return bot.say(`${groet} zoek je een: %[Een Starters Hypotheek](postback:startersHypotheek) %[Een Nieuwe Hypotheek](postback:nieuweHypotheek) %[Oversluiten](postback:oversluiten)`)
             .then(() => '')
         case 'hoi':
-            return bot.say(`${groet} zoek je een: %[Een Starters Hypotheek](postback:startersHypotheek) %[Een Nieuwe Hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
+            return bot.say(`${groet} zoek je een: %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Oversluiten](postback:oversluiten)`)
             .then(() => '')
-        case 'Een Starters Hypotheek':
-          return bot.say(`Daar help ik je graag bij.`)
+        case 'Starters hypotheek':
+          return bot.say(`Zoek je een appartement? %[JA](postback:hypotheek_appartement)`)
             .then(() => 'hypotheek_starter')
           break;
-        case 'Een Nieuwe Hypotheek':
+        case 'Nieuwe hypotheek':
           return bot.say(`Laten we eens kijken`)
             .then(() => 'hypotheek_nieuw')
           break;
-        case 'Ik wil oversluiten':
+        case 'Oversluiten':
           return bot.say(`Ok... kun je wat specifieker zijn?`)
             .then(() => 'processing')
           break;
@@ -81,8 +82,7 @@ showUserMenu: {
 },
 
 hypotheek_starter: {
-    prompt: (bot) => bot.say(`Zoek je een appartement? %[JA](postback:hypotheek_appartement)`)
-        .then(() => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.jpg)`)),
+    prompt: (bot) => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.jpg)`),
     receive: () => 'processing'
 },
 
