@@ -82,7 +82,8 @@ showUserMenu: {
 },
 
 hypotheek_starter: {
-    prompt: (bot) => bot.say('Wat voor woning is het? ![](https://www.independer.nl/content/images/thema/woonverzekering/typewoning/appartement_paars.svg)'),
+    prompt: (bot) => bot.say('Wat voor woning is het?')
+        .then(() => bot.say(`![](https://www.independer.nl/content/images/thema/woonverzekering/typewoning/appartement_paars.svg)`))
     receive: () => ''
 },
 
