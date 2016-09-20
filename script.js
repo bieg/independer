@@ -43,20 +43,19 @@ prompt: (bot) => bot.say('...'),
  },
 
 start: {
-    receive: (bot) => {
-        return bot.say('ik ben de IndependerBot. Met wie heb ik het genoegen?');
-        }
+    receive: (bot) => {}
+        prompt: (bot) => bot.say('ik ben de IndependerBot. Met wie heb ik het genoegen?');
 
     receive: (bot,message) => {
         const naam = message.text;
         return bot.setProp('naam', naam)
-            // .then(() => bot.say(`Wat voor soort hypotheek zoek je ${naam}? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`)
+            .then(() => bot.say(`Wat voor soort hypotheek zoek je ${naam}? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`)
             .then(() => 'vraagEEN');
     }
 },
 
 vraagEEN: {
-    prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je ${naam}? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
+    prompt: (bot) => bot.say(`Wat voor soort byitouto hypotheek zoek je ${naam}? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
     receive: (bot, message) => {
 
       switch(message.text) {
