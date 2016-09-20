@@ -29,6 +29,7 @@ var skPromise = Smooch.init({
             },
     soundNotificationEnabled: true,
     email: 'wbiegstraaten@independer.nl',
+
     emailCaptureEnabled: true,
 });
 
@@ -41,7 +42,7 @@ Smooch.on('message:received', function(message) {
 });
 Smooch.on('widget:opened', function(message) {
 //  alert("The beginning");
-message: "xxxxxc";
+Smooch.sendMessage('hello');
   console.log('Widget opened', message);
 });
 Smooch.on('widget:closed', function(message) {
