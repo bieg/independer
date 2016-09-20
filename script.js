@@ -43,10 +43,9 @@ module.exports = new Script({
  },
 
 start: {
-    receive: (messsage) => {
-        const opening = message.text;
-        return bot.setProp('opening', opening)
-        .then(() => bot.say('Hi! I\'m Smooch Bot! ${opening}'))
+    receive: (bot) => {
+        //const opening = message.text;
+        return bot.say('Hi! I\'m Smooch Bot! ${opening}')
         .then(() => 'showUserMenu');
     }
 },
