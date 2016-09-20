@@ -43,7 +43,6 @@ module.exports = new Script({
  },
 
 start: {
-    prompt: (bot) => bot.say('What\'s your name?'),
     receive: (bot,message) => {
         const opening = message.text;
         return bot.say('Hi! I\'m Smooch Bot! ${opening}')
@@ -57,10 +56,10 @@ showUserMenu: {
 
       switch(message.text) {
         case 'Hoi':
-            return bot.say(`${groet} zoek je een:  %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
+            return bot.say(`${groet} zoek je een: %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
             .then(() => 'processing')
         case 'Starters hypotheek':
-          return bot.say(`Daar help ik je graag bij`)
+          return bot.say(`Daar help ik je graag bij deze ${groet}`)
             .then(() => 'hypotheek_starter')
           break;
         case 'Nieuwe hypotheek':
