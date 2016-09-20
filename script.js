@@ -61,15 +61,15 @@ showUserMenu: {
         case 'hoi':
             return bot.say(`${groet} zoek je een: %[Een Starters Hypotheek](postback:startersHypotheek) %[Een Nieuwe Hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
             .then(() => '')
-        case 'Starters hypotheek':
+        case 'Een Starters Hypotheek':
           return bot.say(`Daar help ik je graag bij.`)
             .then(() => 'hypotheek_starter')
           break;
-        case 'Nieuwe hypotheek':
+        case 'Een Nieuwe Hypotheek':
           return bot.say(`Laten we eens kijken`)
             .then(() => 'hypotheek_nieuw')
           break;
-        case 'Iets anders':
+        case 'Ik wil oversluiten':
           return bot.say(`Ok... kun je wat specifieker zijn?`)
             .then(() => 'processing')
           break;
