@@ -62,7 +62,7 @@ showUserMenu: {
             return bot.say(`${groet} zoek je een: %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Oversluiten](postback:oversluiten)`)
             .then(() => '')
         case 'Starters hypotheek':
-          return bot.say(`Zoek je een appartement? %[JA](postback:hypotheek_appartement)`)
+          return bot.say(`Daar help ik je graag bij. Zoek je een appartement? `)
             .then(() => 'hypotheek_starter')
           break;
         case 'Nieuwe hypotheek':
@@ -82,7 +82,8 @@ showUserMenu: {
 },
 
 hypotheek_starter: {
-    prompt: (bot) => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.jpg)`),
+    prompt: (bot) => bot.say(`%[JA](postback:hypotheek_appartement)`)
+        .then(() => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.jpg)`)),
     receive: () => 'processing'
 },
 
