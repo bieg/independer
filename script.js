@@ -44,7 +44,7 @@ prompt: (bot) => bot.say('...'),
 
 start: {
     receive: (bot) => {
-        return bot.say('ik ben de IndependerBot. Met wie heb ik het genoegen?');
+        return bot.say('ik ben de IndependerBot. Met wie heb ik het genoegen?')
         .then(()=> 'getName');
         }
 },
