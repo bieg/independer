@@ -82,7 +82,7 @@ showUserMenu: {
 },
 
 hypotheek_starter: {
-    prompt: (bot) => bot.say(`Is het een appartement? %[JA](postback:hypotheek_appartement)`)
+    prompt: (bot) => bot.say(`Is het een appartement? %[JA](postback:hypotheek_appartement) ![](http://wwww.bieg.nl/beeld/appartement.jpg)`)
         .then(() => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.jpg)`)),
     receive: () => 'processing'
 },
