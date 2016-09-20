@@ -45,7 +45,7 @@ prompt: (bot) => bot.say('...'),
 start: {
     receive: (bot,message) => {
         const opening = message.text;
-        return bot.say('Hi! I\'m Smooch Bot! ${opening}')
+        return bot.say('Ik ben de bot van Independer. Hoe heet je?')
         .then(() => 'showUserMenu');
     }
 },
@@ -83,7 +83,7 @@ showUserMenu: {
 
 hypotheek_starter: {
     prompt: (bot) => bot.say('Wat voor woning is het?')
-        .then(() => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.png)`)),
+        .then(() => bot.say(`Is het een appartement? ![](http://wwww.bieg.nl/beeld/appartement.png)`)),
     receive: () => 'processing'
 },
 
