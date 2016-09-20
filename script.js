@@ -45,7 +45,7 @@ prompt: (bot) => bot.say('...'),
 start: {
     receive: (bot,message) => {
         const opening = message.text;
-        return bot.say(`${groet}, wat voor soort hypotheek zoek je? %[Een Starters Hypotheek](postback:startersHypotheek) %[Een Nieuwe Hypotheek](postback:nieuweHypotheek)%[Ik wil oversluiten](postback:oversluiten)`)
+        return bot.say(`${groet}, wat voor soort hypotheek zoek je? %Een Starters Hypotheek](postback:startersHypotheek) %[Een Nieuwe Hypotheek](postback:nieuweHypotheek)%[Ik wil oversluiten](postback:oversluiten)`)
         .then(() => 'showUserMenu');
     }
 },
