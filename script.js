@@ -43,15 +43,23 @@ prompt: (bot) => bot.say('...'),
  },
 
 start: {
+    receive: (bot) => {
+        return bot.say('ik ben de IndependerBot. Met wie heb ik het genoegen?');
+        .then(()=> 'getName');
+        }
+},
+
+getName :  {
     receive: (bot,message) => {
-        const opening = message.text;
-        return bot.say('Ik ben de bot van Independer. Hoe heet je?')
-        .then(() => 'showUserMenu');
+        const naam = message.text;
+        return bot.setProp('naam', naam)
+            .then(() => bot.say(`Wat voor soort hypotheek zoek je ${naam}? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`)
+            .then(() => 'vraagEEN');
     }
 },
 
-showUserMenu: {
-    prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
+vraagEEN: {
+    // prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
     receive: (bot, message) => {
 
       switch(message.text) {
