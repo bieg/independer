@@ -45,7 +45,7 @@ prompt: (bot) => bot.say('...'),
 start: {
     receive: (bot,message) => {
         const opening = message.text;
-        return bot.say(`${groet} Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`)
+        return bot.say(`${groet}, wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`)
         .then(() => 'showUserMenu');
     }
 },
@@ -82,8 +82,8 @@ showUserMenu: {
 },
 
 hypotheek_starter: {
-    prompt: (bot) => bot.say('Wat voor woning is het?')
-        .then(() => bot.say(`Is het een appartement? ![](http://wwww.bieg.nl/beeld/appartement.png)`)),
+    prompt: (bot) => bot.say(`Is het een appartement? %[JA](postback:hypotheek_appartement)`)
+        .then(() => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.png)`)),
     receive: () => 'processing'
 },
 
