@@ -58,6 +58,9 @@ showUserMenu: {
         case 'Hoi':
             return bot.say(`${groet} zoek je een: %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
             .then(() => '')
+        case 'hoi':
+            return bot.say(`${groet} zoek je een: %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Iets anders](postback:anders)`)
+            .then(() => '')
         case 'Starters hypotheek':
           return bot.say(`Daar help ik je graag bij deze ${groet}`)
             .then(() => 'hypotheek_starter')
