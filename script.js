@@ -63,12 +63,11 @@ showUserMenu: {
             .then(() => '')
         case 'Starters hypotheek':
           return bot.say(`Daar help ik je graag bij. Zoek je een appartement? `)
-            .then(() => bot.say(`%[![](http://wwww.bieg.nl/beeld/appartement.jpg)](postback:appartement))`))
-            .then(() => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.jpg)`))
+            .then(() => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.jpg))`))
             .then(() => 'hypotheek_starter')
           break;
         case 'Nieuwe hypotheek':
-          return bot.say(`Laten we eens kijken`)
+          return bot.say(` Zoek je echt een hypotheek als starter? %[Ja](postback:startersHypotheek) of een nieuwe hypotheek? %[Ja](postback:hypotheek_nieuw)`)
             .then(() => 'hypotheek_nieuw')
           break;
         case 'Oversluiten':
@@ -89,7 +88,7 @@ hypotheek_starter: {
 },
 
 hypotheek_nieuw: {
-    prompt: (bot) => bot.say(`Momenteel biedt Independer alleen voor Starters een hypotheek. Maar met deze link vindt je wel goede aanbieders %[Toon meer](postback:toon_meer)`),
+    prompt: (bot) => bot.say(`Momenteel biedt Independer alleen voor Starters een hypotheek. Maar met deze link vindt je wel goede aanbieders %[Toon meer](postback:http://wwww.nu.nl)`),
     receive: () => 'processing'
 },
 
