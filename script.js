@@ -63,6 +63,7 @@ showUserMenu: {
             .then(() => '')
         case 'Starters hypotheek':
           return bot.say(`Daar help ik je graag bij. Zoek je een appartement? `)
+            .then(() => bot.say(`%[![](http://wwww.bieg.nl/beeld/appartement.jpg)](postback:appartement))`))
             .then(() => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.jpg)`))
             .then(() => 'hypotheek_starter')
           break;
