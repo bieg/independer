@@ -45,7 +45,8 @@ prompt: (bot) => bot.say('...'),
 start: {
     receive: (bot,message) => {
         const opening = message.text;
-        return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
+        return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)
+            %[Hypotheek](window.open('tel:0031648509525'))`)
         .then(() => 'showUserMenu');
     }
 },
@@ -63,7 +64,7 @@ showUserMenu: {
         case 'Starters hypotheek':
           return bot.say(`Daar help ik je graag bij. Weet je al wat voor soort woning?`)
             .then(() => bot.say(`%[Appartement](postback:hypotheekkeuze_appartement) %[Tussenwoning](postback:hypotheekkeuze_tussenwoning) %[Vrijstaand](postback:hypotheekkeuze_vrijstaand)`))
-            .then(() => 'processing')
+            .then(() => '')
           break;
         case 'Nieuwe hypotheek':
           return bot.say(`Zoek je echt een eerste hypotheek als starter? %[Ja](postback:hypotheektype_starter) of een nieuwe hypotheek? %[Ja](postback:hypotheektype_nieuw)`)
