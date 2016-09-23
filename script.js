@@ -66,7 +66,8 @@ showUserMenu: {
             .then(() => 'processing')
           break;
         case 'Nieuwe hypotheek':
-          return bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`)
+          return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
+          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`)
             .then(() => '')
           break;
         case 'Hypotheek oversluiten':
