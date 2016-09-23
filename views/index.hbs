@@ -13,11 +13,7 @@
     </style>
 
 <script>
-import io.smooch.core.Smooch;
-import io.smooch.ui.ConversationActivity;
-
 var skPromise = Smooch.init({
-
     appToken: '5vyxec5l3ims0hpyywpqhkodq',
     customText: {
                 headerText: 'Waar kan ik je mee helpen?',
@@ -34,6 +30,7 @@ var skPromise = Smooch.init({
             },
     soundNotificationEnabled: true,
     email: 'wbiegstraaten@independer.nl',
+
     emailCaptureEnabled: true,
 });
 
@@ -46,7 +43,8 @@ Smooch.on('message:received', function(message) {
 });
 Smooch.on('widget:opened', function(message) {
 //  alert("The beginning");
-  Smooch.sendMessage('Hoi');
+Smooch.sendMessage('Hoi');
+
   console.log('Widget opened', message);
 });
 Smooch.on('widget:closed', function(message) {
