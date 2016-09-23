@@ -66,8 +66,8 @@ showUserMenu: {
             .then(() => 'processing')
           break;
         case 'Nieuwe hypotheek':
-          return bot.say(`Zoek je echt een eerste hypotheek als starter? %[Ja](postback:hypotheektype_starter) of een nieuwe hypotheek? %[Ja](postback:hypotheektype_nieuw)`)
-            .then(() => 'processing')
+          return bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`)
+            .then(() => '')
           break;
         case 'Hypotheek oversluiten':
           return bot.say(`Sorry`)
