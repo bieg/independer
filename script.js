@@ -50,6 +50,7 @@ start: {
     }
 },
 
+
 showUserMenu: {
     // prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
     receive: (bot, message) => {

@@ -13,7 +13,11 @@
     </style>
 
 <script>
+import io.smooch.core.Smooch;
+import io.smooch.ui.ConversationActivity;
+
 var skPromise = Smooch.init({
+
     appToken: '5vyxec5l3ims0hpyywpqhkodq',
     customText: {
                 headerText: 'Waar kan ik je mee helpen?',
@@ -44,6 +48,8 @@ Smooch.on('message:received', function(message) {
 Smooch.on('widget:opened', function(message) {
 //  alert("The beginning");
 Smooch.sendMessage('Hoi');
+ConversationActivity.show(this);
+
 
   console.log('Widget opened', message);
 });
