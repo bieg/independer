@@ -45,8 +45,7 @@ prompt: (bot) => bot.say('...'),
 start: {
     receive: (bot,message) => {
         const opening = message.text;
-        return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)
-            %[Hypotheek](window.open('tel:0031648509525'))`)
+        return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'showUserMenu');
     }
 },
@@ -68,7 +67,7 @@ showUserMenu: {
           break;
         case 'Nieuwe hypotheek':
           return bot.say(`Zoek je echt een eerste hypotheek als starter? %[Ja](postback:hypotheektype_starter) of een nieuwe hypotheek? %[Ja](postback:hypotheektype_nieuw)`)
-            .then(() => 'hypotheek_nieuw_verder')
+
           break;
         case 'Hypotheek oversluiten':
           return bot.say(`Sorry`)
@@ -84,12 +83,11 @@ showUserMenu: {
 
 hypotheekkeuze_appartement: {
     prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`),
-    receive: () => 'processing'
+    receive: () => ''
 },
 
-hypotheek_nieuw_verder: {
-    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek.`),
-    receive: () => 'processing'
+hypotheektype_nieuw: {
+    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`)
 },
 
 bye: {
