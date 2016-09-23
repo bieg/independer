@@ -61,9 +61,9 @@ showUserMenu: {
             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
             .then(() => '')
         case 'Starters hypotheek':
-          return bot.say(`Daar help ik je graag bij. Zoek je een appartement? `)
-            .then(() => bot.say(`![](reply:http://wwww.bieg.nl/beeld/appartement.jpg))`))
-            .then(() => 'hypotheek_starter_verder')
+          return bot.say(`Daar help ik je graag bij. Weet je al wat voor soort woning?`)
+            .then(() => bot.say(`%[Appartement](reply:hypotheekkeuze_appartement) %[Tussenwoning](reply:hypotheekkeuze_tussenwoning) %[Vrijstaand](reply:hypotheekkeuze_vrijstaand)`))
+            .then(() => 'processing')
           break;
         case 'Nieuwe hypotheek':
           return bot.say(`Zoek je echt een eerste hypotheek als starter? %[Ja](postback:hypotheektype_starter) of een nieuwe hypotheek? %[Ja](postback:hypotheektype_nieuw)`)
@@ -81,8 +81,8 @@ showUserMenu: {
     }
 },
 
-hypotheek_starter_verder: {
-    prompt: (bot) => bot.say(`%[Ja - vertel me meer](postback:hypotheek_appartement)`),
+hypotheekkeuze_appartement: {
+    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`),
     receive: () => 'processing'
 },
 
