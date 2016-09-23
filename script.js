@@ -71,7 +71,7 @@ showUserMenu: {
             .then(() => 'processing')
           break;
         case 'Hypotheek oversluiten':
-          return bot.say(`Sorry`)
+          return bot.say(`Sorry. Momenteel biedt Independer alleen hypotheken aan voor Starters.`)
             .then(() => 'bye')
           break;
         default:
@@ -89,7 +89,7 @@ hypotheekkeuze_appartement: {
 
 hypotheektype_nieuw: {
     prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
-    receive: () => 'processing'
+    receive: () => 'bye'
 },
 
 bye: {
