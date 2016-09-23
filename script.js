@@ -45,7 +45,7 @@ prompt: (bot) => bot.say('...'),
 start: {
     receive: (bot,message) => {
         const opening = message.text;
-        return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback: hypotheektype_starter) %[Nieuwe hypotheek](postback: hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
+        return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'showUserMenu');
     }
 },
@@ -55,10 +55,10 @@ showUserMenu: {
 
       switch(message.text) {
         case 'Hoi':
-            return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback: hypotheektype_starter) %[Nieuwe hypotheek](postback: hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
+            return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
             .then(() => '')
         case 'hoi':
-            return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback: hypotheektype_starter) %[Nieuwe hypotheek](postback: hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
+            return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
             .then(() => '')
         case 'Starters hypotheek':
           return bot.say(`Daar help ik je graag bij. Zoek je een appartement? `)
@@ -66,7 +66,7 @@ showUserMenu: {
             .then(() => 'hypotheek_starter_verder')
           break;
         case 'Nieuwe hypotheek':
-          return bot.say(` Zoek je echt een hypotheek als starter? %[Ja](postback:startersHypotheek) of een nieuwe hypotheek? %[Ja](postback:hypotheek_nieuw)`)
+          return bot.say(`Zoek je echt een eerste hypotheek als starter? %[Ja](postback:hypotheektype_starter) of een nieuwe hypotheek? %[Ja](postback:hypotheektype_nieuw)`)
             .then(() => 'hypotheek_nieuw_verder')
           break;
         case 'Hypotheek oversluiten':
