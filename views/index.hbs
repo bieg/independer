@@ -47,7 +47,6 @@ Smooch.on('message:received', function(message) {
 Smooch.on('widget:opened', function(message) {
 //  alert("The beginning");
   Smooch.sendMessage('Hoi');
-  Smooch.ConversationActivity.show(this);
   console.log('Widget opened', message);
 });
 Smooch.on('widget:closed', function(message) {

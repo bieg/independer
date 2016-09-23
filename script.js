@@ -45,35 +45,33 @@ prompt: (bot) => bot.say('...'),
 start: {
     receive: (bot,message) => {
         const opening = message.text;
-        return bot.say(`${groet}, wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:starters_hypotheek) %[Nieuwe hypotheek](postback:nieuwe_hypotheek) %[Oversluiten](postback:oversluiten)`)
+        return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback: hypotheektype_starter) %[Nieuwe hypotheek](postback: hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'showUserMenu');
     }
 },
 
-
 showUserMenu: {
-    // prompt: (bot) => bot.say(`Wat voor soort hypotheek zoek je? %[Starters hypotheek](postback:askName) %[Nieuwe hypotheek](postback:other)`),
     receive: (bot, message) => {
 
       switch(message.text) {
         case 'Hoi':
-            return bot.say(`${groet} zoek je een: %[Een Starters Hypotheek](postback:startersHypotheek) %[Een Nieuwe Hypotheek](postback:nieuweHypotheek) %[Oversluiten](postback:oversluiten)`)
+            return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback: hypotheektype_starter) %[Nieuwe hypotheek](postback: hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
             .then(() => '')
         case 'hoi':
-            return bot.say(`${groet} zoek je een: %[Starters hypotheek](postback:startersHypotheek) %[Nieuwe hypotheek](postback:nieuweHypotheek) %[Oversluiten](postback:oversluiten)`)
+            return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback: hypotheektype_starter) %[Nieuwe hypotheek](postback: hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
             .then(() => '')
         case 'Starters hypotheek':
           return bot.say(`Daar help ik je graag bij. Zoek je een appartement? `)
-            .then(() => bot.say(`![](http://wwww.bieg.nl/beeld/appartement.jpg))`))
-            .then(() => 'hypotheek_starter')
+            .then(() => bot.say(`![](reply:http://wwww.bieg.nl/beeld/appartement.jpg))`))
+            .then(() => 'hypotheek_starter_verder')
           break;
         case 'Nieuwe hypotheek':
           return bot.say(` Zoek je echt een hypotheek als starter? %[Ja](postback:startersHypotheek) of een nieuwe hypotheek? %[Ja](postback:hypotheek_nieuw)`)
-            .then(() => 'hypotheek_nieuw')
+            .then(() => 'hypotheek_nieuw_verder')
           break;
-        case 'Oversluiten':
-          return bot.say(`Ok... kun je wat specifieker zijn?`)
-            .then(() => 'processing')
+        case 'Hypotheek oversluiten':
+          return bot.say(`Sorry`)
+            .then(() => 'bye')
           break;
         default:
           return bot.say(`hmm...`)
@@ -83,13 +81,13 @@ showUserMenu: {
     }
 },
 
-hypotheek_starter: {
+hypotheek_starter_verder: {
     prompt: (bot) => bot.say(`%[Ja - vertel me meer](postback:hypotheek_appartement)`),
     receive: () => 'processing'
 },
 
-hypotheek_nieuw: {
-    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. %[Toon Adviseurs](h        sttps://www.independer.nl/hypotheekadviseur/intro.aspx)`),
+hypotheek_nieuw_verder: {
+    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek.`),
     receive: () => 'processing'
 },
 
