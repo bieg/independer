@@ -84,11 +84,12 @@ showUserMenu: {
 
 hypotheekkeuze_appartement: {
     prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`),
-    receive: () => ''
+    receive: () => 'processing'
 },
 
 hypotheektype_nieuw: {
-    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`)
+    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
+    receive: () => 'processing'
 },
 
 bye: {
