@@ -62,7 +62,7 @@ showUserMenu: {
             .then(() => '')
         case 'Starters hypotheek':
           return bot.say(`Daar help ik je graag bij. Weet je al wat voor soort woning?`)
-            .then(() => bot.say(`%[Appartement](postback:hypotheekkeuze_appartement) %[Tussenwoning](postback:hypotheekkeuze_tussenwoning) %[Vrijstaand](postback:hypotheekkeuze_vrijstaand)`))
+            .then(() => bot.say(`%[Appartement](reply:hypotheekkeuze_appartement) %[Tussenwoning](reply:hypotheekkeuze_tussenwoning) %[Vrijstaand](reply:hypotheekkeuze_vrijstaand)`))
 
           break;
         case 'Nieuwe hypotheek':
