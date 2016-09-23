@@ -88,7 +88,7 @@ hypotheek_starter: {
 },
 
 hypotheek_nieuw: {
-    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. %[Toon Adviseurs](hhttps://www.independer.nl/hypotheekadviseur/intro.aspx)`),
+    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. %[Toon Adviseurs](h        sttps://www.independer.nl/hypotheekadviseur/intro.aspx)`),
     receive: () => 'processing'
 },
 
