@@ -52,7 +52,6 @@ start: {
 
 selecteerHypotheek: {
     receive: (bot, message) => {
-
       switch(message.text) {
         case 'Hoi':
             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
@@ -85,7 +84,6 @@ selecteerHypotheek: {
 
 selecteerWoning: {
     receive: (bot, message) => {
-
       switch(message.text) {
         case 'Appartement':
           return bot.say(`Appartment ok`)
@@ -128,11 +126,6 @@ bye: {
     prompt: (bot) => bot.say('Bedankt voor je tijd'),
     receive: () => 'processing'
 },
-
-// error: {
-// prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
-// receive: () => ''
-// },
 
 finish: {
 receive: () => 'finish'
