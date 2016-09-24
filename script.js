@@ -49,11 +49,11 @@ start: {
         .then(() => 'selecteerHypotheek');
 
 
-                          if (!_.has(scriptRules, upperText)) {
+                          if (!_.has(scriptRules, opening)) {
                               return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
                           }
 
-                          var response = scriptRules[upperText];
+                          var response = scriptRules[opening];
                           var lines = response.split('\n');
 
                           var p = Promise.resolve();
