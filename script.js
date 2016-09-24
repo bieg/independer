@@ -48,26 +48,6 @@ start: {
         return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'selecteerHypotheek');
                       }
-
-                      if (!_.has(scriptRules, opening)) {
-                          return bot.say(`Say 'more' to chat about something else.`).then(() => 'start');
-                      }
-
-                      var response = scriptRules[opening];
-                      var lines = response.split('\n');
-
-                      var p = Promise.resolve();
-                      _.each(lines, function(line) {
-                          line = line.trim();
-                          p = p.then(function() {
-                              console.log(line);
-                              return wait(50).then(function() {
-                                  return bot.say(line);
-                              });
-                          });
-                      });
-
-                      return p.then(() => 'start');
 },
 
 selecteerHypotheek: {
@@ -84,7 +64,7 @@ selecteerHypotheek: {
           return bot.say(`Daar help ik je graag bij. Weet je al wat voor soort woning?`)
             .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
             .then(() => bot.say(`%[Appartement](postback:hypotheekkeuze_appartement) %[Tussenwoning](postback:hypotheekkeuze_tussenwoning) %[Vrijstaand](postback:hypotheekkeuze_vrijstaand)`))
-            .then(() => 'processing')
+            .then(() => 'selecteerWoning')
           break;
         case 'Nieuwe hypotheek':
           return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
@@ -103,24 +83,46 @@ selecteerHypotheek: {
     }
 },
 
-hypotheekkeuze_appartement: {
-    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-    //receive: () => 'processing'
-      receive: () => 'bye'
-},
-hypotheekkeuze_tussenwoning: {
-//    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-    //receive: () => 'processing'
-      receive: () => 'bye'
-},
-hypotheekkeuze_vrijstaand: {
-//    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-    //receive: () => 'processing'
-      receive: () => 'bye'
-},
-hypotheektype_nieuw: {
-//    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
-    receive: () => 'bye'
+selecteerWoning: {
+    receive: (bot, message) => {
+
+      switch(message.text) {
+        case 'Appartement':
+          return bot.say(`Appartment ok`)
+          break;
+        case 'Tussenwoning':
+          return bot say('Tussenwoning ok')
+          break;
+        case 'Vrijstaand':
+          return bot say('Vrijstaand ok')
+          break;
+          default:
+            return bot.say(`...`)
+              .then(() => 'processing')
+            break;
+          }
+        }
+    },
+
+            //   hypotheekkeuze_appartement: {
+            //     prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+            //     //receive: () => 'processing'
+            //       receive: () => 'bye'
+            // },
+            // hypotheekkeuze_tussenwoning: {
+            // //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+            //     //receive: () => 'processing'
+            //       receive: () => 'bye'
+            // },
+            // hypotheekkeuze_vrijstaand: {
+            // //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+            //     //receive: () => 'processing'
+            //       receive: () => 'bye'
+            // },
+            // hypotheektype_nieuw: {
+            // //    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
+            //     receive: () => 'bye'
+            // },
 },
 
 bye: {
