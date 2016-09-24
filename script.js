@@ -102,7 +102,6 @@ selecteerWoning: {
             break;
           }
         }
-    },
 
             //   hypotheekkeuze_appartement: {
             //     prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
