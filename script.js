@@ -75,7 +75,7 @@ selecteerHypotheek: {
             .then(() => 'bye')
           break;
         default:
-          return bot.say(`hmm...`)
+          return bot.say(`...`)
             .then(() => 'processing')
           break;
       }
@@ -83,16 +83,16 @@ selecteerHypotheek: {
 },
 
 hypotheekkeuze_appartement: {
-    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`),
-    receive: () => 'processing'
+    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+    //receive: () => 'processing'
 },
 hypotheekkeuze_tussenwoning: {
-    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`),
-    receive: () => 'processing'
+    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+    //receive: () => 'processing'
 },
 hypotheekkeuze_vrijstaand: {
-    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`),
-    receive: () => 'processing'
+    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+    //receive: () => 'processing'
 },
 hypotheektype_nieuw: {
     prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
