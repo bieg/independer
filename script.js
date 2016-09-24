@@ -44,7 +44,7 @@ prompt: (bot) => bot.say('...'),
 
 start: {
     receive: (bot,message) => {
-        const opening = message.text;
+        const opening = message.text.trim().toUpperCase();
         return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'showUserMenu');
     }
