@@ -38,7 +38,7 @@ setTimeout(resolve, ms);
 module.exports = new Script({
 
  processing: {
-prompt: (bot) => bot.say('...'),
+//prompt: (bot) => bot.say('...'),
  receive: () => 'processing'
  },
 
@@ -46,11 +46,11 @@ start: {
     receive: (bot,message) => {
         const opening = message.text.trim().toUpperCase();
         return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
-        .then(() => 'showUserMenu');
+        .then(() => 'selecteerHypotheek');
     }
 },
 
-showUserMenu: {
+selecteerHypotheek: {
     receive: (bot, message) => {
 
       switch(message.text) {
