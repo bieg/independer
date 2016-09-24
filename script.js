@@ -48,9 +48,8 @@ start: {
         return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'selecteerHypotheek');
 
-
                           if (!_.has(scriptRules, opening)) {
-                              return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
+                              return bot.say(`Say 'more' to chat about something else.`).then(() => 'start');
                           }
 
                           var response = scriptRules[opening];
