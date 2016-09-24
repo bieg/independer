@@ -47,8 +47,7 @@ start: {
         const opening = message.text.trim().toUpperCase();
         return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'selecteerHypotheek');
-        }
-},
+      },
 
 selecteerHypotheek: {
     receive: (bot, message) => {
@@ -101,7 +100,7 @@ selecteerWoning: {
           }
         }
       },
-
+},
             //   hypotheekkeuze_appartement: {
             //     prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
             //     //receive: () => 'processing'
