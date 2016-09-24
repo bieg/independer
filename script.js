@@ -47,7 +47,7 @@ start: {
         const opening = message.text.trim().toUpperCase();
         return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'selecteerHypotheek');
-                      }
+        }
 },
 
 selecteerHypotheek: {
@@ -80,7 +80,7 @@ selecteerHypotheek: {
             .then(() => 'processing')
           break;
       }
-    }
+  }
 },
 
 selecteerWoning: {
@@ -102,6 +102,7 @@ selecteerWoning: {
             break;
           }
         }
+      },
 
             //   hypotheekkeuze_appartement: {
             //     prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
@@ -122,7 +123,6 @@ selecteerWoning: {
             // //    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
             //     receive: () => 'bye'
             // },
-},
 
 bye: {
     prompt: (bot) => bot.say('Bedankt voor je tijd'),
