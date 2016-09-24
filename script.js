@@ -47,7 +47,30 @@ start: {
         const opening = message.text.trim().toUpperCase();
         return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'selecteerHypotheek');
+
+
+                          if (!_.has(scriptRules, upperText)) {
+                              return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
+                          }
+
+                          var response = scriptRules[upperText];
+                          var lines = response.split('\n');
+
+                          var p = Promise.resolve();
+                          _.each(lines, function(line) {
+                              line = line.trim();
+                              p = p.then(function() {
+                                  console.log(line);
+                                  return wait(50).then(function() {
+                                      return bot.say(line);
+                                  });
+                              });
+                          });
+
+                          return p.then(() => 'start');
+                      }
     }
+
 },
 
 selecteerHypotheek: {
@@ -84,7 +107,7 @@ selecteerHypotheek: {
 },
 
 hypotheekkeuze_appartement: {
-  //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     //receive: () => 'processing'
       receive: () => 'bye'
 },
@@ -106,17 +129,6 @@ hypotheektype_nieuw: {
 bye: {
     prompt: (bot) => bot.say('Bedankt voor je tijd'),
     receive: () => 'processing'
-},
-
-doorVragen: {
-    prompt: (bot) => bot.say('Postback is working. What\'s your name?'),
-    receive: (bot, message) => {
-        const name = message.text;
-        return bot.setProp('name', name)
-            .then(() => bot.say(`Great! I\'ll call you ${name}`))
-            .then(()=> bot.say('Is that OK? %[Yes](postback:yes) %[No](postback:nee)'))
-            .then(() => 'speak');
-    }
 },
 
 // error: {
