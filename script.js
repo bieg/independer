@@ -47,29 +47,27 @@ start: {
         const opening = message.text.trim().toUpperCase();
         return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'selecteerHypotheek');
+                      }
 
-                          if (!_.has(scriptRules, opening)) {
-                              return bot.say(`Say 'more' to chat about something else.`).then(() => 'start');
-                          }
+                      if (!_.has(scriptRules, opening)) {
+                          return bot.say(`Say 'more' to chat about something else.`).then(() => 'start');
+                      }
 
-                          var response = scriptRules[opening];
-                          var lines = response.split('\n');
+                      var response = scriptRules[opening];
+                      var lines = response.split('\n');
 
-                          var p = Promise.resolve();
-                          _.each(lines, function(line) {
-                              line = line.trim();
-                              p = p.then(function() {
-                                  console.log(line);
-                                  return wait(50).then(function() {
-                                      return bot.say(line);
-                                  });
+                      var p = Promise.resolve();
+                      _.each(lines, function(line) {
+                          line = line.trim();
+                          p = p.then(function() {
+                              console.log(line);
+                              return wait(50).then(function() {
+                                  return bot.say(line);
                               });
                           });
+                      });
 
-                          return p.then(() => 'start');
-                      }
-    }
-
+                      return p.then(() => 'start');
 },
 
 selecteerHypotheek: {
