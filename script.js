@@ -86,7 +86,7 @@ selecteerHypotheek: {
 selecteerWoning: {
   receive: (bot, message) => {
     switch(message.text) {
-        case '':
+        case 'Appartement':
           return bot.say(`woning`)
           .then(() => 'bye')
         break;

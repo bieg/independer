@@ -66,6 +66,8 @@ skPromise.then( function() {
     });
 
     const msg = postback;
+    console.log('Payload: '+msg.action.payload);
+    console.log('MSG:  '+msg.action.text);
 
     // if you want the payload instead just do msg.action.paylod
 msg.text = msg.action.text;
