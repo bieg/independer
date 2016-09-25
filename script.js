@@ -82,6 +82,40 @@ selecteerHypotheek: {
       }
     }
 },
+hypotheekkeuze_appartement: {
+  //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+    //receive: () => 'processing'
+      receive: () => 'vervolgVragen'
+},
+hypotheekkeuze_tussenwoning: {
+//    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+    //receive: () => 'processing'
+      receive: () => 'vervolgVragen'
+},
+hypotheekkeuze_vrijstaand: {
+//    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+    //receive: () => 'processing'
+      receive: () => 'vervolgVragen'
+},
+hypotheektype_nieuw: {
+//    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
+    receive: () => 'bye'
+},
+
+vervolgVragen: {
+  receive: (bot, message) => {
+    switch(message.text) {
+        case 'Appartement':
+          return bot.say(`Top!`)
+          .then(() => 'askName')
+        break;
+      default:
+        return bot.say(`...`)
+          .then(() => 'processing')
+        break;
+    }
+    }
+},
 
 askName: {
     prompt: (bot) => bot.say('Top - maar met wie heb ik het genoegen?'),
@@ -93,57 +127,12 @@ askName: {
     }
 },
 
-vervolgVragen: {
-  receive: (bot, message) => {
-    switch(message.text) {
-        case 'Appartement':
-          return bot.say(`Top!`)
-          .then(() => 'bye')
-        break;
-      default:
-        return bot.say(`...`)
-          .then(() => 'processing')
-        break;
-    }
-    }
-},
-
-
-hypotheekkeuze_appartement: {
-  //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-    //receive: () => 'processing'
-      receive: () => 'bye'
-},
-hypotheekkeuze_tussenwoning: {
-//    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-    //receive: () => 'processing'
-      receive: () => 'bye'
-},
-hypotheekkeuze_vrijstaand: {
-//    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-    //receive: () => 'processing'
-      receive: () => 'bye'
-},
-hypotheektype_nieuw: {
-//    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
-    receive: () => 'bye'
-},
 
 bye: {
     prompt: (bot) => bot.say('Bedankt voor je tijd'),
     receive: () => 'processing'
 },
 
-doorVragen: {
-    prompt: (bot) => bot.say('Postback is working. What\'s your name?'),
-    receive: (bot, message) => {
-        const name = message.text;
-        return bot.setProp('name', name)
-            .then(() => bot.say(`Great! I\'ll call you ${name}`))
-            .then(()=> bot.say('Is that OK? %[Yes](postback:yes) %[No](postback:nee)'))
-            .then(() => 'speak');
-    }
-},
 
 // error: {
 // prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
