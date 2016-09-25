@@ -103,7 +103,7 @@ vervolgVragen: {
   receive: (bot, message) => {
     switch(message.text) {
         case 'Appartement':
-          return bot.say(`Top!`)
+          return bot.say(`Top - maar met wie heb ik het genoegen?`)
           .then(() => 'askName')
         break;
       default:
@@ -115,8 +115,7 @@ vervolgVragen: {
 },
 
 askName: {
-    prompt: (bot) => bot.say('Top - maar met wie heb ik het genoegen?'),
-    receive: (bot, message) => {
+  receive: (bot, message) => {
         const name = message.text;
         return bot.setProp('name', name)
             .then(() => bot.say(`Hoi ${name}. ik heb nog wat vragen voor je om verder te kunnen.`))
