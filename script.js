@@ -64,7 +64,7 @@ selecteerHypotheek: {
           return bot.say(`Daar help ik je graag bij. Weet je al wat voor soort woning?`)
           .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
             .then(() => bot.say(`%[Appartement](postback:hypotheekkeuze_appartement) %[Tussenwoning](postback:hypotheekkeuze_tussenwoning) %[Vrijstaand](postback:hypotheekkeuze_vrijstaand)`))
-            .then(() => 'processing')
+            .then(() => 'askName')
           break;
         case 'Nieuwe hypotheek':
           return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
@@ -83,11 +83,21 @@ selecteerHypotheek: {
     }
 },
 
-selecteerWoning: {
+askName: {
+    prompt: (bot) => bot.say('Top - maar met wie heb ik het genoegen?'),
+    receive: (bot, message) => {
+        const name = message.text;
+        return bot.setProp('name', name)
+            .then(() => bot.say(`Hoi ${name}. ik heb nog wat vragen voor je om verder te kunnen.`))
+            .then(() => 'vervolgVragen');
+    }
+},
+
+vervolgVragen: {
   receive: (bot, message) => {
     switch(message.text) {
         case 'Appartement':
-          return bot.say(`woning`)
+          return bot.say(`Top!`)
           .then(() => 'bye')
         break;
       default:
