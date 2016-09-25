@@ -83,6 +83,22 @@ selecteerHypotheek: {
     }
 },
 
+selecteerWoning: {
+  receive: (bot, message) => {
+    switch(message.text) {
+        case '':
+          return bot.say(`woning`)
+          .then(() => 'bye')
+        break;
+      default:
+        return bot.say(`...`)
+          .then(() => 'processing')
+        break;
+    }
+    }
+},
+
+
 hypotheekkeuze_appartement: {
   //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     //receive: () => 'processing'
