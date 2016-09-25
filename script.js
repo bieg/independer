@@ -84,7 +84,7 @@ selecteerHypotheek: {
 },
 hypotheekkeuze_appartement: {
   //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-    receive: () => 'askName'
+    receive: () => 'processing'
 },
 hypotheekkeuze_tussenwoning: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
