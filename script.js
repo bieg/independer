@@ -76,7 +76,7 @@ selecteerHypotheek: {
     }
 },
 update_ja: {
-    prompt: (bot) => bot.say('Laat je dan even je email achter? Dan houden we je op de hoogte...')
+    prompt: (bot) => bot.say('Laat je dan even je email achter? Dan houden we je op de hoogte...'),
     receive: (bot, message) => {
       const emailVisitor : message.text;
       return bot.setProp('emailVisitor', emailVisitor)
