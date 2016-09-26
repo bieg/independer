@@ -123,18 +123,18 @@ hypotheektype_nieuw: {
 },
 
 vervolgVragen: {
-  // receive: (bot, message) => {
-  //   switch(message.text) {
-  //       case 'Appartement':
-  //         return bot.say(`Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...`)
-  //         .then(() => 'askName')
-  //       break;
-  //     default:
-  //       return bot.say(`...`)
-  //         .then(() => 'processing')
-  //       break;
-  //   }
-  //   }
+  receive: (bot, message) => {
+    switch(message.text) {
+        case 'Appartement':
+          return bot.say(`Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...`)
+          .then(() => 'askName')
+        break;
+      default:
+        return bot.say(`...`)
+          .then(() => 'processing')
+        break;
+    }
+    }
 },
 
 askName: {
