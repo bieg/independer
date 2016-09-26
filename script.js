@@ -141,14 +141,14 @@ askName: {
   receive: (bot, message) => {
         const name = message.text;
         return bot.setProp('name', name)
-            .then(() => bot.say(`Hoi ${name}. ik heb nog wat vragen voor je om verder te kunnen.`))
+            .then(() => bot.say(`Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.`))
             .then(() => 'lastCheck');
     }
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA](postback:nogietsanders) %[NEE](postback:bye) '),
-    .then(()  => 'processing');
+    // prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA](postback:nogietsanders) %[NEE](postback:bye) '),
+    // .then(()  => 'processing');
 },
 
 bye: {
