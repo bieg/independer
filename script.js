@@ -74,6 +74,7 @@ selecteerHypotheek: {
       }
     }
 },
+
 updateOntvangen: {
 //     receive: (bot, message) => {
 //       switch(message.text) {
