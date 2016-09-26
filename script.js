@@ -79,15 +79,21 @@ updateOntvangen: {
       switch(message.text) {
         case 'update_ja':
             return bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
-            .then(() => 'processing')
+            .then(() => 'processing');
             const emailVisitor : message.text;
             return bot.setProp('emailVisitor', emailVisitor)
             .then(()  => bot.say(`OK - dan hou ik je via ${emailVisitor} op de hoogte.`))
           break;
+          case 'update_nee':
+              receive: () => 'bye'
+              break;
+          default:
+            return bot.say(`...`)
+              .then(() => 'processing')
+            break;
 }
 }
-}
-
+},
 
 update_ja: {
     prompt: (bot) => bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
@@ -95,12 +101,10 @@ update_ja: {
       const emailVisitor : message.text;
       return bot.setProp('emailVisitor', emailVisitor)
       .then(()  => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
-      .then(() =>'lastCheck')
+      .then(() => 'lastCheck');
     }
 },
-update_nee: {
 
-},
 hypotheekkeuze_appartement: {
   //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     receive: () => 'processing'
