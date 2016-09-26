@@ -82,7 +82,7 @@ update_ja: {
       return bot.setProp('emailVisitor', emailVisitor)
       .then(() bot => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
       .then(() =>'lastCheck')
-    ]
+    }
 },
 update_nee: {
 
@@ -129,7 +129,7 @@ askName: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA])(postback:nogietsanders) %[NEE](postback:bye) '),
+    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA])(postback:nogietsanders) %[NEE](postback:bye) ')
     receive: () => 'processing'
 },
 
