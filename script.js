@@ -144,12 +144,12 @@ askName: {
 
 lastCheck: {
     prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA](postback:nogietsanders) %[NEE](postback:bye) '),
-    receive: () => 'processing'
+    .then(()  => 'processing'
 },
 
 bye: {
     prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd'),
-    receive: () => 'processing'
+    .then(()  => 'processing'
 },
 
 
