@@ -45,7 +45,7 @@ module.exports = new Script({
 start: {
     receive: (bot,message) => {
         const opening = message.text.trim().toUpperCase();
-        return bot.say(`${groet}, waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
+        return bot.say(`${groet}, wat voor sooort hypotheek zoek je?  %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
         .then(() => 'selecteerHypotheek');
     }
 },
@@ -56,14 +56,6 @@ selecteerHypotheek: {
       switch(message.text) {
         case 'Hoi':
             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
-            .then(() => '')
-        case 'hoi':
-            return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
-            .then(() => '')
-        case 'Starters hypotheek':
-          return bot.say(`Daar help ik je graag bij. Weet je al wat voor soort woning?`)
-          .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
-            .then(() => bot.say(`%[Appartement](postback:hypotheekkeuze_appartement) %[Tussenwoning](postback:hypotheekkeuze_tussenwoning) %[Vrijstaand](postback:hypotheekkeuze_vrijstaand)`))
             .then(() => 'vervolgVragen')
           break;
         case 'Nieuwe hypotheek':
@@ -72,8 +64,9 @@ selecteerHypotheek: {
             .then(() => 'processing')
           break;
         case 'Hypotheek oversluiten':
-          return bot.say(`Sorry. Momenteel biedt Independer alleen hypotheken aan voor Starters.`)
-            .then(() => 'bye')
+          return bot.say(`Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
+          .then(()=> bot.say('Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja - graag](postback: update_ja) %[Nee, bedankt](postback:update_nee)'))
+            .then(() => 'processing')
           break;
         default:
           return bot.say(`...`)
@@ -81,6 +74,18 @@ selecteerHypotheek: {
           break;
       }
     }
+},
+update_ja: {
+    prompt: (bot) => bot.say('Laat je dan even je email achter? Dan houden we je op de hoogte...')
+    receive: (bot, message) => {
+      const emailVisitor : message.text;
+      return bot.setProp('emailVisitor', emailVisitor)
+      .then(() bot => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
+      .then(() =>'lastCheck')
+    ]
+},
+update_nee: {
+
 },
 hypotheekkeuze_appartement: {
   //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
@@ -103,7 +108,7 @@ vervolgVragen: {
   receive: (bot, message) => {
     switch(message.text) {
         case 'Appartement':
-          return bot.say(`Top - maar met wie heb ik het genoegen?`)
+          return bot.say(`Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...`)
           .then(() => 'askName')
         break;
       default:
@@ -123,9 +128,13 @@ askName: {
     }
 },
 
+lastCheck: {
+    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA])(postback:nogietsanders) %[NEE](postback:bye) '),
+    receive: () => 'processing'
+},
 
 bye: {
-    prompt: (bot) => bot.say('Bedankt voor je tijd'),
+    prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd'),
     receive: () => 'processing'
 },
 
