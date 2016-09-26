@@ -52,7 +52,6 @@ start: {
 
 selecteerHypotheek: {
     receive: (bot, message) => {
-
       switch(message.text) {
         case 'Hoi':
             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
@@ -66,7 +65,7 @@ selecteerHypotheek: {
         case 'Hypotheek oversluiten':
           return bot.say(`Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
           .then(()=> bot.say('Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja - graag](postback: update_ja) %[Nee, bedankt](postback:update_nee)'))
-            .then(() => 'processing')
+            .then(() => 'updateOntvangen')
           break;
         default:
           return bot.say(`...`)
@@ -75,6 +74,21 @@ selecteerHypotheek: {
       }
     }
 },
+updateOntvangen: {
+    receive: (bot, message) => {
+      switch(message.text) {
+        case 'update_ja':
+            return bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
+            .then(() => 'processing')
+            const emailVisitor : message.text;
+            return bot.setProp('emailVisitor', emailVisitor)
+            .then(()  => bot.say(`OK - dan hou ik je via ${emailVisitor} op de hoogte.`))
+          break;
+}
+}
+}
+
+
 update_ja: {
     prompt: (bot) => bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
     receive: (bot, message) => {
@@ -124,12 +138,12 @@ askName: {
         const name = message.text;
         return bot.setProp('name', name)
             .then(() => bot.say(`Hoi ${name}. ik heb nog wat vragen voor je om verder te kunnen.`))
-            .then(() => 'vervolgVragen');
+            .then(() => 'lastCheck');
     }
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA])(postback:nogietsanders) %[NEE](postback:bye) ')
+    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA])(postback:nogietsanders) %[NEE](postback:bye) '),
     receive: () => 'processing'
 },
 
