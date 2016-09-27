@@ -57,10 +57,10 @@ selecteerHypotheek: {
             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
             .then(() => 'askName')
           break;
-          case 'Starters hypotheek':
+      case 'Starters hypotheek':
           return bot.say(`![](http:www.bieg.nl/beeld/woningen.jpg)`)
           .then(() => bot.say(`Wat voor type woning zoek je? %[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
-          .then(() => 'askName')
+          .then(() => 'processing')
             break;
         case 'Nieuwe hypotheek':
           return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
