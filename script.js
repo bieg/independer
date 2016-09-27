@@ -65,7 +65,7 @@ selecteerHypotheek: {
           .then(() => 'hypotheektype_starter')
               break;
         case 'Nieuwe hypotheek':
-          return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
+          return bot.say('Helaas biedt Independer momenteel alleen Starters een hypotheek aan.')
           .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden.`))
           .then(() => bot.say(` %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`))
           .then(() => 'processing')
@@ -142,31 +142,31 @@ hypotheektype_nieuw: {
 },
 
 askName: {
-  receive: (bot, message) => {
-    switch(message.text) {
-        case 'Appartement':
-          return bot.say('Nice! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...')
-          .then(() => 'vervolgVragen')
-          break;
-      case 'Huis':
-          return bot.say('Leuk! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...')
-          .then(() => 'vervolgVragen')
-          break;
-      default:
-        return bot.say('...')
-          .then(() => 'processing')
-        break;
-    }
-    }
+  // receive: (bot, message) => {
+  //   switch(message.text) {
+  //       case 'Appartement':
+  //         return bot.say('Nice! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...')
+  //         .then(() => 'vervolgVragen')
+  //         break;
+  //     case 'Huis':
+  //         return bot.say('Leuk! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...')
+  //         .then(() => 'vervolgVragen')
+  //         break;
+  //     default:
+  //       return bot.say('...')
+  //         .then(() => 'processing')
+  //       break;
+  //   }
+  //   }
 },
 
 vervolgVragen: {
-  receive: (bot, message) => {
-        const name = message.text;
-        return bot.setProp('name', name)
-            .then(() => bot.say('Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.'))
-            .then(() => 'lastCheck');
-    }
+  // receive: (bot, message) => {
+  //       const name = message.text;
+  //       return bot.setProp('name', name)
+  //           .then(() => bot.say('Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.'))
+  //           .then(() => 'lastCheck');
+  //   }
 },
 
 lastCheck: {
