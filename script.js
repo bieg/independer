@@ -71,9 +71,9 @@ selecteerHypotheek: {
           .then(() => 'processing')
           break;
         case 'Hypotheek oversluiten':
-          return bot.say(`Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
-          .then(() => bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? `))
-          .then(() =>bot.say(`%[Ja - graag](postback:updateJa) %[Nee, bedankt](postback:updateNee)`))
+          return bot.say('Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.')
+          .then(() => bot.say('Als het allemaal wel zo ver is, wil je dan een update ontvangen? '))
+          .then(() => bot.say( ' %[Ja - graag](postback:updateJa) %[Nee, bedankt](postback:updateNee)'))
           .then(() => 'updateOntvangen')
           break;
         default:
@@ -88,14 +88,14 @@ updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
         case 'update_ja':
-            return bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
+            return bot.say('Laat je dan even je email achter? Dan houden we je op de hoogte...')
             .then(() => 'updateJa')
           break;
           case 'update_nee':
               receive: () => 'bye')
               break;
           default:
-            return bot.say(`...`)
+            return bot.say('...')
               .then(() => 'processing')
             break;
 }
@@ -135,9 +135,9 @@ hypotheektype_starter: {
     receive: () => 'processing'
 },
 hypotheektype_nieuw: {
-    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. `)
-    .then(() => bot.say(`Onderstaande link bied je meer informatie`))
-    .then(() =>bot.say(`%[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`)),
+    prompt: (bot) => bot.say('Independer biedt momenteel alleen voor Starters een hypotheek. ')
+    .then(() => bot.say('Onderstaande link bied je meer informatie'))
+    .then(() =>bot.say('%[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)')),
     receive: () => 'processing'
 },
 
@@ -145,15 +145,15 @@ askName: {
   receive: (bot, message) => {
     switch(message.text) {
         case 'Appartement':
-          return bot.say(`Nice! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...`)
+          return bot.say('Nice! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...')
           .then(() => 'vervolgVragen')
           break;
       case 'Huis':
-          return bot.say(`Leuk :) Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...`)
+          return bot.say('Leuk! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...')
           .then(() => 'vervolgVragen')
           break;
       default:
-        return bot.say(`...`)
+        return bot.say('...')
           .then(() => 'processing')
         break;
     }
@@ -164,7 +164,7 @@ vervolgVragen: {
   receive: (bot, message) => {
         const name = message.text;
         return bot.setProp('name', name)
-            .then(() => bot.say(`Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.`))
+            .then(() => bot.say('Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.'))
             .then(() => 'lastCheck');
     }
 },
@@ -175,7 +175,7 @@ lastCheck: {
 },
 
 bye: {
-    prompt: (bot) => bot.say(`Fijn je gesproken te hebben. Bedankt voor je tijd`),
+    prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd'),
     receive: ()  => 'finish'
 },
 
