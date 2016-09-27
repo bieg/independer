@@ -55,11 +55,12 @@ selecteerHypotheek: {
       switch(message.text) {
         case 'Hoi':
             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
-            .then(() => 'vervolgVragen')
+            .then(() => 'askName')
           break;
           case 'Starters hypotheek':
-            prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/woningen.jpg)`)
-          return bot.say(`Wat voor type woning zoek je? %[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`)
+          return bot.say(`![](http:www.bieg.nl/beeld/woningen.jpg)`)
+          .then(() => bot.say(`Wat voor type woning zoek je? %[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
+          .then(() => 'askName')
             break;
         case 'Nieuwe hypotheek':
           return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
@@ -113,7 +114,7 @@ update_ja: {
 
 hypotheekkeuze_appartement: {
 receive: (bot,message)  => {
-    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+    //prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     receive: () => 'askName'
 }
