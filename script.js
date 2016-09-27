@@ -58,14 +58,15 @@ selecteerHypotheek: {
             .then(() => 'askName')
           break;
       case 'Starters hypotheek':
-          return bot.say(![](http:www.bieg.nl/beeld/woningen.jpg))
+        prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+          return bot.say(`![](http:www.bieg.nl/beeld/woningen.jpg)`)
           .then(() => bot.say(`Wat voor type woning zoek je? %[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
           .then(() => 'processing')
             break;
         case 'Nieuwe hypotheek':
           return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
           .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`))
-            .then(() => 'processing')
+            .then(() => 'finish')
           break;
         case 'Hypotheek oversluiten':
           return bot.say(`Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
@@ -114,7 +115,6 @@ update_ja: {
 
 hypotheekkeuze_appartement: {
 receive: (bot,message)  => {
-    //prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     receive: () => 'askName'
 }
