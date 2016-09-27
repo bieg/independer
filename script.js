@@ -90,7 +90,7 @@ updateOntvangen: {
             .then(() => 'update_ja')
           break;
           case 'update_nee':
-              receive: () => 'bye'
+              receive: () => 'bye')
               break;
           default:
             return bot.say(`...`)
