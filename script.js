@@ -124,7 +124,7 @@ hypotheekkeuze_huis: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
   receive: () => 'askName'
 },
-hypotheekkeuze_vakantiehuis: {
+hypotheekkeuze_vakantiewoning: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     receive: () => 'askName'
 },
@@ -137,9 +137,13 @@ askName: {
   receive: (bot, message) => {
     switch(message.text) {
         case 'Appartement':
-          return bot.say(`Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...`)
-          .then(() => 'askName')
-        break;
+          return bot.say(`Nice! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...`)
+          .then(() => 'vervolgVragen')
+          break;
+      case 'Huis':
+          return bot.say(`Leuk :) Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...`)
+          .then(() => 'vervolgVragen')
+          break;
       default:
         return bot.say(`...`)
           .then(() => 'processing')
