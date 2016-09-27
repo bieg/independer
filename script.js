@@ -87,8 +87,7 @@ updateOntvangen: {
       switch(message.text) {
         case 'Ja - graag':
             return bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
-            .then(() => 'update_ja')
-            receive: () => 'processing'
+            .then(() => 'update_ja');
           break;
           case 'Nee, bedankt':
               receive: () => 'bye'
@@ -102,12 +101,12 @@ updateOntvangen: {
 },
 
 update_ja: {
-    receive: (bot, message) => {
-      const emailVisitor : message.text;
-      return bot.setProp('emailVisitor', emailVisitor)
-      .then(()  => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
-      .then(() => 'processing');
-    }
+    // receive: (bot, message) => {
+    //   const emailVisitor : message.text;
+    //   return bot.setProp('emailVisitor', emailVisitor)
+    //   .then(()  => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
+    //   .then(() => 'lastCheck');
+    // }
 },
 
 
@@ -158,7 +157,7 @@ vervolgVragen: {
         const name = message.text;
         return bot.setProp('name', name)
             .then(() => bot.say(`Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.`))
-            .then(() => 'processing');
+            .then(() => 'lastCheck');
     }
 },
 
