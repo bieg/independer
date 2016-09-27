@@ -50,17 +50,26 @@ Smooch.on('widget:closed', function(message) {
   // alert("See you later");
 });
 
-
 skPromise.then( function() {
   function handlePostback(req, res) {
 
     const postback = req.body.postbacks[0];
+    const userId = 'testUserId';
+    const store = new MemoryStore();
+    const lock = new MemoryLock();
+    const bot = new ConsoleBot({
+        store,
+        lock,
+        userId
+    });
 
     if (!postback || !postback.action)
         res.end();
 
     const stateMachine = new StateMachine({
         script,
+        bot,
+        userId,
         bot: createBot(req.body.appUser)
     });
 
