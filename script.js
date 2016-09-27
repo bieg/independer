@@ -110,10 +110,15 @@ update_ja: {
     // }
 },
 
+
 hypotheekkeuze_appartement: {
-  //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-    receive: () => 'processing'
+receive: (bot,message)  => {
+    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+    //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
+    receive: () => 'askName'
+}
 },
+
 hypotheekkeuze_huis: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
   receive: () => 'askName'
@@ -127,7 +132,7 @@ hypotheektype_nieuw: {
     receive: () => 'processing'
 },
 
-vervolgVragen: {
+askName: {
   receive: (bot, message) => {
     switch(message.text) {
         case 'Appartement':
@@ -142,7 +147,7 @@ vervolgVragen: {
     }
 },
 
-askName: {
+vervolgVragen: {
   receive: (bot, message) => {
         const name = message.text;
         return bot.setProp('name', name)
