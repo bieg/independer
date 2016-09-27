@@ -57,6 +57,10 @@ selecteerHypotheek: {
             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
             .then(() => 'vervolgVragen')
           break;
+          case 'Starters hypotheek':
+            prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/woningen.jpg)`)
+          return bot.say(`Wat voor type woning zoek je? %[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`)
+            break;
         case 'Nieuwe hypotheek':
           return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
           .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`))
@@ -110,17 +114,17 @@ hypotheekkeuze_appartement: {
   //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     receive: () => 'processing'
 },
-hypotheekkeuze_tussenwoning: {
+hypotheekkeuze_woning: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
   receive: () => 'askName'
 },
-hypotheekkeuze_vrijstaand: {
+hypotheekkeuze_vakantiehuis: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     receive: () => 'askName'
 },
 hypotheektype_nieuw: {
-//    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
-    receive: () => 'bye'
+    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
+    receive: () => 'processing'
 },
 
 vervolgVragen: {
