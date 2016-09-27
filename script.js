@@ -45,7 +45,8 @@ module.exports = new Script({
 start: {
     receive: (bot,message) => {
         const opening = message.text.trim().toUpperCase();
-        return bot.say(`${groet}, wat voor sooort hypotheek zoek je?  %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
+        return bot.say(`${groet}, wat voor soort hypotheek zoek je? `)
+        .then(() => bot.say(`%[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
         .then(() => 'selecteerHypotheek');
     }
 },
@@ -59,7 +60,8 @@ selecteerHypotheek: {
           break;
       case 'Starters hypotheek':
       //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-          return bot.say(`Wat voor type woning zoek je? %[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`)
+          return bot.say(`Wat voor type woning zoek je? `)
+          .then(() => bot.say(`%[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
           .then(() => 'hypotheek_starter')
               break;
         case 'Nieuwe hypotheek':
