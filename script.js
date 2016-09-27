@@ -107,7 +107,7 @@ updateJa: {
     //   .then(()  => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
     //   .then(() => 'bye');
     // }
-    receive: () => 'processing' 
+    receive: () => 'processing'
 },
 
 
@@ -130,7 +130,9 @@ hypotheektype_starter: {
     receive: () => 'processing'
 },
 hypotheektype_nieuw: {
-    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
+    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. `)
+    .then(() => bot.say(`Onderstaande link bied je meer informatie`)
+    .then(() =>bot.say(`%[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
     receive: () => 'processing'
 },
 
