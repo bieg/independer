@@ -88,7 +88,6 @@ updateOntvangen: {
         case 'Ja - graag':
             return bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
             .then(() => 'update_ja');
-
           break;
           case 'Nee, bedankt':
               receive: () => 'bye'
