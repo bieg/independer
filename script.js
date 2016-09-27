@@ -58,8 +58,7 @@ selecteerHypotheek: {
             .then(() => 'askName')
           break;
       case 'Starters hypotheek':
-          prompt: (bot) => bot.say(`hoi`),
-          return bot.say(`![](http:www.bieg.nl/beeld/woningen.jpg)`)
+          return bot.say(`hoi`)
           .then(() => bot.say(`Wat voor type woning zoek je? %[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
           .then(() => 'processing')
             break;
