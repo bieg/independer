@@ -87,7 +87,7 @@ updateOntvangen: {
       switch(message.text) {
         case 'update_ja':
             return bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
-            .then(() => 'update_ja')
+            .then(() => 'updateJa')
           break;
           case 'update_nee':
               receive: () => 'bye')
@@ -100,13 +100,14 @@ updateOntvangen: {
 }
 },
 
-update_ja: {
-    receive: (bot, message) => {
-      const emailVisitor : message.text;
-      return bot.setProp('emailVisitor', emailVisitor)
-      .then(()  => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
-      .then(() => 'bye');
-    }
+updateJa: {
+    // receive: (bot, message) => {
+    //   const emailVisitor : message.text;
+    //   return bot.setProp('emailVisitor', emailVisitor)
+    //   .then(()  => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
+    //   .then(() => 'bye');
+    // }
+    receive: () => 'processing' 
 },
 
 
