@@ -66,14 +66,15 @@ selecteerHypotheek: {
               break;
         case 'Nieuwe hypotheek':
           return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
-          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden.`)
+          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden.`))
           .then(() => bot.say(` %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`))
-            .then(() => 'processing')
+          .then(() => 'processing')
           break;
         case 'Hypotheek oversluiten':
           return bot.say(`Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
-          .then(()=> bot.say('Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja - graag](postback:updateJa) %[Nee, bedankt](postback:updateNee)'))
-            .then(() => 'updateOntvangen')
+          .then(() => bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? `))
+          .then(() =>bot.say(`%[Ja - graag](postback:updateJa) %[Nee, bedankt](postback:updateNee)`))
+          .then(() => 'updateOntvangen')
           break;
         default:
           return bot.say(`...`)
@@ -174,7 +175,7 @@ lastCheck: {
 },
 
 bye: {
-    prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd'),
+    prompt: (bot) => bot.say(`Fijn je gesproken te hebben. Bedankt voor je tijd`),
     receive: ()  => 'finish'
 },
 
