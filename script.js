@@ -89,7 +89,7 @@ updateOntvangen: {
             return bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
             .then(() => 'update_ja');
           break;
-          case 'Nee, bedankt':
+          case 'update_nee':
               receive: () => 'bye'
               break;
           default:
@@ -101,6 +101,7 @@ updateOntvangen: {
 },
 
 update_ja: {
+    // prompt: (bot) => bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
     // receive: (bot, message) => {
     //   const emailVisitor : message.text;
     //   return bot.setProp('emailVisitor', emailVisitor)
