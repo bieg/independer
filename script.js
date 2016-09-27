@@ -87,11 +87,11 @@ selecteerHypotheek: {
 updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
-        case 'update_ja':
+        case 'Ja - graag':
             return bot.say('Laat je dan even je email achter? Dan houden we je op de hoogte...')
             .then(() => 'updateJa')
           break;
-          case 'update_nee':
+          case 'Nee, bedankt':
               receive: () => 'bye')
               break;
           default:
