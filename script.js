@@ -62,19 +62,17 @@ selecteerHypotheek: {
       //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
           return bot.say(`Wat voor type woning zoek je? `)
           .then(() => bot.say(`%[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
-          .then(() => 'hypotheektype_starter')
+          .then(() => 'hypotheek_starter')
               break;
         case 'Nieuwe hypotheek':
-          return bot.say('Helaas biedt Independer momenteel alleen Starters een hypotheek aan.')
-          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden.`))
-          .then(() => bot.say(` %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`))
-          .then(() => 'processing')
+          return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
+          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`))
+            .then(() => 'finish')
           break;
         case 'Hypotheek oversluiten':
-          return bot.say('Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.')
-          .then(() => bot.say('Als het allemaal wel zo ver is, wil je dan een update ontvangen? '))
-          .then(() => bot.say( ' %[Ja - graag](postback:updateJa) %[Nee, bedankt](postback:updateNee)'))
-          .then(() => 'updateOntvangen')
+          return bot.say(`Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
+          .then(()=> bot.say('Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja - graag](postback:update_ja) %[Nee, bedankt](postback:update_nee)'))
+            .then(() => 'updateOntvangen')
           break;
         default:
           return bot.say(`...`)
@@ -85,44 +83,41 @@ selecteerHypotheek: {
 },
 
 updateOntvangen: {
-//     receive: (bot, message) => {
-//       switch(message.text) {
-//         case 'Ja - graag':
-//             return bot.say('Laat je dan even je email achter? Dan houden we je op de hoogte...')
-//             .then(() => 'updateJa')
-//           break;
-//           case 'Nee, bedankt':
-//               receive: () => 'bye')
-//               break;
-//           default:
-//             return bot.say('...')
-//               .then(() => 'processing')
-//             break;
-// }
-// }
+    receive: (bot, message) => {
+      switch(message.text) {
+        case 'update_ja':
+            return bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
+            .then(() => 'update_ja');
+
+          break;
+          case 'update_nee':
+              receive: () => 'bye'
+              break;
+          default:
+            return bot.say(`...`)
+              .then(() => 'processing')
+            break;
+}
+}
 },
 
-updateJa: {
+update_ja: {
+    // prompt: (bot) => bot.say(`Laat je dan even je email achter? Dan houden we je op de hoogte...`)
     // receive: (bot, message) => {
     //   const emailVisitor : message.text;
     //   return bot.setProp('emailVisitor', emailVisitor)
     //   .then(()  => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
-    //   .then(() => 'bye');
+    //   .then(() => 'lastCheck');
     // }
-//    receive: () => 'processing'
 },
 
-updateNee: {
-    receive: () => 'processing'
-},
 
 hypotheekkeuze_appartement: {
-  receive: (bot,message)  => {
+receive: (bot,message)  => {
     //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     receive: () => 'askName'
-    }
+}
 },
-
 hypotheekkeuze_huis: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
   receive: () => 'askName'
@@ -132,42 +127,40 @@ hypotheekkeuze_vakantiewoning: {
     receive: () => 'askName'
 },
 hypotheektype_starter: {
-    //prompt: (bot) => bot.say('Pleasure meeting you - starter'),
+    prompt: (bot) => bot.say('Pleasure meeting you - starter'),
     receive: () => 'processing'
 },
 hypotheektype_nieuw: {
-    // prompt: (bot) => bot.say('Independer biedt momenteel alleen voor Starters een hypotheek. ')
-    // .then(() => bot.say('Onderstaande link bied je meer informatie'))
-    // .then(() =>bot.say('%[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)')),
-    // receive: () => 'processing'
+    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
+    receive: () => 'processing'
 },
 
 askName: {
-  // receive: (bot, message) => {
-  //   switch(message.text) {
-  //       case 'Appartement':
-  //         return bot.say('Nice! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...')
-  //         .then(() => 'vervolgVragen')
-  //         break;
-  //     case 'Huis':
-  //         return bot.say('Leuk! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...')
-  //         .then(() => 'vervolgVragen')
-  //         break;
-  //     default:
-  //       return bot.say('...')
-  //         .then(() => 'processing')
-  //       break;
-  //   }
-  //   }
+  receive: (bot, message) => {
+    switch(message.text) {
+        case 'Appartement':
+          return bot.say(`Nice! Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...`)
+          .then(() => 'vervolgVragen')
+          break;
+      case 'Huis':
+          return bot.say(`Leuk :) Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...`)
+          .then(() => 'vervolgVragen')
+          break;
+      default:
+        return bot.say(`...`)
+          .then(() => 'processing')
+        break;
+    }
+    }
 },
 
 vervolgVragen: {
-  // receive: (bot, message) => {
-  //       const name = message.text;
-  //       return bot.setProp('name', name)
-  //           .then(() => bot.say('Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.'))
-  //           .then(() => 'lastCheck');
-  //   }
+  receive: (bot, message) => {
+        const name = message.text;
+        return bot.setProp('name', name)
+            .then(() => bot.say(`Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.`))
+            .then(() => 'lastCheck');
+    }
 },
 
 lastCheck: {
