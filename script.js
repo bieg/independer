@@ -58,7 +58,7 @@ selecteerHypotheek: {
             .then(() => 'vervolgVragen')
           break;
           case 'Starters hypotheek':
-            prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/woningen.jpg)`)
+            prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/woningen.jpg)`),
           return bot.say(`Wat voor type woning zoek je? %[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`)
             break;
         case 'Nieuwe hypotheek':
@@ -114,7 +114,7 @@ hypotheekkeuze_appartement: {
   //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     receive: () => 'processing'
 },
-hypotheekkeuze_woning: {
+hypotheekkeuze_huis: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
   receive: () => 'askName'
 },
