@@ -53,15 +53,15 @@ start: {
 selecteerHypotheek: {
     receive: (bot, message) => {
       switch(message.text) {
-        case 'Hoi':
+      case 'Hoi':
             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
             .then(() => 'askName')
           break;
       case 'Starters hypotheek':
       //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
           return bot.say(`Wat voor type woning zoek je? %[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`)
-          .then(() => 'processing')
-            break;
+          .then(() => 'hypotheek_starter')
+              break;
         case 'Nieuwe hypotheek':
           return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
           .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`))
@@ -118,7 +118,6 @@ receive: (bot,message)  => {
     receive: () => 'askName'
 }
 },
-
 hypotheekkeuze_huis: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
   receive: () => 'askName'
@@ -126,6 +125,10 @@ hypotheekkeuze_huis: {
 hypotheekkeuze_vakantiewoning: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     receive: () => 'askName'
+},
+hypotheektype_starter: {
+    prompt: (bot) => bot.say('Pleasure meeting you - starter'),
+    receive: () => 'processing'
 },
 hypotheektype_nieuw: {
     prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
