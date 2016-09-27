@@ -131,8 +131,8 @@ hypotheektype_starter: {
 },
 hypotheektype_nieuw: {
     prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. `)
-    .then(() => bot.say(`Onderstaande link bied je meer informatie`)
-    .then(() =>bot.say(`%[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
+    .then(() => bot.say(`Onderstaande link bied je meer informatie`))
+    .then(() =>bot.say(`%[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`)),
     receive: () => 'processing'
 },
 
