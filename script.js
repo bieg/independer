@@ -86,8 +86,12 @@ updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
         case 'Ja - graag':
-            return bot.say(`Mooi - laat je dan even je email achter?`)
-            .then(() => 'update_ja');
+            return bot.say('Mooi - op welk email adres kan ik je bereiken?')
+            receive: (bot, message) => {
+            const emailVisitor = message.text;
+            return bot.setProp('emailVisitor', emailVisitor)
+              .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
+              .then(() => 'bye');
           break;
           case 'update_nee':
               receive: () => 'bye'
@@ -101,14 +105,13 @@ updateOntvangen: {
 },
 
 update_ja: {
-      prompt: (bot) => bot.say('Dan houden we je op de hoogte zodra er weer nieuws is.'),
-      receive: (bot, message) => {
-      const emailVisitor = message.text;
-      console.log('email'+message.text);
-      return bot.setProp('emailVisitor', emailVisitor)
-        .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
-        .then(()  =>'processing')
-   }
+  //     prompt: (bot) => bot.say('Dan houden we je op de hoogte zodra er weer nieuws is.'),
+  //     receive: (bot, message) => {
+  //     const emailVisitor = message.text;
+  //     return bot.setProp('emailVisitor', emailVisitor)
+  //       .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
+  //       .then(()  =>'processing')
+  //  }
 },
 
 hypotheekkeuze_appartement: {
