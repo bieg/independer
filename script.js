@@ -82,10 +82,6 @@ selecteerHypotheek: {
     }
 },
 
-toonOverzicht: {
-        return bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
-},
-
 updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
