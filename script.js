@@ -165,14 +165,21 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen?  %[Ja..](postback:start) %[Nee dank je](postback:bye)'),
+    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen?  %[Ja](postback:speak) %[Nee bedankt](postback:bye)'),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
                   receive: ()  => 'bye'
                   break;
+             case 'Ja':
+                  receive: () => 'speak'
+                  break;
+            case 'Nee bedankt'
+                  receive: () => 'bye'
+                  break;
+            }
             default:
-              return bot.say(`...`)
+              return bot.say('...')
                 .then(() => 'processing')
               break;
             }
