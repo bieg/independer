@@ -103,8 +103,9 @@ updateOntvangen: {
 update_ja: {
   prompt: (bot) => bot.say('Wat is je email adres?'),
       receive: (bot, message) => {
-        const emailVisitor = message.text;
-          .then(() => 'processing')
+        return bot.say('...');
+  //          const emailVisitor = message.text;
+  //          //return bot.setProp('emailVisitor', emailVisitor)
   //           .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
   //           .then(()  =>'processing')
     }
