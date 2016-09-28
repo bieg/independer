@@ -101,12 +101,12 @@ updateOntvangen: {
 },
 
 update_ja: {
-      prompt: (bot) => bot.say('Wat is je email adres? Dan  kan ik je mailen zodra er weer nieuws is.'),
+      prompt: (bot) => bot.say('Dan houden we je op de hoogte zodra er weer nieuws is.')
        receive: (bot, message) => {
            const emailVisitor = message.text;
            return bot.setProp('emailVisitor', emailVisitor)
-          .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
-          .then(()  =>'processing')
+            .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
+            .then(()  =>'processing')
    }
 },
 
@@ -129,7 +129,7 @@ hypotheektype_starter: {
     receive: () => 'processing'
 },
 hypotheektype_nieuw: {
-    prompt: (bot) => bot.say('Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)'),
+    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
     receive: () => 'processing'
 },
 
@@ -141,7 +141,7 @@ askName: {
           .then(() => 'vervolgVragen')
           break;
       case 'Huis':
-          return bot.say(`Leuk!`)
+          return bot.say(`Leuk :)`)
           .then(() => 'vervolgVragen')
           break;
       default:
@@ -157,7 +157,7 @@ vervolgVragen: {
   receive: (bot, message) => {
       const name = message.text;
       return bot.setProp('name', name)
-          .then(() => bot.say('Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.'))
+          .then(() => bot.say(`Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.`))
           .then(() => 'lastCheck');
     }
 },
