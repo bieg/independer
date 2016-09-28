@@ -86,7 +86,7 @@ updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
         case 'Ja - graag':
-            return bot.say('Top! Dan  kan ik je mailen zodra er weer nieuws is.' )
+            return bot.say(`Mooi `)
             .then(() => 'update_ja');
           break;
           case 'Nee, bedankt':
@@ -101,9 +101,9 @@ updateOntvangen: {
 },
 
 update_ja: {
-      prompt: (bot) => bot.say('Wat is je email adres?')
+      prompt: (bot) => bot.say('Wat is je email adres? Dan  kan ik je mailen zodra er weer nieuws is.')
        receive: (bot, message) => {
-           const emailVisitor = message.text
+           const emailVisitor = message.text;
            return bot.setProp('emailVisitor', emailVisitor)
           .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
           .then(()  =>'processing')
