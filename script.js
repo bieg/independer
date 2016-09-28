@@ -111,7 +111,7 @@ update_ja: {
 },
 update_nee: {
   receive: () => 'bye'
-}
+},
 
 hypotheekkeuze_appartement: {
 receive: (bot,message)  => {
