@@ -104,7 +104,8 @@ update_ja: {
   prompt: (bot) => bot.say('Wat is je email adres?'),
       receive: (bot, message) => {
         const emailVisitor = message.text;
-             .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
+          .then(() => 'lastCheck')
+  //           .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
   //           .then(()  =>'processing')
     }
 },
