@@ -177,7 +177,6 @@ lastCheck: {
             case 'Nee bedankt'
                   receive: () => 'bye'
                   break;
-            }
             default:
               return bot.say('...')
                 .then(() => 'processing')
