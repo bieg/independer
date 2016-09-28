@@ -105,11 +105,8 @@ update_ja: {
       receive: (bot, message) => {
         const emailVisitor = message.text;
         return bot.say('...')
-          .then(() => 'processing')
-  //          const emailVisitor = message.text;
-  //          //return bot.setProp('emailVisitor', emailVisitor)
-  //           .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
-  //           .then(()  =>'processing')
+            .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
+            .then(()  =>'processing')
     }
 },
 
