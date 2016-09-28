@@ -174,7 +174,7 @@ lastCheck: {
              case 'Ja':
                   receive: () => 'speak'
                   break;
-            case 'Nee bedankt'
+            case 'Nee bedankt':
                   receive: () => 'bye'
                   break;
             default:
