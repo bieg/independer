@@ -24,6 +24,11 @@ if ( myDate.getHours() > 17 && myDate.getHours() <= 24 )
 {
 groet = "Goedenavond";
 }
+else
+if (myDate.getHours() > 20 && myDate.getHours()<=8)
+{
+  groet = 'Goedenavond, bedankt voor je bezoek. Op dit moment is Independer echter gesloten. Uiteraard kun je met onze IndyBot praten maar er is er helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan altijd je vraag doormailen naar inf@independer. Dan komt het altijd goed.';
+}
 else  /* the hour is not between 0 and 24, so something is wrong */
 {
 groet = "Welkom";
