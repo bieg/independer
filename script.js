@@ -59,10 +59,8 @@ selecteerHypotheek: {
             .then(() => 'askName')
           break;
       case 'Starters hypotheek':
-      //prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-
           return bot.say(`Wat voor type woning zoek je? `)
-          .then(() => bot.say('![](http:www.bieg.nl/beeld/appartement.jpg)'))
+          .then(() => 'toonOverzicht')
           .then(() => bot.say(`%[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
           .then(() => 'hypotheek_starter')
               break;
@@ -84,11 +82,15 @@ selecteerHypotheek: {
     }
 },
 
+toonOverzicht: {
+            return bot.say('![](http:www.bieg.nl/beeld/woningen.jpg)'))
+}
+
 updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
         case 'Ja - graag':
-            return bot.say(`Leuk, dan houd ik  je op de hoogte zodra er weer nieuws is.' `)
+            return bot.say(`Leuk, dan houd ik  je op de hoogte zodra er weer nieuws is.`)
             .then(() => 'update_ja');
           break;
           case 'Nee, bedankt':
