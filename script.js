@@ -165,7 +165,7 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    // prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA](postback:nogietsanders) %[NEE](postback:bye) '),
+    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA](postback:nogietsanders) %[NEE](postback:bye) '),
     // .then(()  => 'processing');
 },
 
