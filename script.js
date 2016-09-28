@@ -101,13 +101,13 @@ updateOntvangen: {
 },
 
 update_ja: {
-      prompt: (bot) => bot.say('Dan houden we je op de hoogte zodra er weer nieuws is.'),
-      receive: (bot, message) => {
-      const emailVisitor = message.text;
-      return bot.setProp('emailVisitor', emailVisitor)
-        .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
-        .then(()  =>'processing')
-   }
+  //     prompt: (bot) => bot.say('Dan houden we je op de hoogte zodra er weer nieuws is.'),
+  //     receive: (bot, message) => {
+  //     const emailVisitor = message.text;
+  //     return bot.setProp('emailVisitor', emailVisitor)
+  //       .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
+  //       .then(()  =>'processing')
+  //  }
 },
 
 hypotheekkeuze_appartement: {
