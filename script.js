@@ -86,15 +86,7 @@ updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
         case 'Ja - graag':
-         .then(() => 'update_ja');
-
-//
-
-
-
-//
-
-      //
+              receive: () => 'update_ja')
           break;
           case 'Nee, bedankt':
               receive: () => 'bye'
