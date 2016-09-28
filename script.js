@@ -165,7 +165,7 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen?  %[Ja..](postback:start) %[Nee dank je](postback:finish)'),
+    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen?  %[Ja..](postback:start) %[Nee dank je](postback:bye)'),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
