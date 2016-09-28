@@ -83,7 +83,7 @@ selecteerHypotheek: {
 },
 
 toonOverzicht: {
-        return bot.say('![](https://github.com/bieg/independerChat/blob/master/img/Stride.png)'))
+        return bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
 },
 
 updateOntvangen: {
