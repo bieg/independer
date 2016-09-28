@@ -71,7 +71,7 @@ selecteerHypotheek: {
           break;
         case 'Hypotheek oversluiten':
           return bot.say(`Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
-          .then(()=> bot.say('Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja - graag](postback:update_ja) %[Nee, bedankt](postback:update_nee)'))
+          .then(()=> bot.say('Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja - graag](postback:update_ja) %[Nee, bedankt] (postback:update_nee)'))
             .then(() => 'updateOntvangen')
           break;
         default:
@@ -93,7 +93,7 @@ updateOntvangen: {
               receive: () => 'bye'
               break;
           default:
-            return bot.say(`...`)
+            return bot.say('...')
               .then(() => 'processing')
             break;
 }
@@ -111,6 +111,9 @@ update_ja: {
             .then(()  =>'lastCheck')
     }
 },
+update_nee: {
+  receive: () => 'bye'
+}
 
 hypotheekkeuze_appartement: {
 receive: (bot,message)  => {
@@ -131,7 +134,7 @@ hypotheektype_starter: {
     receive: () => 'processing'
 },
 hypotheektype_nieuw: {
-    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
+    prompt: (bot) => bot.say('Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)'),
     receive: () => 'processing'
 },
 
