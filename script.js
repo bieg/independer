@@ -104,8 +104,8 @@ update_ja: {
   prompt: (bot) => bot.say('Wat is je email adres?'),
       receive: (bot, message) => {
         const emailVisitor = message.text;
-            .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
-            .then(()  =>'processing')
+             .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
+  //           .then(()  =>'processing')
     }
 },
 
@@ -128,7 +128,7 @@ hypotheektype_starter: {
     receive: () => 'processing'
 },
 hypotheektype_nieuw: {
-    prompt: (bot) => bot.say('Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)'),
+    prompt: (bot) => bot.say(`Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`),
     receive: () => 'processing'
 },
 
@@ -156,19 +156,19 @@ vervolgVragen: {
   receive: (bot, message) => {
       const name = message.text;
       return bot.setProp('name', name)
-          .then(() => bot.say('Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.'))
+          .then(() => bot.say(`Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.`))
           .then(() => 'lastCheck');
     }
 },
 
 lastCheck: {
-  //  prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA](postback:speak) %[NEE](postback:bye) '),
-  // .then(()  => 'processing');
+    // prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA](postback:nogietsanders) %[NEE](postback:bye) '),
+    // .then(()  => 'processing');
 },
 
 bye: {
-    // prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd'),
-    // receive: ()  => 'finish'
+    prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd'),
+    receive: ()  => 'finish'
 },
 
 
