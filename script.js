@@ -104,7 +104,6 @@ update_ja: {
   prompt: (bot) => bot.say('Wat is je email adres?'),
       receive: (bot, message) => {
         const emailVisitor = message.text;
-        return bot.say('...')
             .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
             .then(()  =>'processing')
     }
@@ -163,8 +162,8 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    // prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA](postback:nogietsanders) %[NEE](postback:bye) '),
-    // .then(()  => 'processing');
+    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen? %[JA](postback:speak) %[NEE](postback:bye) '),
+    .then(()  => 'processing');
 },
 
 bye: {
