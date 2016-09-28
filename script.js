@@ -101,9 +101,9 @@ updateOntvangen: {
 },
 
 update_ja: {
-      prompt: (bot) => bot.say('Wat is je email adres? Dan  kan ik je mailen zodra er weer nieuws is.');
+      prompt: (bot) => bot.say('Wat is je email adres? Dan  kan ik je mailen zodra er weer nieuws is.')
        receive: (bot, message) => {
-           const emailVisitor = message.text
+           const emailVisitor = message.text;
            return bot.setProp('emailVisitor', emailVisitor)
           .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
           .then(()  =>'processing')
@@ -157,7 +157,7 @@ vervolgVragen: {
   receive: (bot, message) => {
       const name = message.text;
       return bot.setProp('name', name)
-          .then(() => bot.say('Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.'))
+          .then(() => bot.say(`Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.`))
           .then(() => 'lastCheck');
     }
 },
