@@ -86,20 +86,15 @@ updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
         case 'Ja - graag':
-            return bot.say(`Mooi - op welk emailadres kan ik je bereiken?`)
+         .then(() => 'update_ja');
 
 //
 
-receive: (bot, message) => {
-const emailVisitor = message.text;
-return bot.setProp('emailVisitor', emailVisitor)
-  .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
-  .then(()  =>'processing')
-}
+
 
 //
 
-      //      .then(() => 'update_ja');
+      //
           break;
           case 'Nee, bedankt':
               receive: () => 'bye'
@@ -113,13 +108,20 @@ return bot.setProp('emailVisitor', emailVisitor)
 },
 
 update_ja: {
-      prompt: (bot) => bot.say('Dan houden we je op de hoogte zodra er weer nieuws is.'),
-      receive: (bot, message) => {
-      const emailVisitor = message.text;
-      return bot.setProp('emailVisitor', emailVisitor)
-        .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
-        .then(()  =>'processing')
-   }
+  //     prompt: (bot) => bot.say('Dan houden we je op de hoogte zodra er weer nieuws is.'),
+  //     receive: (bot, message) => {
+  //     const emailVisitor = message.text;
+  //     return bot.setProp('emailVisitor', emailVisitor)
+  //       .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
+  //       .then(()  =>'processing')
+  //  }
+  receive: (bot, message) => {
+    return bot.say('Mooi - op welk emailadres kan ik je bereiken?')
+  const emailVisitor = message.text;
+  return bot.setProp('emailVisitor', emailVisitor)
+    .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
+    .then(()  =>'processing')
+  }
 },
 
 hypotheekkeuze_appartement: {
