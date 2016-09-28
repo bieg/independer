@@ -103,7 +103,7 @@ updateOntvangen: {
 update_ja: {
   prompt: (bot) => bot.say('Wat is je email adres?'),
       receive: (bot, message) => {
-          const emailVisitor = message.text;
+          const emailVisitor=message.text.trim();
           return bot.setProp('emailVisitor', emailVisitor)
               .then(()  => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
               .then(()  =>'lastCheck')
@@ -166,7 +166,7 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen?  %[Ja](postback:speak) %[Nee bedankt](postback:bye)'),
+    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen?  %[Ja](postback:speak) %[Nee](postback:bye)'),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
@@ -175,11 +175,11 @@ lastCheck: {
              case 'Ja':
                   receive: () => 'speak'
                   break;
-            case 'Nee bedankt':
+            case 'Nee':
                   receive: () => 'bye'
                   break;
             default:
-              return bot.say('...')
+              return bot.say(`...`)
                 .then(() => 'processing')
               break;
             }
