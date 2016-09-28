@@ -108,7 +108,7 @@ update_ja: {
               .then(() => bot.say('op'))
   //          //return bot.setProp('emailVisitor', emailVisitor)
   //           .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
-  //           .then(()  =>'processing')
+            .then(()  =>'processing')
     }
 },
 
