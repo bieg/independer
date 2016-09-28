@@ -106,9 +106,8 @@ update_ja: {
           const emailVisitor = message.text;
           return bot.setProp('emailVisitor', emailVisitor)
               .then(() => bot.say(message.text))
-  //          //return bot.setProp('emailVisitor', emailVisitor)
-  //           .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
-            .then(()  =>'lastCheck')
+              .then(()  => bot.say('Ok - dan hou ik je via ${emailVisitor} op de hoogte.'))
+              .then(()  =>'lastCheck')
     }
 },
 update_nee: {
