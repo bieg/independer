@@ -43,7 +43,7 @@ setTimeout(resolve, ms);
 module.exports = new Script({
 
  processing: {
-prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')),
+//prompt: (bot) => bot.say('...'),
  receive: () => 'processing'
  },
 
@@ -168,8 +168,7 @@ vervolgVragen: {
   receive: (bot, message) => {
       const name = message.text;
       return bot.setProp('name', name)
-          .then(() => bot.say(`Hoi ${name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
-          .then(() = > bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'))
+          .then(() => bot.say('Hoi ${name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.'))
           .then(() => 'processing');
     }
 },
