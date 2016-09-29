@@ -82,7 +82,7 @@ selecteerHypotheek: {
             .then(() => 'updateOntvangen')
           break;
         default:
-          return bot.say(`...`)
+          return bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`)
             .then(() => 'processing')
           break;
       }
@@ -100,7 +100,7 @@ updateOntvangen: {
               receive: () => 'bye'
               break;
           default:
-            return bot.say('...')
+            return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
               .then(() => 'processing')
             break;
 }
@@ -186,7 +186,7 @@ lastCheck: {
                   receive: () => 'bye'
                   break;
             default:
-              return bot.say(`...`)
+              return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
                 .then(() => 'processing')
               break;
             }
