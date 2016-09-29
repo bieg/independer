@@ -143,15 +143,15 @@ hypotheektype_nieuw: {
 woningType: {
   receive: (bot, message) => {
     switch(message.text) {
-        case 'Appartement':
+        case '🏬 Appartement':
           return bot.say(`Nice!`)
           .then(() => 'vervolgVragen')
           break;
-      case 'Huis':
+      case '🏠 Huis':
           return bot.say(`Leuk`)
           .then(() => 'vervolgVragen')
           break;
-    case 'Vakantiewoning':
+    case '📭 Vakantiewoning':
           return bot.say(`Gezellig`)
           .then(() => 'vervolgVragen')
           break;
