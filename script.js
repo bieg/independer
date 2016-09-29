@@ -77,7 +77,7 @@ selecteerHypotheek: {
             .then(() => 'finish')
           break;
         case 'Hypotheek oversluiten':
-          return bot.say(`Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
+          return bot.say(`😟Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
           .then(()=> bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja - graag](postback:update_ja) %[Nee,bedankt](postback:update_nee)`))
             .then(() => 'updateOntvangen')
           break;
