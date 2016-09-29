@@ -52,7 +52,7 @@ start: {
         const opening = message.text.trim().toUpperCase();
         return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
         .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
-        .then(() => bot.say(`%[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
+        .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
         .then(() => 'selecteerHypotheek');
     }
 },
@@ -64,10 +64,10 @@ selecteerHypotheek: {
             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
             .then(() => 'askName')
           break;
-      case 'Starters hypotheek':
+      case 'Starters Hypotheek':
           return bot.say(`Wat voor type woning zoek je? `)
           .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
-          .then(() => 'hypotheekStarter')
+          .then(() => 'woningType')
               break;
         case 'Nieuwe hypotheek':
           return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
@@ -140,7 +140,7 @@ hypotheektype_nieuw: {
     receive: () => 'processing'
 },
 
-askName: {
+woningType: {
   receive: (bot, message) => {
     switch(message.text) {
         case 'Appartement':
@@ -168,13 +168,13 @@ vervolgVragen: {
   receive: (bot, message) => {
       const name = message.text;
       return bot.setProp('name', name)
-          .then(() => bot.say(`Hoi ${name}. Ik heb nog wat vragen voor je om verder te kunnen.`))
+          .then(() => bot.say(`Hoi ${name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
           .then(() => 'lastCheck');
     }
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  %[Ja](postback:speak) %[Nee](postback:bye)'),
+    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🚦  %[Ja, nou je het zegt ](postback:speak) %[Nee hoor](postback:bye)'),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
