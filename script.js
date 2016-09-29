@@ -25,9 +25,9 @@ if ( myDate.getHours() > 17 && myDate.getHours() <= 24 )
 groet = "Goedenavond";
 }
 else
-if (myDate.getHours() <=8  && myDate.getHours() > 20 )
+if (myDate.getHours() <=8  || myDate.getHours() > 20 )
 {
-  groet = 'Goedenavond, bedankt voor je bezoek. Op dit moment is Independer echter gesloten. Uiteraard kun je met onze IndyBot praten maar er is er helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan altijd je vraag doormailen naar inf@independer. Dan komt het altijd goed.';
+  groet = 'Goedenavond, bedankt voor je bezoek. Op dit moment is Independer echter gesloten. Uiteraard kun je met onze IndyBot praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen naar info@independer. Dan komt het altijd goed.';
 }
 else  /* the hour is not between 0 and 24, so something is wrong */
 {
@@ -50,7 +50,8 @@ module.exports = new Script({
 start: {
     receive: (bot,message) => {
         const opening = message.text.trim().toUpperCase();
-        return bot.say(`${groet}, wat voor soort hypotheek zoek je? `)
+        return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
+        .then(() => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`))
         .then(() => bot.say(`%[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
         .then(() => 'selecteerHypotheek');
     }
