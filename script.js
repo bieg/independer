@@ -51,7 +51,7 @@ start: {
     receive: (bot,message) => {
         const opening = message.text.trim().toUpperCase();
         return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
-        .then(() => bot.say(`![]('http:www.bieg.nl/beeld/appartement.jpg')`))
+        .then(() => bot.say(`![](www.bieg.nl/beeld/appartement.jpg)`))
         .then(() => bot.say(`%[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
         .then(() => 'selecteerHypotheek');
     }
