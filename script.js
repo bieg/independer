@@ -43,16 +43,16 @@ setTimeout(resolve, ms);
 module.exports = new Script({
 
  processing: {
-//prompt: (bot) => bot.say('...'),
+prompt: (bot) =>  bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')),
  receive: () => 'processing'
  },
 
 start: {
     receive: (bot,message) => {
         const opening = message.text.trim().toUpperCase();
-        return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
-        .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
-        .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
+        return bot.say('${groet}... Wat voor soort hypotheek zoek je?')
+        .then(() => bot.say('![](http://www.bieg.nl/beeld/woningen.jpg)'))
+        .then(() => bot.say('%[Starters Hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)'))
         .then(() => 'selecteerHypotheek');
     }
 },
@@ -169,7 +169,7 @@ vervolgVragen: {
       const name = message.text;
       return bot.setProp('name', name)
           .then(() => bot.say(`Hoi ${name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
-          .then(() => 'speak');
+          .then(() => 'processing');
     }
 },
 
