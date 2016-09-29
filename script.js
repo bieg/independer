@@ -148,7 +148,7 @@ askName: {
           .then(() => 'vervolgVragen')
           break;
       case 'Huis':
-          return bot.say(`Leuk :)`)
+          return bot.say(`Leuk`)
           .then(() => 'vervolgVragen')
           break;
     case 'Vakantiewoning':
@@ -156,7 +156,7 @@ askName: {
           .then(() => 'vervolgVragen')
           break;
       default:
-        return bot.say(`...`)
+        return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
           .then(() => 'processing')
         break;
         }
