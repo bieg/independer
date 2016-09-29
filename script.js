@@ -169,7 +169,7 @@ vervolgVragen: {
       const name = message.text;
       return bot.setProp('name', name)
           .then(() => bot.say(`Hoi ${name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
-          .then(() => 'lastCheck');
+          .then(() => 'speak');
     }
 },
 
