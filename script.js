@@ -12,26 +12,26 @@ var groet = '';
 /* hour is before noon */
 if ( myDate.getHours() < 12 )
 {
-groet = "Goeiemorgen";
+groet = "Goeiemorgen 🌝";
 }
 else  /* Hour is from noon to 5pm (actually to 5:59 pm) */
 if ( myDate.getHours() >= 12 && myDate.getHours() <= 17 )
 {
-groet = "Goedendag";
+groet = "Goedendag 🌞";
 }
 else  /* the hour is after 5pm, so it is between 6pm and midnight */
 if ( myDate.getHours() > 17 && myDate.getHours() <= 24 )
 {
-groet = "Goedenavond";
+groet = "Goedenavond 🌙";
 }
 else
 if (myDate.getHours() <=8  || myDate.getHours() > 20 )
 {
-  groet = 'Goedenavond, bedankt voor je bezoek. Op dit moment is Independer echter gesloten. Uiteraard kun je met onze IndyBot praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen naar info@independer. Dan komt het altijd goed.';
+  groet = "Goedenavond, bedankt voor je bezoek. Op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
 }
 else  /* the hour is not between 0 and 24, so something is wrong */
 {
-groet = "Welkom";
+groet = "Welkom. ";
 }
 
 function wait(ms) {
@@ -71,8 +71,7 @@ selecteerHypotheek: {
               break;
         case 'Nieuwe hypotheek':
           return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
-          .then(() => bot.say('http://www.bieg.nl/beeld/woning.jpg)'))
-          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/jelocatie.aspx)`))
+          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[💼 Zoek Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/jelocatie.aspx)`))
             .then(() => 'finish')
           break;
         case 'Hypotheek oversluiten':
@@ -92,7 +91,7 @@ updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
         case 'Ja - graag':
-            return bot.say(`Leuk, dan houd ik  je op de hoogte zodra er weer nieuws is.`)
+            return bot.say(`👍 Leuk, dan houd ik  je op de hoogte zodra er weer nieuws is.`)
             .then(() => 'update_ja');
           break;
           case 'Nee, bedankt':
@@ -172,7 +171,7 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say('Is er nog iets waar ik  je bij kan helpen?  %[Ja](postback:speak) %[Nee](postback:bye)'),
+    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  %[Ja](postback:speak) %[Nee](postback:bye)'),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
@@ -193,7 +192,7 @@ lastCheck: {
 },
 
 bye: {
-    prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd'),
+    prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd ⏲'),
     receive: ()  => 'finish'
 },
 
