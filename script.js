@@ -25,9 +25,9 @@ if ( myDate.getHours() > 17 && myDate.getHours() <= 24 )
 groet = "Goedenavond 🌙";
 }
 else
-if (myDate.getHours() <=8  || myDate.getHours() > 20 )
+if (myDate.getHours() > 20  || myDate.getHours() <= 8 )
 {
-  groet = "Goedenavond, bedankt voor je bezoek. Op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
+  groet = "Goedenavond 🌙  Bedankt voor je bezoek maar op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot verder praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
 }
 else  /* the hour is not between 0 and 24, so something is wrong */
 {
@@ -67,7 +67,7 @@ selecteerHypotheek: {
       case 'Starters hypotheek':
           return bot.say(`Wat voor type woning zoek je? `)
           .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
-          .then(() => 'hypotheek_starter')
+          .then(() => 'hypotheekStarter')
               break;
         case 'Nieuwe hypotheek':
           return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
@@ -76,7 +76,7 @@ selecteerHypotheek: {
           break;
         case 'Hypotheek oversluiten':
           return bot.say(`😟 Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
-          .then(()=> bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja - graag](postback:update_ja) %[Nee,bedankt](postback:update_nee)`))
+          .then(()=> bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja, dat wil ik wel](postback:update_ja) %[Nee, dat hoeft niet](postback:update_nee)`))
             .then(() => 'updateOntvangen')
           break;
         default:
@@ -90,11 +90,11 @@ selecteerHypotheek: {
 updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
-        case 'Ja - graag':
+        case 'Ja, dat wil ik wel':
             return bot.say(`👍 Leuk, dan houd ik  je op de hoogte zodra er weer nieuws is.`)
             .then(() => 'update_ja');
           break;
-          case 'Nee, bedankt':
+          case 'Nee, dat hoeft niet':
               receive: () => 'bye'
               break;
           default:
@@ -110,7 +110,7 @@ update_ja: {
       receive: (bot, message) => {
           const emailVisitor=message.text.trim();
           return bot.setProp('emailVisitor', emailVisitor)
-              .then(()  => bot.say(`Ok - dan hou ik je via ${emailVisitor} op de hoogte.`))
+              .then(()  => bot.say(`Ok - dan hou ik je via ✉️ ${emailVisitor} op de hoogte.`))
               .then(()  =>'lastCheck')
     }
 },
@@ -132,9 +132,8 @@ hypotheekkeuze_vakantiewoning: {
 //    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
     receive: () => 'askName'
 },
-hypotheektype_starter: {
-    prompt: (bot) => bot.say('Pleasure meeting you - starter'),
-    receive: () => 'processing'
+hypotheekStarter: {
+    receive: () => 'askName'
 },
 hypotheektype_nieuw: {
     prompt: (bot) => bot.say('Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)'),
@@ -150,6 +149,10 @@ askName: {
           break;
       case 'Huis':
           return bot.say(`Leuk :)`)
+          .then(() => 'vervolgVragen')
+          break;
+    case 'Vakantiewoning':
+          return bot.say(`Gezellig`)
           .then(() => 'vervolgVragen')
           break;
       default:
