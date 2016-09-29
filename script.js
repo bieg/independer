@@ -65,19 +65,18 @@ selecteerHypotheek: {
             .then(() => 'askName')
           break;
       case 'Starters hypotheek':
-      //prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-
           return bot.say(`Wat voor type woning zoek je? `)
-          .then(() => bot.say(`%[Appartement](postback:hypotheekkeuze_appartement) %[Huis](postback:hypotheekkeuze_huis) %[Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
+          .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
           .then(() => 'hypotheek_starter')
               break;
         case 'Nieuwe hypotheek':
-          return bot.say(`Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
-          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)`))
+          return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
+          .then(() => bot.say('http://www.bieg.nl/beeld/woning.jpg)'))
+          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/jelocatie.aspx)`))
             .then(() => 'finish')
           break;
         case 'Hypotheek oversluiten':
-          return bot.say(`😟Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
+          return bot.say(`😟 Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
           .then(()=> bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja - graag](postback:update_ja) %[Nee,bedankt](postback:update_nee)`))
             .then(() => 'updateOntvangen')
           break;
