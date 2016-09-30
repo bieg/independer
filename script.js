@@ -66,7 +66,7 @@ selecteerHypotheek: {
           break;
       case 'Starters Hypotheek':
           return bot.say(`Wat voor type woning zoek je? `)
-          .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
+          .then(() => bot.say(`%[🏬 Appartement](reply:hypotheekkeuze_appartement) %[🏠 Huis](reply:hypotheekkeuze_huis) %[📭 Vakantiewoning](reply:hypotheekkeuze_vakantiewoning)`))
           .then(() => 'woningType')
               break;
         case 'Nieuwe hypotheek':
