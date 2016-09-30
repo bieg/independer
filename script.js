@@ -10,9 +10,14 @@ var myDate = new Date();
 var groet = '';
 
 /* hour is before noon */
-if ( myDate.getHours() < 12 )
+if ( myDate.getHours() < 8 )
 {
-groet = "Goeiemorgen 🌝";
+  groet = "Goeiemorgen 🌝.  Bedankt voor je bezoek maar op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot verder praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
+}
+else
+if ( myDate.getHours() >8 )
+{
+  groet = "Goeiemorgen 🌝 ";
 }
 else  /* Hour is from noon to 5pm (actually to 5:59 pm) */
 if ( myDate.getHours() >= 12 && myDate.getHours() <= 17 )
@@ -20,12 +25,12 @@ if ( myDate.getHours() >= 12 && myDate.getHours() <= 17 )
 groet = "Goedendag 🌞";
 }
 else  /* the hour is after 5pm, so it is between 6pm and midnight */
-if ( myDate.getHours() > 17 && myDate.getHours() <= 24 )
+if ( myDate.getHours() > 17&& myDate.getHours() <= 20 )
 {
 groet = "Goedenavond 🌙";
 }
 else
-if (myDate.getHours() > 20  || myDate.getHours() <= 8 )
+if (myDate.getHours() > 20  || myDate.getHours() <= 24 )
 {
   groet = "Goedenavond 🌙  Bedankt voor je bezoek maar op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot verder praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
 }
@@ -107,7 +112,7 @@ updateOntvangen: {
 update_ja: {
   prompt: (bot) => bot.say('Wat is je email adres?'),
       receive: (bot, message) => {
-          const emailer=message.text.trim();
+          const emailer=message.text;
           return bot.setProp('emailer', emailer)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
               .then(()  =>'lastCheck')
@@ -162,7 +167,7 @@ woningType: {
 },
 
 vervolgVragen: {
-  prompt: (bot) => bot.say('Hoe heet je eigelijk? Dat maakt het praten een stuk makkelijker...'),
+  prompt: (bot) => bot.say('Hoe heet je eigelijk? 😋 Dat maakt het praten een stuk makkelijker...'),
   receive: (bot, message) => {
       const name = message.text;
       return bot.setProp('name', name)
@@ -172,7 +177,7 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🚦  %[Ja, nou je het zegt ](postback:verzoek) %[Nee hoor](postback:bye)'),
+    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🚦  %[Ik zoek meer informatie](postback:info) %[Nee hoor](postback:bye)'),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
@@ -192,9 +197,10 @@ lastCheck: {
         }
 },
 
-verzoek: {
-  prompt: (bot) => bot.say('bla'),
-  receive: () => 'processing'
+info: {
+  return bot.say('![](http://www.bieg.nl/beeld/info.pdf)')
+  .then(() => 'Voila 📓 Een beetje leesvoer...')
+    .then(() => 'processing')
 },
 
 bye: {
