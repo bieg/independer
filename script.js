@@ -178,6 +178,9 @@ lastCheck: {
               case 'Nee hoor':
                   receive: ()  => 'bye'
                   break;
+            case 'Ja, nou je het zegt':
+                  receive: () => 'verzoekPDF'
+                  break;
              case 'Ja':
                   receive: () => 'speak'
                   break;
