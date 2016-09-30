@@ -107,9 +107,9 @@ updateOntvangen: {
 update_ja: {
   prompt: (bot) => bot.say('Wat is je email adres?'),
       receive: (bot, message) => {
-          const emailVisitor=message.text.trim();
-          return bot.setProp('emailVisitor', emailVisitor)
-              .then(()  => bot.say(`Ok - dan hou ik je via ✉️ ${emailVisitor} op de hoogte.`))
+          const emailer=message.text.trim();
+          return bot.setProp('emailer', emailer)
+              .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
               .then(()  =>'lastCheck')
     }
 },
@@ -172,7 +172,7 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🚦  %[Ja, nou je het zegt ](postback:speak) %[Nee hoor](postback:bye)'),
+    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🚦  %[Ja, nou je het zegt ](postback:verzoekPDF) %[Nee hoor](postback:bye)'),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
@@ -191,6 +191,12 @@ lastCheck: {
             }
         }
 },
+
+verzoekPDF: {
+    bot.sendMessage  = "Heb je wat algemene informatie voor me?";
+    return bot.say('![](http://www.bieg.nl/beeld/info.pdf)')
+      .then(() => 'processing')
+}
 
 bye: {
     prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd ⏲'),
