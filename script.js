@@ -196,7 +196,7 @@ verzoekPDF: {
     //bot.sendMessage  = "Heb je wat algemene informatie voor me?";
     return bot.say('![](http://www.bieg.nl/beeld/info.pdf)')
       .then(() => 'processing')
-}
+},
 
 bye: {
     prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd ⏲'),
