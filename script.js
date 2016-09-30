@@ -199,7 +199,7 @@ lastCheck: {
 
 info: {
   return bot.say('![](http://www.bieg.nl/beeld/info.pdf)')
-  .then(() => 'Voila 📓 Een beetje leesvoer...')
+  .then(() => bot.say('Voila 📓 Een beetje leesvoer...'))
     .then(() => 'processing')
 },
 
