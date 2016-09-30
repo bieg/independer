@@ -193,7 +193,7 @@ lastCheck: {
 },
 
 verzoekPDF: {
-    prompt: (bot) => bot.sendMessage('Heb je info?'),
+    // prompt: (bot) => bot.sendMessage('Heb je info?'),
     return bot.say('![](http://www.bieg.nl/beeld/info.pdf)'))
       .then(() => 'processing')
 },
