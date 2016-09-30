@@ -197,12 +197,6 @@ lastCheck: {
         }
 },
 
-meerInfo: {
-  return bot.say('![](http://www.bieg.nl/beeld/info.pdf)')
-  .then(() => bot.say('Voila 📓 Een beetje leesvoer...'))
-    .then(() => 'processing')
-},
-
 bye: {
     prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd ⏲'),
     receive: ()  => 'finish'
