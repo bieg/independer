@@ -98,8 +98,7 @@ updateOntvangen: {
               receive: () => 'bye'
               break;
           default:
-            return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
-              .then(() => 'processing')
+            receive => 'processing'
             break;
 }
 }
@@ -156,8 +155,7 @@ woningType: {
           .then(() => 'vervolgVragen')
           break;
       default:
-        return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
-          .then(() => 'processing')
+        receive => 'processing'
         break;
         }
     }
