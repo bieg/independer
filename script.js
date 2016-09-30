@@ -172,17 +172,14 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🚦  %[Ja, nou je het zegt ](postback:verzoekPDF) %[Nee hoor](postback:bye)'),
+    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🚦  %[Ja, nou je het zegt ](postback:verzoek) %[Nee hoor](postback:bye)'),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
                   receive: ()  => 'bye'
                   break;
-            case 'Ja, nou je het zegt':
-                  receive: () => 'verzoekPDF'
-                  break;
-             case 'Ja':
-                  receive: () => 'speak'
+             case 'Ja, nou je het zegt':
+                  receive: () => 'verzoek'
                   break;
             case 'Nee':
                   receive: () => 'bye'
@@ -195,10 +192,9 @@ lastCheck: {
         }
 },
 
-verzoekPDF: {
-    //bot.sendMessage  = "Heb je wat algemene informatie voor me?";
-    return bot.say('![](http://www.bieg.nl/beeld/info.pdf)')
-      .then(() => 'processing')
+verzoek: {
+  prompt: (bot) => bot.say('bla'),
+  receive: () => 'processing'
 },
 
 bye: {
