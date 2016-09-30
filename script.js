@@ -177,14 +177,14 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🚦  %[Ik zoek meer informatie](postback:info) %[Nee hoor](postback:bye)'),
+    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🚦  %[Ik zoek meer informatie](postback:meerInfo) %[Nee hoor](postback:bye)'),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
                   receive: ()  => 'bye'
                   break;
-             case 'Ja, nou je het zegt':
-                  receive: () => 'verzoek'
+             case 'Ik zoek meer informatie':
+                  receive: () => 'meerInfo'
                   break;
             case 'Nee':
                   receive: () => 'bye'
@@ -197,7 +197,7 @@ lastCheck: {
         }
 },
 
-info: {
+meerInfo: {
   return bot.say('![](http://www.bieg.nl/beeld/info.pdf)')
   .then(() => bot.say('Voila 📓 Een beetje leesvoer...'))
     .then(() => 'processing')
