@@ -64,7 +64,7 @@ start: {
   speak: {
           receive: (bot, message) => {
 
-              let upperText = message.text.trim().toUpperCase();
+              let upperText = message.text.trim();
 
               function updateSilent() {
                   switch (upperText) {
