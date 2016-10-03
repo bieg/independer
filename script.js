@@ -188,7 +188,7 @@ receive: () => 'finish'
                   return bot.getProp("silent");
               }
 
-              function woningType() {
+              woningType: {
                 receive: (bot, message) => {
                   switch(message.text) {
                       case '🏬 Appartement':
