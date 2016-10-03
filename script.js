@@ -6,6 +6,8 @@ const Script = require('smooch-bot').Script;
 
 const scriptRules = require('./script.json');
 
+
+//CREATE WELCOME TEXT
 var myDate = new Date();
 var groet = '';
 
@@ -46,11 +48,10 @@ setTimeout(resolve, ms);
 }
 
 module.exports = new Script({
-
- processing: {
-prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
- receive: () => 'processing'
- },
+      // processing: {
+      // prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
+      //  receive: () => 'processing'
+      //  },
 
 start: {
     receive: (bot,message) => {
@@ -60,7 +61,7 @@ start: {
         .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
         .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
         .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
-        .then(() => 'selecteerHypotheek');
+        .then(() => 'speak');
     }
 },
 
@@ -226,6 +227,27 @@ receive: () => 'finish'
 
               function updateSilent() {
                   switch (upperText) {
+                      //THE MORTGAGE STUFF
+                      case 'Hoi':
+                            return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
+                            .then(() => 'askName')
+                          break;
+                      case 'Starters Hypotheek':
+                          return bot.say(`Wat voor type woning zoek je? `)
+                          .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
+                          .then(() => 'woningType')
+                              break;
+                      case 'Nieuwe hypotheek':
+                          return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
+                          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[💼 Zoek Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/jelocatie.aspx)`))
+                            .then(() => 'finish')
+                          break;
+                      case 'Hypotheek oversluiten':
+                          return bot.say(`😟 Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
+                          .then(()=> bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja, dat wil ik wel](postback:update_ja) %[Nee, dat hoeft niet](postback:update_nee)`))
+                            .then(() => 'updateOntvangen')
+                          break;
+                      //THE REST
                       case "CONNECT ME":
                           return bot.setProp("silent", true);
                       case "DISCONNECT":
@@ -244,8 +266,9 @@ receive: () => 'finish'
                       return Promise.resolve("speak");
                   }
 
+                  //BASICALLY ERROR
                   if (!_.has(scriptRules, upperText)) {
-                      return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
+                      return bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`).then(() => 'speak');
                   }
 
                   var response = scriptRules[upperText];
