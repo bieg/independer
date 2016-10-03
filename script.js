@@ -71,12 +71,12 @@ start: {
                       //THE MORTGAGE STUFF
                       case 'Hoi':
                             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
-                            .then(() => 'woningType()')
+                            .then(() => woningType())
                           break;
                       case 'Starters Hypotheek':
                           return bot.say(`Wat voor type woning zoek je? `)
                           .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
-                          .then(() => 'woningType')
+                          .then(() => woningType())
                               break;
                       case 'Nieuwe hypotheek':
                           return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
@@ -98,7 +98,7 @@ start: {
                   }
               }
 
-              woningType: {
+              function woningType(){
                       receive: (bot, message) => {
 
                           const typeWoning = message.text.trim();
@@ -124,16 +124,6 @@ start: {
                           }
                         }
                       }
-
-
-
-              function askName() {
-                woningType: {
-receive: (bot, message) => {
-
-  }
-},
-              }
 
               function getSilent() {
                   return bot.getProp("silent");
