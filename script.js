@@ -188,30 +188,7 @@ receive: () => 'finish'
                   return bot.getProp("silent");
               }
 
-              woningType: {
-                receive: (bot, message) => {
-                  switch(message.text) {
-                      case '🏬 Appartement':
-                        return bot.say(`Nice!`)
-                        .then(() => 'vervolgVragen')
-                        break;
-                    case '🏠 Huis':
-                        return bot.say(`Leuk`)
-                        .then(() => 'vervolgVragen')
-                        break;
-                  case '📭 Vakantiewoning':
-                        return bot.say(`Gezellig`)
-                        .then(() => 'vervolgVragen')
-                        break;
-                    default:
-                      receive => 'processing'
-                      break;
-                      }
-                  }
-              },
-
-
-//CHECK INPUT  FLOW
+              //CHECK INPUT  FLOW
               function processMessage(isSilent) {
                   if (isSilent) {
                       return Promise.resolve("speak");
@@ -243,5 +220,27 @@ receive: () => 'finish'
                   .then(getSilent)
                   .then(processMessage);
           }
-      }
+      },
+
+      woningType: {
+        receive: (bot, message) => {
+          switch(message.text) {
+              case '🏬 Appartement':
+                return bot.say(`Nice!`)
+                .then(() => 'vervolgVragen')
+                break;
+            case '🏠 Huis':
+                return bot.say(`Leuk`)
+                .then(() => 'vervolgVragen')
+                break;
+          case '📭 Vakantiewoning':
+                return bot.say(`Gezellig`)
+                .then(() => 'vervolgVragen')
+                break;
+            default:
+              receive => 'processing'
+              break;
+              }
+          }
+      },
 });
