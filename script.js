@@ -210,7 +210,7 @@ receive: () => 'finish'
                   }
               }
 
-              function vervolgVragen() {
+              vervolgVragen: {
                 prompt: (bot) => bot.say('Hoe heet je eigelijk? 😋 Dat maakt het praten een stuk makkelijker...'),
                 receive: (bot, message) => {
                     const name = message.text;
@@ -220,7 +220,7 @@ receive: () => 'finish'
                   }
               },
 
-              function lastCheck() {
+              lastCheck: {
                   prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🔶  %[Ik zoek meer informatie](postback:meerInfo) %[Nee hoor](postback:bye)'),
                         receive: (bot, message) => {
                           switch(message.text) {
@@ -241,12 +241,12 @@ receive: () => 'finish'
                       }
               },
 
-              function meerInfo() {
+              meerInfo: {
                 prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/info.pdf)'),
                  receive: () => 'processing'
               },
 
-              function bye() {
+              bye: {
                   prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd ⏲'),
                   receive: ()  => 'finish'
               },
