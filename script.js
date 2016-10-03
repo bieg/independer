@@ -71,12 +71,12 @@ start: {
                       //THE MORTGAGE STUFF
                       case 'Hoi':
                             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
-                            .then(() => woningType())
+                            .then(() => 'woningType')
                           break;
                       case 'Starters Hypotheek':
                           return bot.say(`Wat voor type woning zoek je? `)
                           .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
-                          .then(() => woningType())
+                          .then(() =>  'woningType')
                               break;
                       case 'Nieuwe hypotheek':
                           return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
@@ -97,33 +97,6 @@ start: {
                           return Promise.resolve();
                   }
               }
-
-              function woningType(){
-                      receive: (bot, message) => {
-
-                          const typeWoning = message.text.trim();
-
-                          function updateWoning() {
-                            switch(typeWoning.text) {
-                              case '🏬 Appartement':
-                                  return bot.say(`Nice!`)
-                                  .then(() => 'vervolgVragen')
-                                  break;
-                              case '🏠 Huis':
-                                  return bot.say(`Leuk`)
-                                  .then(() => 'vervolgVragen')
-                                  break;
-                              case '📭 Vakantiewoning':
-                                  return bot.say(`Gezellig`)
-                                  .then(() => 'vervolgVragen')
-                                  break;
-                              default:
-                                receive => 'processing'
-                                break;
-                            }
-                          }
-                        }
-                      }
 
               function getSilent() {
                   return bot.getProp("silent");
@@ -161,5 +134,33 @@ start: {
                   .then(getSilent)
                   .then(processMessage);
           }
+      } //END OF SPEAK
+
+      woningType(){
+                receive: (bot, message) => {
+
+                    const typeWoning = message.text.trim();
+
+                    function updateWoning() {
+                      switch(typeWoning.text) {
+                        case '🏬 Appartement':
+                            return bot.say(`Nice!`)
+                            .then(() => 'vervolgVragen')
+                            break;
+                        case '🏠 Huis':
+                            return bot.say(`Leuk`)
+                            .then(() => 'vervolgVragen')
+                            break;
+                        case '📭 Vakantiewoning':
+                            return bot.say(`Gezellig`)
+                            .then(() => 'vervolgVragen')
+                            break;
+                        default:
+                          receive => 'processing'
+                          break;
+                      }
+                    }
+                  }
       }
+
 });
