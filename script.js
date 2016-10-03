@@ -71,7 +71,7 @@ start: {
                       //THE MORTGAGE STUFF
                       case 'Hoi':
                             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
-                            .then(() => 'askName')
+                            .then(() => 'woningType()')
                           break;
                       case 'Starters Hypotheek':
                           return bot.say(`Wat voor type woning zoek je? `)
@@ -96,6 +96,43 @@ start: {
                       default:
                           return Promise.resolve();
                   }
+              }
+
+              woningType: {
+                      receive: (bot, message) => {
+
+                          const typeWoning = message.text.trim();
+
+                          function updateWoning() {
+                            switch(typeWoning.text) {
+                              case '🏬 Appartement':
+                                  return bot.say(`Nice!`)
+                                  .then(() => 'vervolgVragen')
+                                  break;
+                              case '🏠 Huis':
+                                  return bot.say(`Leuk`)
+                                  .then(() => 'vervolgVragen')
+                                  break;
+                              case '📭 Vakantiewoning':
+                                  return bot.say(`Gezellig`)
+                                  .then(() => 'vervolgVragen')
+                                  break;
+                              default:
+                                receive => 'processing'
+                                break;
+                            }
+                          }
+                        }
+                      }
+
+
+
+              function askName() {
+                woningType: {
+receive: (bot, message) => {
+
+  }
+},
               }
 
               function getSilent() {
