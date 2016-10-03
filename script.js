@@ -188,7 +188,7 @@ receive: () => 'finish'
                   return bot.getProp("silent");
               }
 
-              woningType: {
+              function woningType() {
                 receive: (bot, message) => {
                   switch(message.text) {
                       case '🏬 Appartement':
@@ -210,48 +210,8 @@ receive: () => 'finish'
                   }
               }
 
-              vervolgVragen: {
-                prompt: (bot) => bot.say('Hoe heet je eigelijk? 😋 Dat maakt het praten een stuk makkelijker...'),
-                receive: (bot, message) => {
-                    const name = message.text;
-                    return bot.setProp('name', name)
-                        .then(() => bot.say('Hoi ${name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.'))
-                        .then(() => 'processing');
-                  }
-              },
 
-              lastCheck: {
-                  prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🔶  %[Ik zoek meer informatie](postback:meerInfo) %[Nee hoor](postback:bye)'),
-                        receive: (bot, message) => {
-                          switch(message.text) {
-                            case 'Nee hoor':
-                                receive: ()  => 'bye'
-                                break;
-                           case 'Ik zoek meer informatie':
-                                receive: () => 'meerInfo'
-                                break;
-                          case 'Nee':
-                                receive: () => 'bye'
-                                break;
-                          default:
-                            return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
-                              .then(() => 'processing')
-                            break;
-                          }
-                      }
-              },
-
-              meerInfo: {
-                prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/info.pdf)'),
-                 receive: () => 'processing'
-              },
-
-              bye: {
-                  prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd ⏲'),
-                  receive: ()  => 'finish'
-              },
-
-              //CHECK INPUT  FLOW
+//CHECK INPUT  FLOW
               function processMessage(isSilent) {
                   if (isSilent) {
                       return Promise.resolve("speak");
