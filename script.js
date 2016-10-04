@@ -63,7 +63,6 @@ start: {
     }
 },
 
-
 speak: {
           receive: (bot, message) => {
 
@@ -116,8 +115,7 @@ speak: {
                   .then(getSilent)
                   .then(processMessage);
           }
-      },
-
+},
 
 selecteerHypotheek: {
     receive: (bot, message) => {
@@ -162,8 +160,8 @@ updateOntvangen: {
           default:
             receive => 'processing'
             break;
-}
-}
+      }
+    }
 },
 
 update_ja: {
@@ -178,7 +176,6 @@ update_ja: {
 update_nee: {
   receive: () => 'bye'
 },
-
 
 hypotheekStarter: {
     receive: () => 'askName'
@@ -251,7 +248,6 @@ bye: {
     receive: ()  => 'finish'
 },
 
-
 // error: {
 // prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
 // receive: () => ''
@@ -259,57 +255,5 @@ bye: {
 
 finish: {
 receive: () => 'finish'
-},
-
-  speak: {
-          receive: (bot, message) => {
-
-              let upperText = message.text.trim().toUpperCase();
-
-              function updateSilent() {
-                  switch (upperText) {
-                      case "CONNECT ME":
-                          return bot.setProp("silent", true);
-                      case "DISCONNECT":
-                          return bot.setProp("silent", false);
-                      default:
-                          return Promise.resolve();
-                  }
-              }
-
-              function getSilent() {
-                  return bot.getProp("silent");
-              }
-
-              function processMessage(isSilent) {
-                  if (isSilent) {
-                      return Promise.resolve("speak");
-                  }
-
-                  if (!_.has(scriptRules, upperText)) {
-                      return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
-                  }
-
-                  var response = scriptRules[upperText];
-                  var lines = response.split('\n');
-
-                  var p = Promise.resolve();
-                  _.each(lines, function(line) {
-                      line = line.trim();
-                      p = p.then(function() {
-                          console.log(line);
-                          return wait(50).then(function() {
-                              return bot.say(line);
-                          });
-                      });
-                  });
-
-                  return p.then(() => 'speak');
-              }
-
-              return updateSilent()
-                  .then(getSilent)
-                  .then(processMessage);
-          }
-      }
+}
 });
