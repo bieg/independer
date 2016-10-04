@@ -11,16 +11,16 @@ const _ = require('lodash');
 const Script = require('smooch-bot').Script;
 const scriptRules = require('./script.json');
 
-var myDate = new Date();
+var myDay = new Date();
 var groet = '';
 
 /* hour is before noon */
-if ( myDate.getHours() < 8 )
+if ( myDay.getHours() < 8 )
 {
   groet = "Goeiemorgen 🌝.  Bedankt voor je bezoek maar op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot verder praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
 }
 else
-if ( myDate.getHours() >8 )
+if ( myDay.getHours() >=8 && myDay.gethours()<=12 )
 {
   groet = "Goeiemorgen 🌝 ";
 }
