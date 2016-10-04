@@ -33,16 +33,20 @@ var skPromise = Smooch.init({
     givenName: 'Hypo',
     surname: 'theek',
     email: 'hypotheek@test.com',
-    properties: {
+    properties:
+     {
         'Doel': '',
         'Woning': '',
-        'Update': '' 
+        'Update': ''
     }
 });
 
 // This event triggers when the user sends a message
 Smooch.on('message:sent', function(message) {
     console.log('the user sent a message', message);
+});
+Smooch.on('update_ja', function(message) {
+    console.log('updating', message);
 });
 Smooch.on('message:received', function(message) {
   console.log('Message received', message);
