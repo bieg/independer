@@ -177,7 +177,10 @@ update_ja: {
           return bot.setProp('emailer', emailer)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
               .then( function() {
-                console.log("Keep me posted");
+                    Smooch.updateUser({
+                        givenName: 'New',
+                        surname: 'Name'
+                    })
               })
               .then(()  =>'lastCheck')
     }
