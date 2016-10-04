@@ -59,7 +59,7 @@ start: {
         .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
         .then(() => 'speak');
     }
-},
+}
 
   speak: {
           receive: (bot, message) => {
@@ -71,23 +71,19 @@ start: {
                       //THE MORTGAGE STUFF
                       case 'Hoi':
                             return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
-                            .then(() => 'woningType')
-                          break;
+                            .then(() => 'woningType');
                       case 'Starters Hypotheek':
                           return bot.say(`Wat voor type woning zoek je? `)
                           .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
-                          .then(() =>  'woningType')
-                              break;
+                          .then(() =>  'woningType');
                       case 'Nieuwe hypotheek':
                           return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
                           .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[💼 Zoek Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/jelocatie.aspx)`))
-                            .then(() => 'finish')
-                          break;
+                            .then(() => 'finish');
                       case 'Hypotheek oversluiten':
                           return bot.say(`😟 Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
                           .then(()=> bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja, dat wil ik wel](postback:update_ja) %[Nee, dat hoeft niet](postback:update_nee)`))
-                            .then(() => 'updateOntvangen')
-                          break;
+                            .then(() => 'updateOntvangen');
                       //THE REST
                       case "CONNECT ME":
                           return bot.setProp("silent", true);
@@ -96,48 +92,15 @@ start: {
                       default:
                           return Promise.resolve();
                   }
-              }
+              };
 
               function getSilent() {
                   return bot.getProp("silent");
-              }
-
-              //CHECK INPUT  FLOW
-              function processMessage(isSilent) {
-                  if (isSilent) {
-                      return Promise.resolve("speak");
-                  }
-
-                  //BASICALLY ERROR OR NO TXT
-                  if (!_.has(scriptRules, upperText)) {
-                      return bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`).then(() => 'speak');
-                  }
-
-                  var response = scriptRules[upperText];
-                  var lines = response.split('\n');
-
-                  var p = Promise.resolve();
-                  _.each(lines, function(line) {
-                      line = line.trim();
-                      p = p.then(function() {
-                          console.log(line);
-                          return wait(50).then(function() {
-                              return bot.say(line);
-                          });
-                      });
-                  });
-
-                  return p.then(() => 'speak');
-              }
-
+              };
               return updateSilent()
                   .then(getSilent)
                   .then(processMessage);
           }
-      } //END OF SPEAK
-
-      woningType(){
-
-      }
+      }  //END OF SPEAK
 
 });
