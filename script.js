@@ -64,6 +64,64 @@ start: {
     }
 },
 
+/* ---------- */
+
+speak: {
+          receive: (bot, message) => {
+
+              const upperText = message.text.trim().toUpperCase();
+
+              function updateSilent() {
+                  switch (upperText) {
+                      case "CONNECT ME":
+                          return bot.setProp("silent", true);
+                      case "DISCONNECT":
+                          return bot.setProp("silent", false);
+                      default:
+                          return Promise.resolve();
+                  }
+              }
+
+              function getSilent() {
+                  return bot.getProp("silent");
+              }
+
+              function processMessage(isSilent) {
+                  if (isSilent) {
+                      return Promise.resolve("speak");
+                  }
+
+
+                  /*  CREATE EXTRA JSON FILE FOR HYPO AND INCLUDE IT */
+                  if (!_.has(scriptRules, upperText)) {
+                      return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)').then(() => 'speak');
+                  }
+
+                  var response = scriptRules[upperText];
+                  var lines = response.split('\n');
+
+                  var p = Promise.resolve();
+                  _.each(lines, function(line) {
+                      line = line.trim();
+                      p = p.then(function() {
+                          console.log(line);
+                          return wait(50).then(function() {
+                              return bot.say(line);
+                          });
+                      });
+                  });
+
+                  return p.then(() => 'speak');
+              }
+
+              return updateSilent()
+                  .then(getSilent)
+                  .then(processMessage);
+          }
+      }
+
+
+/*  ---------  */
 selecteerHypotheek: {
     receive: (bot, message) => {
       switch(message.text) {
