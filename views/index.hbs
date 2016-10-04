@@ -29,7 +29,13 @@ var skPromise = Smooch.init({
                 notificationSettingsConnectedAs: 'Ingelogd als {username}',
             },
     soundNotificationEnabled: true,
-    emailCaptureEnabled: true
+    emailCaptureEnabled: true,
+    givenName: 'Doctor',
+    surname: 'Who?',
+    email: 'the-doctor@smooch.io',
+    properties: {
+        'customProp': 'whatever you please'
+    }
 });
 
 // This event triggers when the user sends a message
@@ -78,7 +84,7 @@ skPromise.then( function() {
 
     /*if you want the payload instead just do msg.action.payload*/
 msg.text = msg.action.text;
-/* msg.text = msg.action.payload; */
+msg.text = msg.action.payload; 
 
     stateMachine.receiveMessage(msg)
       .then(() => res.end())
