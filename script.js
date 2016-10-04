@@ -137,30 +137,7 @@ start: {
       } //END OF SPEAK
 
       woningType(){
-                receive: (bot, message) => {
 
-                    const typeWoning = message.text.trim();
-
-                    function updateWoning() {
-                      switch(typeWoning.text) {
-                        case '🏬 Appartement':
-                            return bot.say(`Nice!`)
-                            .then(() => 'vervolgVragen')
-                            break;
-                        case '🏠 Huis':
-                            return bot.say(`Leuk`)
-                            .then(() => 'vervolgVragen')
-                            break;
-                        case '📭 Vakantiewoning':
-                            return bot.say(`Gezellig`)
-                            .then(() => 'vervolgVragen')
-                            break;
-                        default:
-                          receive => 'processing'
-                          break;
-                      }
-                    }
-                  }
       }
 
 });
