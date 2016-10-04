@@ -92,11 +92,11 @@ start: {
                       default:
                           return Promise.resolve();
                   }
-              };
+              }
 
               function getSilent() {
                   return bot.getProp("silent");
-              };
+              }
               return updateSilent()
                   .then(getSilent)
                   .then(processMessage);
