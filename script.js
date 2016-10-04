@@ -156,7 +156,7 @@ woningType: {
 },
 
 vervolgVragen: {
-  prompt: (bot) => bot.say('Hoe heet je eigelijk? 😋')
+  return bot.say('Hoe heet je eigelijk? 😋')
   .then(() => bot.say('Dat maakt het praten een stuk makkelijker...')),
   receive: (bot, message) => {
       const name = message.text;
