@@ -20,7 +20,7 @@ if ( myDate.getHours() < 8 )
   groet = "Goeiemorgen 🌝.  Bedankt voor je bezoek maar op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot verder praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
 }
 else
-if ( myDate.getHours() <= 8 && myDate.getHours() <= 12 )
+if ( myDate.getHours() >8 && my.Date.getHours() <=12 )
 {
   groet = "Goeiemorgen 🌝 ";
 }
@@ -256,7 +256,7 @@ bye: {
 
 // error: {
 // prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
-// receive: () => 'processing'
+// receive: () => 'pri'
 // },
 
 finish: {
