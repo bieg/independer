@@ -254,6 +254,11 @@ bye: {
     receive: ()  => 'finish'
 },
 
+// error: {
+// prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
+// receive: () => 'pri'
+// },
+
 finish: {
 receive: () => 'finish'
 }
