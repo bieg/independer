@@ -177,7 +177,7 @@ update_ja: {
           return bot.setProp('emailer', emailer)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
 
-              Smooch.updateUser({
+              receive: ()  => Smooch.updateUser({
     givenName: 'Doctor',
     surname: 'Who'
 })
