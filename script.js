@@ -175,16 +175,22 @@ update_ja: {
       receive: (bot, message) => {
           const emailer=message.text;
           return bot.setProp('emailer', emailer)
-              .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`)),
+              .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
 
-            prompt: (Smooch.updateUser({
-    givenName: 'Doctor',
-    surname: 'Who'
-})
-)
+              var r = Promise.resolve();
+
+                r = r.then(function() {
+                    Smooch.updateUser({
+                            givenName: 'Doctor',
+                            surname: 'Who'
+                    });
+                });
 
 
-              .then(()  =>'lastCheck')
+              return r.then(() => 'lastCheck');
+
+
+          //    .then(()  =>'lastCheck')
     }
 },
 update_nee: {
