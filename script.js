@@ -193,14 +193,15 @@ update_ja: {
           const emailer=message.text;
           return bot.setProp('emailer', emailer)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
-              .then(function() {
-    Smooch.updateUser({
-      givenName: 'New',
-      surname: 'Name',
-      email: ${emailer},
-      signedUpAt: ${today}
-    })
-  })
+              .then(
+                function() {
+                        Smooch.updateUser({
+                            givenName: 'New',
+                            surname: 'Name',
+                            email:'kk',
+                            signedUpAt: 'pp'
+                        })
+                })
               .then(()  =>'lastCheck')
     }
 },
