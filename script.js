@@ -41,11 +41,11 @@ else  /* the hour is not between 0 and 24, so something is wrong */
 groet = "Welkom. ";
 }
 
-// function wait(ms) {
-// return new Promise((resolve) => {
-// setTimeout(resolve, ms);
-// });
-// }
+function wait(ms) {
+return new Promise((resolve) => {
+setTimeout(resolve, ms);
+});
+}
 
 module.exports = new Script({
 
@@ -76,8 +76,7 @@ start: {
                       case 'Starters Hypotheek':
                           return bot.say(`Wat voor type woning zoek je? `)
                           .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
-                          .then(() =>  henk())
-                          break;
+                          .then(() =>  'woningType')
                       case 'Nieuwe hypotheek':
                           return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
                           .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[💼 Zoek Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/jelocatie.aspx)`))
@@ -98,10 +97,6 @@ start: {
                   }
               }
 
-              function henk() {
-                alert("HOI");
-              }
-
               function getSilent() {
                   return bot.getProp("silent");
               }
@@ -109,6 +104,28 @@ start: {
                   .then(getSilent)
                   .then(processMessage);
           }
-}  //END OF SPEAK
+},  //END OF SPEAK
+
+woningType: {
+  receive: (bot, message) => {
+    switch(message.text) {
+        case '🏬 Appartement':
+          return bot.say(`Nice!`)
+          .then(() => 'vervolgVragen')
+          break;
+      case '🏠 Huis':
+          return bot.say(`Leuk`)
+          .then(() => 'vervolgVragen')
+          break;
+    case '📭 Vakantiewoning':
+          return bot.say(`Gezellig`)
+          .then(() => 'vervolgVragen')
+          break;
+      default:
+        receive => 'processing'
+        break;
+        }
+    }
+},
 
 });
