@@ -30,11 +30,13 @@ var skPromise = Smooch.init({
             },
     soundNotificationEnabled: true,
     emailCaptureEnabled: true,
-    givenName: 'Doctor',
-    surname: 'Who?',
-    email: 'the-doctor@smooch.io',
+    givenName: 'Hypo',
+    surname: 'theek',
+    email: 'hypotheek@test.com',
     properties: {
-        'customProp': 'whatever you please'
+        'Doel': '',
+        'Woning': '',
+        'Update': '' 
     }
 });
 
@@ -84,7 +86,7 @@ skPromise.then( function() {
 
     /*if you want the payload instead just do msg.action.payload*/
 msg.text = msg.action.text;
-msg.text = msg.action.payload; 
+msg.text = msg.action.payload;
 
     stateMachine.receiveMessage(msg)
       .then(() => res.end())
