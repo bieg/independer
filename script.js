@@ -19,11 +19,11 @@ var mm = today.getMonth()+1; //January is 0!
 var yyyy = today.getFullYear();
 
 if(dd<10) {
-    dd='0'+dd
+    dd='0'+dd;
 }
 
 if(mm<10) {
-    mm='0'+mm
+    mm='0'+mm;
 }
 
 today =dd+'/'+mm+'/'+yyyy;
@@ -193,6 +193,15 @@ update_ja: {
           const emailer=message.text;
           return bot.setProp('emailer', emailer)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
+              .then(
+                function() {
+                        Smooch.updateUser({
+                            givenName: 'New',
+                            surname: 'Name',
+                            email:'kk',
+                            signedUpAt: 'pp'
+                        })
+                })
               .then(()  =>'lastCheck')
     }
 },
