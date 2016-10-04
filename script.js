@@ -114,11 +114,11 @@ start: {
                         .then(() => 'vervolgVragen')
                         break;
                     default:
-                      receive => 'speak'
+                      receive => 'processing'
                       break;
                       }
+                  }
               }
-
 
               function getSilent() {
                   return bot.getProp("silent");
@@ -127,8 +127,7 @@ start: {
                   .then(getSilent)
                   .then(processMessage);
           }
-};
- //END OF SPEAK
+},  //END OF SPEAK
 
 
 
