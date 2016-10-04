@@ -59,7 +59,7 @@ start: {
         .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
         .then(() => 'speak');
     }
-}
+},
 
   speak: {
           receive: (bot, message) => {
