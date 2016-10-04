@@ -156,7 +156,7 @@ start: {
                             .then(() => 'vervolgVragen')
                             break;
                         default:
-                          receive => 'processing'
+                          receive => 'speak'
                           break;
                       }
                     }
