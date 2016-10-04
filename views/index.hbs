@@ -45,8 +45,9 @@ var skPromise = Smooch.init({
 Smooch.on('message:sent', function(message) {
     console.log('the user sent a message', message);
 });
-Smooch.on('update_ja', function(message) {
-    console.log('updating', message);
+Smooch.updateUser({
+    givenName: 'Doctor',
+    surname: 'Who'
 });
 Smooch.on('message:received', function(message) {
   console.log('Message received', message);
