@@ -126,6 +126,6 @@ woningType: {
         break;
         }
     }
-},
+}
 
 });
