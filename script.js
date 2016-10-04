@@ -65,8 +65,8 @@ start: {
           receive: (bot, message) => {
 
               function updateSilent() {
-                    const upperText = message.text.trim().toUpperCase();
-                    switch (upperText) {
+                    const hypoTypeUpper= message.text.trim().toUpperCase();
+                    switch (hypoTypeUpper) {
                       //THE MORTGAGE STUFF
     //                  case 'Hoi':
                             // return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
