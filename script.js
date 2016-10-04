@@ -178,7 +178,7 @@ update_ja: {
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
 
               .then(
-                    return Smooch.updateUser({
+                    return => Smooch.updateUser({
                             givenName: 'Doctor',
                             surname: 'Who'
                     })
