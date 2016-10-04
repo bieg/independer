@@ -1,9 +1,32 @@
+/*
+//1 get user profile
+//2 get rit of beebop error
+//3 click more buttons
+//4 write json for hypo
+*/
+
 
 'use strict';
 
 const _ = require('lodash');
 const Script = require('smooch-bot').Script;
 const scriptRules = require('./script.json');
+
+/*  CREATE TODAY */
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if(dd<10) {
+    dd='0'+dd
+}
+
+if(mm<10) {
+    mm='0'+mm
+}
+
+today =dd+'/'+mm+'/'+yyyy;
 
 var myDate = new Date();
 var groet = '';
@@ -170,9 +193,18 @@ update_ja: {
           const emailer=message.text;
           return bot.setProp('emailer', emailer)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
+              .then(function() {
+    Smooch.updateUser({
+      givenName: 'New',
+      surname: 'Name',
+      email: ${emailer},
+      signedUpAt: ${today}
+    })
+  })
               .then(()  =>'lastCheck')
     }
 },
+
 update_nee: {
   receive: () => 'bye'
 },
@@ -239,7 +271,8 @@ lastCheck: {
 },
 
 meerInfo: {
-  prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/info.pdf)'),
+  return bot.say('%[Link 1](http://www.nu.nl)')
+  .then(() => bot.say('%[Link 2](http://www.elle.nl)')),
    receive: () => 'processing'
 },
 
@@ -248,10 +281,10 @@ bye: {
     receive: ()  => 'finish'
 },
 
-// error: {
-// prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
-// receive: () => ''
-// },
+error: {
+prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
+receive: () => 'error'
+},
 
 finish: {
 receive: () => 'finish'
