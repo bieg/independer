@@ -176,6 +176,9 @@ update_ja: {
           const emailer=message.text;
           return bot.setProp('emailer', emailer)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
+              .then( function() {
+                console.log("Keep me posted");
+              })
               .then(()  =>'lastCheck')
     }
 },
@@ -186,6 +189,7 @@ update_nee: {
 hypotheekStarter: {
     receive: () => 'askName'
 },
+
 hypotheektype_nieuw: {
     prompt: (bot) => bot.say('Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)'),
     receive: () => 'processing'
