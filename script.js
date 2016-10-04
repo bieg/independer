@@ -105,6 +105,29 @@ start: {
                   .then(getSilent)
                   .then(processMessage);
           }
-      }  //END OF SPEAK
+},  //END OF SPEAK
+
+woningType: {
+  receive: (bot, message) => {
+    switch(message.text) {
+        case '🏬 Appartement':
+          return bot.say(`Nice!`)
+          .then(() => 'vervolgVragen')
+          break;
+      case '🏠 Huis':
+          return bot.say(`Leuk`)
+          .then(() => 'vervolgVragen')
+          break;
+    case '📭 Vakantiewoning':
+          return bot.say(`Gezellig`)
+          .then(() => 'vervolgVragen')
+          break;
+      default:
+        receive => 'speak'
+        break;
+        }
+    }
+}
+
 
 });
