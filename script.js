@@ -12,22 +12,6 @@ const _ = require('lodash');
 const Script = require('smooch-bot').Script;
 const scriptRules = require('./script.json');
 
-/*  CREATE TODAY */
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
-
-if(dd<10) {
-    dd='0'+dd;
-}
-
-if(mm<10) {
-    mm='0'+mm;
-}
-
-today =dd+'/'+mm+'/'+yyyy;
-
 var myDate = new Date();
 var groet = '';
 
@@ -192,16 +176,7 @@ update_ja: {
       receive: (bot, message) => {
           const emailer=message.text;
           return bot.setProp('emailer', emailer)
-              .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
-              .then(
-                function() {
-                        Smooch.updateUser({
-                            givenName: 'New',
-                            surname: 'Name',
-                            email:'kk',
-                            signedUpAt: 'pp'
-                        })
-                })
+              .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`)),
               .then(()  =>'lastCheck')
     }
 },
