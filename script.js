@@ -3,7 +3,6 @@
 
 const _ = require('lodash');
 const Script = require('smooch-bot').Script;
-
 const scriptRules = require('./script.json');
 
 var myDate = new Date();
@@ -64,7 +63,6 @@ start: {
     }
 },
 
-/* ---------- */
 
 speak: {
           receive: (bot, message) => {
@@ -118,10 +116,9 @@ speak: {
                   .then(getSilent)
                   .then(processMessage);
           }
-      }
+      },
 
 
-/*  ---------  */
 selecteerHypotheek: {
     receive: (bot, message) => {
       switch(message.text) {
