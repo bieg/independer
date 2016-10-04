@@ -1,3 +1,10 @@
+/*
+//1 get user profile
+//2 get rit of beebop error
+//3 click more buttons
+//4 write json for hypo
+*/
+
 'use strict';
 
 const _ = require('lodash');
@@ -172,7 +179,6 @@ update_ja: {
               .then(()  =>'lastCheck')
     }
 },
-
 update_nee: {
   receive: () => 'bye'
 },
@@ -239,7 +245,7 @@ lastCheck: {
 },
 
 meerInfo: {
-  return bot.say('%[Link 1](http://www.nu.nl)'),
+  prompt: (bot) => bot.say('bestand'),
    receive: () => 'processing'
 },
 
@@ -247,6 +253,11 @@ bye: {
     prompt: (bot) => bot.say('Fijn je gesproken te hebben. Bedankt voor je tijd ⏲'),
     receive: ()  => 'finish'
 },
+
+// error: {
+// prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
+// receive: () => ''
+// },
 
 finish: {
 receive: () => 'finish'
