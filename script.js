@@ -98,28 +98,6 @@ start: {
                   }
               }
 
-              woningType: {
-                receive: (bot, message) => {
-                  switch(message.text) {
-                      case '🏬 Appartement':
-                        return bot.say(`Nice!`)
-                        .then(() => 'vervolgVragen')
-                        break;
-                    case '🏠 Huis':
-                        return bot.say(`Leuk`)
-                        .then(() => 'vervolgVragen')
-                        break;
-                  case '📭 Vakantiewoning':
-                        return bot.say(`Gezellig`)
-                        .then(() => 'vervolgVragen')
-                        break;
-                    default:
-                      receive => 'processing'
-                      break;
-                      }
-                  }
-              }
-
               function getSilent() {
                   return bot.getProp("silent");
               }
@@ -127,8 +105,6 @@ start: {
                   .then(getSilent)
                   .then(processMessage);
           }
-},  //END OF SPEAK
-
-
+}  //END OF SPEAK
 
 });
