@@ -76,7 +76,7 @@ start: {
                       case 'Starters Hypotheek':
                           return bot.say(`Wat voor type woning zoek je? `)
                           .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
-                          .then(() =>  woningType)
+                          .then(() =>  'woningType')
                           break;
                       case 'Nieuwe hypotheek':
                           return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
@@ -98,7 +98,7 @@ start: {
                   }
               }
 
-              function woningType() {
+              woningType: {
                 receive: (bot, message) => {
                   switch(message.text) {
                       case '🏬 Appartement':
@@ -127,29 +127,9 @@ start: {
                   .then(getSilent)
                   .then(processMessage);
           }
-},  //END OF SPEAK
+};
+ //END OF SPEAK
 
-woningType: {
-  receive: (bot, message) => {
-    switch(message.text) {
-        case '🏬 Appartement':
-          return bot.say(`Nice!`)
-          .then(() => 'vervolgVragen')
-          break;
-      case '🏠 Huis':
-          return bot.say(`Leuk`)
-          .then(() => 'vervolgVragen')
-          break;
-    case '📭 Vakantiewoning':
-          return bot.say(`Gezellig`)
-          .then(() => 'vervolgVragen')
-          break;
-      default:
-        receive => 'speak'
-        break;
-        }
-    }
-}
 
 
 });
