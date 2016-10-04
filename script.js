@@ -1,11 +1,3 @@
-/*
-//1 get user profile
-//2 get rit of beebop error
-//3 click more buttons
-//4 write json for hypo
-*/
-
-
 'use strict';
 
 const _ = require('lodash');
