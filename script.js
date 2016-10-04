@@ -76,17 +76,15 @@ start: {
                       case 'Starters Hypotheek':
                           return bot.say(`Wat voor type woning zoek je? `)
                           .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
-                          .then(() =>  'woningType')
+                          .then(() =>  'woningType');
                       case 'Nieuwe hypotheek':
                           return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
                           .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[💼 Zoek Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/jelocatie.aspx)`))
-                            .then(() => 'finish')
-                            break;
+                            .then(() => 'finish');
                       case 'Hypotheek oversluiten':
                           return bot.say(`😟 Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
                           .then(()=> bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja, dat wil ik wel](postback:update_ja) %[Nee, dat hoeft niet](postback:update_nee)`))
-                            .then(() => 'updateOntvangen')
-                            break;
+                            .then(() => 'updateOntvangen');
                       //THE REST
                       case "CONNECT ME":
                           return bot.setProp("silent", true);

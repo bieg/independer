@@ -50,46 +50,46 @@ Smooch.on('widget:closed', function(message) {
   // alert("See you later");
 });
 
-// skPromise.then( function() {
-//   function handlePostback(req, res) {
-//
-//     const postback = req.body.postbacks[0];
-    // const userId = 'testUserId';
-    // const store = new MemoryStore();
-    // const lock = new MemoryLock();
-    // const bot = new ConsoleBot({
-    //     store,
-    //     lock,
-    //     userId
-    // });
-    //
-    // if (!postback || !postback.action)
-    //     res.end();
-    //
-    // const stateMachine = new StateMachine({
-    //     script,
-    //     bot,
-    //     userId,
-    //     bot: createBot(req.body.appUser)
-    // });
+skPromise.then( function() {
+  function handlePostback(req, res) {
 
-//    const msg = postback;
-//    console.log('Payload: '+msg.action.payload);
-//    console.log('MSG:  '+msg.action.text);
+    const postback = req.body.postbacks[0];
+    const userId = 'testUserId';
+    const store = new MemoryStore();
+    const lock = new MemoryLock();
+    const bot = new ConsoleBot({
+        store,
+        lock,
+        userId
+    });
 
-    // if you want the payload instead just do msg.action.paylod
-//msg.text = msg.action.text;
-//msg.text = msg.action.payload;
+    if (!postback || !postback.action)
+        res.end();
 
-//     stateMachine.receiveMessage(msg)
-//       .then(() => res.end())
-//       .catch((err) => {
-//         console.error('SmoochBot error:', err);
-//         res.end();
-//       });
-//   }
-// }) ;
-//
+    const stateMachine = new StateMachine({
+        script,
+        bot,
+        userId,
+        bot: createBot(req.body.appUser)
+    });
+
+   const msg = postback;
+   console.log('Payload: '+msg.action.payload);
+   console.log('MSG:  '+msg.action.text);
+
+    if you want the payload instead just do msg.action.paylod
+msg.text = msg.action.text;
+msg.text = msg.action.payload;
+
+    stateMachine.receiveMessage(msg)
+      .then(() => res.end())
+      .catch((err) => {
+        console.error('SmoochBot error:', err);
+        res.end();
+      });
+  }
+}) ;
+
 </script>
 
 </head>
