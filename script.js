@@ -156,14 +156,13 @@ woningType: {
 },
 
 vervolgVragen: {
-  return bot.say('Hoe heet je eigelijk? 😋')
-  .then(() => bot.say('Dat maakt het praten een stuk makkelijker...')),
-  receive: (bot, message) => {
-      const name = message.text;
-      return bot.setProp('name', name)
-          .then(() => bot.say('Hoi ${name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.'))
-          .then(() => 'processing');
-    }
+  prompt: (bot) => bot.say('Hoe heet je eigelijk? 😋'),
+          receive: (bot, message) => {
+              const Name = message.text.trim().toUpperCase();
+              return bot.setProp('Name', Name)
+                  .then(() => bot.say('Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.'))
+                  .then(() => bot.say('komt ie'));
+            }
 },
 
 lastCheck: {
