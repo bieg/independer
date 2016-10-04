@@ -124,20 +124,7 @@ update_nee: {
   receive: () => 'bye'
 },
 
-hypotheekkeuze_appartement: {
-receive: (bot,message)  => {
-    //  prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-    receive: () => 'askName'
-}
-},
-hypotheekkeuze_huis: {
-//    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-  receive: () => 'askName'
-},
-hypotheekkeuze_vakantiewoning: {
-//    prompt: (bot) => bot.say(`![](http:www.bieg.nl/beeld/appartement.jpg)`)
-    receive: () => 'askName'
-},
+
 hypotheekStarter: {
     receive: () => 'askName'
 },
@@ -186,7 +173,7 @@ lastCheck: {
                   receive: ()  => 'bye'
                   break;
              case 'Ik zoek meer informatie':
-                  receive: () => 'meerInfo'
+                  receive: () => 'speak'
                   break;
             case 'Nee':
                   receive: () => 'bye'
