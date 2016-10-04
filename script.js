@@ -239,8 +239,7 @@ lastCheck: {
 },
 
 meerInfo: {
-  return bot.say('%[Link 1](http://www.nu.nl)')
-  .then(() => bot.say('%[Link 2](http://www.elle.nl)')),
+  return bot.say('%[Link 1](http://www.nu.nl)'),
    receive: () => 'processing'
 },
 
