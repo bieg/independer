@@ -176,7 +176,6 @@ update_ja: {
           const emailer=message.text;
           return bot.setProp('emailer', emailer)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
-
               .then(   function() {
                                     Smooch.updateUser({
                                             givenName: 'Doctor',
@@ -223,11 +222,11 @@ woningType: {
 },
 
 vervolgVragen: {
-  prompt: (bot) => bot.say('Hoe heet je eigelijk? 😋'),
+  prompt: (bot) => bot.say(`Hoe heet je eigelijk? 😋`),
           receive: (bot, message) => {
-              const Name = message.text.trim().toUpperCase();
+              const Name = message.text;
               return bot.setProp('Name', Name)
-                  .then(() => bot.say('Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.'))
+                  .then(() => bot.say(`Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
                   .then(() => 'processing')
             }
 },
