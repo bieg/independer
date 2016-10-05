@@ -30,17 +30,14 @@ var skPromise = Smooch.init({
             },
     soundNotificationEnabled: true,
     emailCaptureEnabled: true,
-});
-
-Smooch.appUsers.create('hypotheek@test.com', {
-  givenName: 'Hypo',
-  surname: 'theek',
-  emailer: 'hypotheek@test.com',
-  properties: {
-      'Doel': '',
-      'Woning': '',
-      'Update': ''
-  }
+    givenName: 'Hypo',
+    surname: 'theek',
+    emailer: 'hypotheek@test.com',
+    properties: {
+        'Doel': '',
+        'Woning': '',
+        'Update': ''
+    }
 });
 
 // This event triggers when the user sends a message
@@ -64,7 +61,7 @@ skPromise.then( function() {
   function handlePostback(req, res) {
 
     const postback = req.body.postbacks[0];
-    const userId = 'testUserId';
+    const userId = 666 ;
     const store = new MemoryStore();
     const lock = new MemoryLock();
     const bot = new ConsoleBot({
