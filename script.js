@@ -69,7 +69,9 @@ start: {
                               updateUser() {
                                 givenName: 'New',
                                 surname: 'Name'
-                              })
+                              }))
+        .then(() => 'selecteerHypotheek');
+    }
 },
 
 speak: {
