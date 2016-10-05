@@ -59,16 +59,15 @@ prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
 
 start: {
     receive: (bot,message) => {
-      Smooch.updateUser({
-              givenName: 'Doctor',
-              surname: 'Who'
-      });
         const opening = message.text.trim().toUpperCase();
         return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
         .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
         .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
         .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
         .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
+        .then( function() {
+            updateUser(givenName: 'Henk')
+        })
         .then(() => 'selecteerHypotheek');
     }
 },
