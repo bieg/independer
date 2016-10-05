@@ -179,17 +179,10 @@ updateOntvangen: {
 update_ja: {
   prompt: (bot) => bot.say('Wat is je email adres?'),
       receive: (bot, message) => {
-          const emailer=message.text;
-          return bot.setProp('emailer', emailer)
-              .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
-              .then(   function() {
-
-                                    Smooch.updateUser({
-                                            givenName: 'Sjaak',
-                                            surname: 'Raak'
-                                    })
-                            })
-            .then(()  =>'lastCheck')
+          const email=message.text;
+          return bot.setProp('email', email)
+              .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${email} op de hoogte.`))
+              .then(()  =>'lastCheck')
     }
 },
 update_nee: {
