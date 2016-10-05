@@ -59,6 +59,10 @@ prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
 
 start: {
     receive: (bot,message) => {
+      Smooch.updateUser({
+              givenName: 'Doctor',
+              surname: 'Who'
+      });
         const opening = message.text.trim().toUpperCase();
         return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
         .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
