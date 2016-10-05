@@ -65,9 +65,7 @@ start: {
         .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
         .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
         .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
-        .then( function() {
-            updateUser(givenName: 'Henk')
-        })
+        .then( => function() { Smooch.updateUser(givenName: 'Henk')})
         .then(() => 'selecteerHypotheek');
     }
 },
