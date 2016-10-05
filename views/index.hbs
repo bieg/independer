@@ -45,11 +45,6 @@ var skPromise = Smooch.init({
 // This event triggers when the user sends a message
 Smooch.on('message:sent', function(message) {
     console.log('the user sent a message', message);
-
-    Smooch.updateUser({
-    givenName: 'Updated'
-})
-
 });
 Smooch.on('message:received', function(message) {
   console.log('Message received', message);
@@ -88,12 +83,10 @@ skPromise.then( function() {
     });
 
    const msg = postback;
-   console.log('Payload: '+msg.action.payload);
-   console.log('MSG:  '+msg.action.text);
 
     /*if you want the payload instead just do msg.action.payload*/
 msg.text = msg.action.text;
-msg.text = msg.action.payload;
+//msg.text = msg.action.payload;
 
     stateMachine.receiveMessage(msg)
       .then(() => res.end())
