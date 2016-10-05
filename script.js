@@ -66,13 +66,10 @@ start: {
         .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
         .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
         .then(
-                              bot.updateUser({
+                              updateUser() {
                                 givenName: 'New',
                                 surname: 'Name'
                               })
-                      )
-        .then(() => 'selecteerHypotheek');
-    }
 },
 
 speak: {
