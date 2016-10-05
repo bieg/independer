@@ -50,6 +50,18 @@ setTimeout(resolve, ms);
 });
 }
 
+controller.hears(['hello world'],'message_received',function(bot,message) {
+
+  // start a conversation to handle this response.
+  bot.startConversation(message,function(err,convo) {
+
+    convo.say('Hello!');
+    convo.say('Have a nice day!');
+
+  })
+
+});
+
 module.exports = new Script({
 
  processing: {
@@ -176,7 +188,7 @@ update_ja: {
           const emailer=message.text;
           return bot.setProp('emailer', emailer)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
-              .then(  => function() {
+              .then(   function() {
                                     Smooch.updateUser({
                                             givenName: 'Doctor',
                                             surname: 'Who'
@@ -185,6 +197,7 @@ update_ja: {
             .then(()  =>'lastCheck')
     }
 },
+
 update_nee: {
   receive: () => 'bye'
 },
