@@ -32,6 +32,7 @@ var skPromise = Smooch.init({
     emailCaptureEnabled: true,
     givenName: 'Hypo',
     surname: 'theek',
+    userId: 666,
     emailer: 'hypotheek@test.com',
     properties: {
         'Doel': '',
@@ -40,10 +41,6 @@ var skPromise = Smooch.init({
     }
 });
 
-Smooch.updateUser({
-    givenName: 'Doctor',
-    surname: 'Who'
-});
 
 // This event triggers when the user sends a message
 Smooch.on('message:sent', function(message) {
