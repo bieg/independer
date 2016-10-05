@@ -47,13 +47,8 @@ Smooch.on('message:sent', function(message) {
     console.log('the user sent a message', message);
 
     Smooch.updateUser({
-    givenName: 'Updated',
-    surname: 'Name',
-    email: 'updated@email.com',
-    properties: {
-      'justGotUpdated': true
-    }
-});
+    givenName: 'Updated'
+})
 
 });
 Smooch.on('message:received', function(message) {
