@@ -40,6 +40,10 @@ var skPromise = Smooch.init({
     }
 });
 
+Smooch.updateUser({
+    givenName: 'Doctor',
+    surname: 'Who'
+});
 
 // This event triggers when the user sends a message
 Smooch.on('message:sent', function(message) {
