@@ -30,14 +30,17 @@ var skPromise = Smooch.init({
             },
     soundNotificationEnabled: true,
     emailCaptureEnabled: true,
-    givenName: 'Hypo',
-    surname: 'theek',
-    emailer: 'hypotheek@test.com',
-    properties: {
-        'Doel': '',
-        'Woning': '',
-        'Update': ''
-    }
+});
+
+Smooch.appUsers.create('hypotheek@test.com', {
+  givenName: 'Hypo',
+  surname: 'theek',
+  emailer: 'hypotheek@test.com',
+  properties: {
+      'Doel': '',
+      'Woning': '',
+      'Update': ''
+  }
 });
 
 // This event triggers when the user sends a message
