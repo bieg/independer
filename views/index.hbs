@@ -45,6 +45,16 @@ var skPromise = Smooch.init({
 // This event triggers when the user sends a message
 Smooch.on('message:sent', function(message) {
     console.log('the user sent a message', message);
+
+    Smooch.updateUser({
+    givenName: 'Updated',
+    surname: 'Name',
+    email: 'updated@email.com',
+    properties: {
+      'justGotUpdated': true
+    }
+});
+
 });
 Smooch.on('message:received', function(message) {
   console.log('Message received', message);
