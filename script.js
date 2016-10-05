@@ -60,6 +60,7 @@ prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
 start: {
     receive: (bot,message) => {
         const opening = message.text.trim().toUpperCase();
+
         return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
         .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
         .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
@@ -68,6 +69,12 @@ start: {
         .then(() => 'selecteerHypotheek');
     }
 },
+
+.then(
+                      => function updateUser() {
+                        givenName: 'New',
+                        surname: 'Name'
+                      })
 
 speak: {
           receive: (bot, message) => {
@@ -220,6 +227,7 @@ vervolgVragen: {
               const Name = message.text;
               return bot.setProp('Name', Name)
                   .then(() => bot.say(`Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
+                  .then( function() {console.log("oenka")} )
                   .then(() => 'processing')
             }
 },
