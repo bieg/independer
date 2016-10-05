@@ -50,18 +50,6 @@ setTimeout(resolve, ms);
 });
 }
 
-controller.hears(['hello world'],'message_received',function(bot,message) {
-
-  // start a conversation to handle this response.
-  bot.startConversation(message,function(err,convo) {
-
-    convo.say('Hello!');
-    convo.say('Have a nice day!');
-
-  })
-
-});
-
 module.exports = new Script({
 
  processing: {
@@ -197,7 +185,6 @@ update_ja: {
             .then(()  =>'lastCheck')
     }
 },
-
 update_nee: {
   receive: () => 'bye'
 },
