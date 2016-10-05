@@ -85,8 +85,8 @@ skPromise.then( function() {
    const msg = postback;
 
     /*if you want the payload instead just do msg.action.payload*/
-msg.text = msg.action.text;
-//msg.text = msg.action.payload;
+//msg.text = msg.action.text;
+msg.text = msg.action.payload;
 
     stateMachine.receiveMessage(msg)
       .then(() => res.end())
