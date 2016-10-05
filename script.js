@@ -227,7 +227,7 @@ vervolgVragen: {
               const Name = message.text;
               return bot.setProp('Name', Name)
                   .then(() => bot.say(`Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
-                  .then( function() {console.log("oenka")} )
+                  .then( => function() {console.log("oenka") }; )
                   .then(() => 'processing')
             }
 },
