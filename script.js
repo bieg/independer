@@ -70,6 +70,12 @@ start: {
     }
 },
 
+.then(
+                      => function updateUser() {
+                        givenName: 'New',
+                        surname: 'Name'
+                      })
+
 speak: {
           receive: (bot, message) => {
 
@@ -221,9 +227,9 @@ vervolgVragen: {
               const Name = message.text;
               return bot.setProp('Name', Name)
                   .then(() => bot.say(`Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
-                  .then(() => 'processing')
-            }
+                  .then(() => 'processing')            }
 },
+
 
 lastCheck: {
     prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🔶  %[Ik zoek meer informatie](postback:meerInfo) %[Nee hoor](postback:bye)'),
