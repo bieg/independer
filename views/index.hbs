@@ -63,7 +63,7 @@ skPromise.then( function() {
   function handlePostback(req, res) {
 
     const postback = req.body.postbacks[0];
-    const userId = '666' ;
+    const userId = 666 ;
     const store = new MemoryStore();
     const lock = new MemoryLock();
     const bot = new ConsoleBot({
@@ -83,6 +83,8 @@ skPromise.then( function() {
     });
 
    const msg = postback;
+   console.log('Payload: '+msg.action.payload);
+   console.log('MSG:  '+msg.action.text);
 
     /*if you want the payload instead just do msg.action.payload*/
 msg.text = msg.action.text;
