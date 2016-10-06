@@ -42,13 +42,13 @@ if (myDate.getHours() > 20  || myDate.getHours() <= 24 )
 else  /* the hour is not between 0 and 24, so something is wrong */
 {
 groet = "Welkom. ";
-},
+}
 
 function wait(ms) {
 return new Promise((resolve) => {
 setTimeout(resolve, ms);
 });
-},
+}
 
 module.exports = new Script({
 
@@ -60,6 +60,7 @@ prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
 start: {
     receive: (bot,message) => {
         const opening = message.text.trim().toUpperCase();
+
         return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
         .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
         .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
@@ -176,7 +177,7 @@ update_ja: {
           const email=message.text;
           return bot.setProp('email', email)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${email} op de hoogte.`))
-              .then(()  =>'lastCheck');
+              .then(()  =>'lastCheck')
     }
 },
 update_nee: {
@@ -220,9 +221,9 @@ vervolgVragen: {
               const Name = message.text;
               return bot.setProp('Name', Name)
                   .then(() => bot.say(`Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
-                  .then(() => 'processing')            }
+                  .then(() => 'processing')
+            }
 },
-
 
 lastCheck: {
     prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🔶  %[Ik zoek meer informatie](postback:meerInfo) %[Nee hoor](postback:bye)'),
