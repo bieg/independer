@@ -70,12 +70,6 @@ start: {
     }
 },
 
-.then(
-                      => function updateUser() {
-                        givenName: 'New',
-                        surname: 'Name'
-                      })
-
 speak: {
           receive: (bot, message) => {
 
