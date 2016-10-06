@@ -108,7 +108,7 @@ speak: {
 
                   /*  CREATE EXTRA JSON FILE FOR HYPO AND INCLUDE IT */
                   if (!_.has(scriptRules, upperText)) {
-                      return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)').then(() => 'speak');
+                      return bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`).then(() => 'speak');
                   }
 
                   var response = scriptRules[upperText];
@@ -147,13 +147,13 @@ selecteerHypotheek: {
           .then(() => 'woningType')
               break;
         case 'Nieuwe hypotheek':
-          return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
+          return bot.say('😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.')
           .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[💼 Zoek Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/jelocatie.aspx)`))
             .then(() => 'finish')
           break;
         case 'Hypotheek oversluiten':
           return bot.say(`😟 Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
-          .then(()=> bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja, dat wil ik wel](postback:update_ja) %[Nee, dat hoeft niet](postback:update_nee)`))
+          .then(()=> bot.say('Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja, dat wil ik wel](postback:update_ja) %[Nee, dat hoeft niet](postback:update_nee)'))
             .then(() => 'updateOntvangen')
           break;
         default:
@@ -198,10 +198,10 @@ hypotheekStarter: {
     receive: () => 'askName'
 },
 
-hypotheektype_nieuw: {
-    prompt: (bot) => bot.say('Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)'),
-    receive: () => 'processing'
-},
+// hypotheektype_nieuw: {
+//     prompt: (bot) => bot.say('Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)'),
+//     receive: () => 'processing'
+// },
 
 woningType: {
   receive: (bot, message) => {
@@ -257,7 +257,7 @@ lastCheck: {
 },
 
 meerInfo: {
-  prompt: (bot) => bot.say('bestand'),
+  prompt: (bot) => bot.say('Fijn je hgklgg gesproken te hebben. Bedankt voor je tijd ⏲'),
    receive: () => 'processing'
 },
 
