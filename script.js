@@ -1,9 +1,14 @@
+/*
+//1 get user profile
+//2 get rit of beebop error
+//3 click more buttons
+//4 write json for hypo
+*/
 
 'use strict';
 
 const _ = require('lodash');
 const Script = require('smooch-bot').Script;
-
 const scriptRules = require('./script.json');
 
 var myDate = new Date();
@@ -15,7 +20,7 @@ if ( myDate.getHours() < 8 )
   groet = "Goeiemorgen 🌝.  Bedankt voor je bezoek maar op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot verder praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
 }
 else
-if ( myDate.getHours() >8 )
+if ( myDate.getHours() >= 8 && myDate.getHours() <=12 )
 {
   groet = "Goeiemorgen 🌝 ";
 }
@@ -55,13 +60,69 @@ prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
 start: {
     receive: (bot,message) => {
         const opening = message.text.trim().toUpperCase();
+
         return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
         .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
         .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
         .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
         .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
-        .then(() => 'selecteerHypotheek');
+        .then(() => 'selecteerHypotheek')
     }
+},
+
+
+speak: {
+          receive: (bot, message) => {
+
+              const upperText = message.text.trim().toUpperCase();
+
+              function updateSilent() {
+                  switch (upperText) {
+                      case "CONNECT ME":
+                          return bot.setProp("silent", true);
+                      case "DISCONNECT":
+                          return bot.setProp("silent", false);
+                      default:
+                          return Promise.resolve();
+                  }
+              }
+
+              function getSilent() {
+                  return bot.getProp("silent");
+              }
+
+              function processMessage(isSilent) {
+                  if (isSilent) {
+                      return Promise.resolve("speak");
+                  }
+
+
+                  /*  CREATE EXTRA JSON FILE FOR HYPO AND INCLUDE IT */
+                  if (!_.has(scriptRules, upperText)) {
+                      return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)').then(() => 'speak');
+                  }
+
+                  var response = scriptRules[upperText];
+                  var lines = response.split('\n');
+
+                  var p = Promise.resolve();
+                  _.each(lines, function(line) {
+                      line = line.trim();
+                      p = p.then(function() {
+                          console.log(line);
+                          return wait(50).then(function() {
+                              return bot.say(line);
+                          });
+                      });
+                  });
+
+                  return p.then(() => 'speak');
+              }
+
+              return updateSilent()
+                  .then(getSilent)
+                  .then(processMessage);
+          }
 },
 
 selecteerHypotheek: {
@@ -107,16 +168,16 @@ updateOntvangen: {
           default:
             receive => 'processing'
             break;
-}
-}
+      }
+    }
 },
 
 update_ja: {
   prompt: (bot) => bot.say('Wat is je email adres?'),
       receive: (bot, message) => {
-          const emailer=message.text;
-          return bot.setProp('emailer', emailer)
-              .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${emailer} op de hoogte.`))
+          const email=message.text;
+          return bot.setProp('email', email)
+              .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${email} op de hoogte.`))
               .then(()  =>'lastCheck')
     }
 },
@@ -128,6 +189,7 @@ update_nee: {
 hypotheekStarter: {
     receive: () => 'askName'
 },
+
 hypotheektype_nieuw: {
     prompt: (bot) => bot.say('Independer biedt momenteel alleen voor Starters een hypotheek. Onderstaande link bied je meer informatie %[Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/intro.aspx)'),
     receive: () => 'processing'
@@ -156,11 +218,11 @@ woningType: {
 },
 
 vervolgVragen: {
-  prompt: (bot) => bot.say('Hoe heet je eigelijk? 😋'),
+  prompt: (bot) => bot.say(`Hoe heet je eigelijk? 😋`),
           receive: (bot, message) => {
-              const Name = message.text.trim().toUpperCase();
+              const Name = message.text;
               return bot.setProp('Name', Name)
-                  .then(() => bot.say('Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.'))
+                  .then(() => bot.say(`Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
                   .then(() => 'processing')
             }
 },
@@ -187,7 +249,7 @@ lastCheck: {
 },
 
 meerInfo: {
-  prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/info.pdf)'),
+  prompt: (bot) => bot.say('bestand'),
    receive: () => 'processing'
 },
 
@@ -196,65 +258,12 @@ bye: {
     receive: ()  => 'finish'
 },
 
-
 // error: {
 // prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
-// receive: () => ''
+// receive: () => 'pri'
 // },
 
 finish: {
 receive: () => 'finish'
-},
-
-  speak: {
-          receive: (bot, message) => {
-
-              let upperText = message.text.trim().toUpperCase();
-
-              function updateSilent() {
-                  switch (upperText) {
-                      case "CONNECT ME":
-                          return bot.setProp("silent", true);
-                      case "DISCONNECT":
-                          return bot.setProp("silent", false);
-                      default:
-                          return Promise.resolve();
-                  }
-              }
-
-              function getSilent() {
-                  return bot.getProp("silent");
-              }
-
-              function processMessage(isSilent) {
-                  if (isSilent) {
-                      return Promise.resolve("speak");
-                  }
-
-                  if (!_.has(scriptRules, upperText)) {
-                      return bot.say(`So, I'm good at structured conversations but stickers, emoji and sentences still confuse me. Say 'more' to chat about something else.`).then(() => 'speak');
-                  }
-
-                  var response = scriptRules[upperText];
-                  var lines = response.split('\n');
-
-                  var p = Promise.resolve();
-                  _.each(lines, function(line) {
-                      line = line.trim();
-                      p = p.then(function() {
-                          console.log(line);
-                          return wait(50).then(function() {
-                              return bot.say(line);
-                          });
-                      });
-                  });
-
-                  return p.then(() => 'speak');
-              }
-
-              return updateSilent()
-                  .then(getSilent)
-                  .then(processMessage);
-          }
-      }
+}
 });
