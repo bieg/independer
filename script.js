@@ -42,7 +42,7 @@ if (myDate.getHours() > 20  || myDate.getHours() <= 24 )
 else  /* the hour is not between 0 and 24, so something is wrong */
 {
 groet = "Welkom. ";
-}
+},
 
 function wait(ms) {
 return new Promise((resolve) => {
