@@ -48,7 +48,7 @@ function wait(ms) {
 return new Promise((resolve) => {
 setTimeout(resolve, ms);
 });
-}
+},
 
 module.exports = new Script({
 
@@ -60,7 +60,6 @@ prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
 start: {
     receive: (bot,message) => {
         const opening = message.text.trim().toUpperCase();
-
         return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
         .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
         .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
@@ -177,7 +176,7 @@ update_ja: {
           const email=message.text;
           return bot.setProp('email', email)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${email} op de hoogte.`))
-              .then(()  =>'lastCheck')
+              .then(()  =>'lastCheck');
     }
 },
 update_nee: {
