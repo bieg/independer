@@ -73,6 +73,12 @@ start: {
 speak: {
           receive: (bot, message) => {
 
+Smooch.updateUser({
+  properties: {
+    givenName: 'Bono',
+  }
+}),
+
               const upperText = message.text.trim().toUpperCase();
 
               function updateSilent() {
