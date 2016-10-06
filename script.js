@@ -178,7 +178,7 @@ update_ja: {
           const email=message.text;
           return bot.setProp('email', email)
               .then(()  => bot.say(`Ok - ✉️  dan hou ik je via ${email} op de hoogte.`))
-              .then(()  =>'lastCheck')
+              .then(()  =>'lastCheck');
     }
 },
 update_nee: {
@@ -249,8 +249,8 @@ lastCheck: {
 },
 
 meerInfo: {
-  prompt: (bot) => bot.say('bestand'),
-   receive: () => 'processing'
+  return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
+    .then(() => 'processing');
 },
 
 bye: {
