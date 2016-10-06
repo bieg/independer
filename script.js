@@ -236,7 +236,7 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🔶  %[Ik zoek meer informatie](postback:meerInfo) %[Nee hoor](postback:bye)'),
+    prompt: (bot) => bot.say(`Is er nog iets waar ik  je bij kan helpen?  🔶  %[Ik zoek meer informatie](postback:meerInfo) %[Nee hoor](postback:bye)`),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
