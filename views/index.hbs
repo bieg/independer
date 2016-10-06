@@ -25,18 +25,18 @@ var skPromise = Smooch.init({
                 frontendEmailChannelDescription: 'Email je liever? Stuur ons dan gewoon een email. Je krijgt dan zsm bericht van ons:',
                 notificationSettingsChannelsTitle: 'Andere Apps',
                 notificationSettingsChannelsDescription: 'Blijf op de hoogte en kies jouw favoriete app.',
-                notificationSettingsConnectedAs: 'Ingelogd als {username}',
+                notificationSettingsConnectedAs: `Ingelogd als {username}`,
             },
     soundNotificationEnabled: true,
     emailCaptureEnabled: true,
     givenName: 'Hypo',
     surname: 'theek',
-    userId: '333',
+    userId: 'sample',
     email: 'hypotheek@test.com',
     properties: {
         'Doel': '',
         'Woning': '',
-        'Update': ''
+        'Update': '',
     }
 });
 
@@ -49,20 +49,18 @@ Smooch.on('message:received', function(message) {
   console.log('Message received', message);
 });
 Smooch.on('widget:opened', function(message) {
-//  alert("The beginning");
 Smooch.sendMessage('Hoi');
   console.log('Widget opened', message);
 });
 Smooch.on('widget:closed', function(message) {
   console.log('Widget closed');
-  // alert("See you later");
 });
 
 skPromise.then( function() {
   function handlePostback(req, res) {
 
     const postback = req.body.postbacks[0];
-    const userId = '666' ;
+    const userId = 'ind' ;
     const store = new MemoryStore();
     const lock = new MemoryLock();
     const bot = new ConsoleBot({
