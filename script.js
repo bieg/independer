@@ -53,15 +53,16 @@ setTimeout(resolve, ms);
 module.exports = new Script({
 
  processing: {
-prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
+prompt: (bot) => bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`),
  receive: () => 'processing'
  },
 
 start: {
     receive: (bot,message) => {
-        const opening = message.text.trim().toUpperCase();
 
-        return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
+        // const opening = message.text.trim().toUpperCase();
+
+      return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
 
         .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
         .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
