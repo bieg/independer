@@ -63,7 +63,6 @@ start: {
         // const opening = message.text.trim().toUpperCase();
 
       return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
-
         .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
         .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
         .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
@@ -77,14 +76,14 @@ speak: {
 
               const upperText = message.text.trim().toUpperCase();
 
-              function updater() {
-
-                Smooch.updateUser ({
-                    properties: {
-                      givenName: 'Bono',
-                    }
-                });
-              }
+              // function updater() {
+              //
+              //   Smooch.updateUser ({
+              //       properties: {
+              //         givenName: 'Bono',
+              //       }
+              //   });
+              // }
 
               function updateSilent() {
                   switch (upperText) {
