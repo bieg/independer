@@ -1,14 +1,9 @@
-/*
-//1 get user profile
-//2 get rit of beebop error
-//3 click more buttons
-//4 write json for hypo
-*/
 
 'use strict';
 
 const _ = require('lodash');
 const Script = require('smooch-bot').Script;
+
 const scriptRules = require('./script.json');
 
 var myDate = new Date();
@@ -20,7 +15,7 @@ if ( myDate.getHours() < 8 )
   groet = "Goeiemorgen 🌝.  Bedankt voor je bezoek maar op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot verder praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
 }
 else
-if ( myDate.getHours() >= 8 && myDate.getHours() <=12 )
+if ( myDate.getHours() >8 )
 {
   groet = "Goeiemorgen 🌝 ";
 }
@@ -69,60 +64,6 @@ start: {
     }
 },
 
-speak: {
-          receive: (bot, message) => {
-
-              const upperText = message.text.trim().toUpperCase();
-
-              function updateSilent() {
-                  switch (upperText) {
-                      case "CONNECT ME":
-                          return bot.setProp("silent", true);
-                      case "DISCONNECT":
-                          return bot.setProp("silent", false);
-                      default:
-                          return Promise.resolve();
-                  }
-              }
-
-              function getSilent() {
-                  return bot.getProp("silent");
-              }
-
-              function processMessage(isSilent) {
-                  if (isSilent) {
-                      return Promise.resolve("speak");
-                  }
-
-
-                  /*  CREATE EXTRA JSON FILE FOR HYPO AND INCLUDE IT */
-                  if (!_.has(scriptRules, upperText)) {
-                      return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)').then(() => 'speak');
-                  }
-
-                  var response = scriptRules[upperText];
-                  var lines = response.split('\n');
-
-                  var p = Promise.resolve();
-                  _.each(lines, function(line) {
-                      line = line.trim();
-                      p = p.then(function() {
-                          console.log(line);
-                          return wait(50).then(function() {
-                              return bot.say(line);
-                          });
-                      });
-                  });
-
-                  return p.then(() => 'speak');
-              }
-
-              return updateSilent()
-                  .then(getSilent)
-                  .then(processMessage);
-          }
-},
-
 selecteerHypotheek: {
     receive: (bot, message) => {
       switch(message.text) {
@@ -166,8 +107,8 @@ updateOntvangen: {
           default:
             receive => 'processing'
             break;
-      }
-    }
+}
+}
 },
 
 update_ja: {
@@ -182,6 +123,7 @@ update_ja: {
 update_nee: {
   receive: () => 'bye'
 },
+
 
 hypotheekStarter: {
     receive: () => 'askName'
@@ -245,7 +187,7 @@ lastCheck: {
 },
 
 meerInfo: {
-  prompt: (bot) => bot.say('bestand'),
+  prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/info.pdf)'),
    receive: () => 'processing'
 },
 
@@ -254,12 +196,65 @@ bye: {
     receive: ()  => 'finish'
 },
 
+
 // error: {
 // prompt: (bot) => bot.say('Sorry - kun je dat nog eens zeggen?  Er ging iets mis...'),
-// receive: () => 'pri'
+// receive: () => ''
 // },
 
 finish: {
 receive: () => 'finish'
-}
+},
+
+  speak: {
+          receive: (bot, message) => {
+
+              let upperText = message.text.trim().toUpperCase();
+
+              function updateSilent() {
+                  switch (upperText) {
+                      case "CONNECT ME":
+                          return bot.setProp("silent", true);
+                      case "DISCONNECT":
+                          return bot.setProp("silent", false);
+                      default:
+                          return Promise.resolve();
+                  }
+              }
+
+              function getSilent() {
+                  return bot.getProp("silent");
+              }
+
+              function processMessage(isSilent) {
+                  if (isSilent) {
+                      return Promise.resolve("speak");
+                  }
+
+                  if (!_.has(scriptRules, upperText)) {
+                    return bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`).then(() => 'speak');
+                  }
+
+                  var response = scriptRules[upperText];
+                  var lines = response.split('\n');
+
+                  var p = Promise.resolve();
+                  _.each(lines, function(line) {
+                      line = line.trim();
+                      p = p.then(function() {
+                          console.log(line);
+                          return wait(50).then(function() {
+                              return bot.say(line);
+                          });
+                      });
+                  });
+
+                  return p.then(() => 'speak');
+              }
+
+              return updateSilent()
+                  .then(getSilent)
+                  .then(processMessage);
+          }
+      }
 });
