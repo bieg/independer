@@ -8,7 +8,9 @@
 'use strict';
 
 const _ = require('lodash');
+
 const Script = require('smooch-bot').Script;
+
 const scriptRules = require('./script.json');
 
 var myDate = new Date();
@@ -59,8 +61,6 @@ prompt: (bot) => bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`),
 
 start: {
     receive: (bot,message) => {
-        const opening = message.text.trim().toUpperCase();
-
         return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
         .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
         .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
@@ -68,7 +68,7 @@ start: {
         .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
         .then(() => 'selecteerHypotheek')
     }
-},
+}
 
 
 // speak: {
