@@ -53,7 +53,7 @@ setTimeout(resolve, ms);
 module.exports = new Script({
 
  processing: {
-prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
+prompt: (bot) => bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`),
  receive: () => 'processing'
  },
 
@@ -99,7 +99,7 @@ speak: {
 
                   /*  CREATE EXTRA JSON FILE FOR HYPO AND INCLUDE IT */
                   if (!_.has(scriptRules, upperText)) {
-                      return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)').then(() => 'speak');
+                      return bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`).then(() => 'speak');
                   }
 
                   var response = scriptRules[upperText];
@@ -128,18 +128,23 @@ speak: {
 selecteerHypotheek: {
     receive: (bot, message) => {
       switch(message.text) {
-      case 'Hoi':
-            return bot.say(`${groet} waar ben je naar op zoek? %[Starters hypotheek](postback:hypotheektype_starter) %[Nieuwe hypotheek](postback:hypotheektype_nieuw) %[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`)
+        case 'Hoi':
+            return bot.say(`${groet} waar ben je naar op zoek? `))
+            .then(() => bot.say(`%[Starters hypotheek](postback:hypotheektype_starter) `))
+            .then(() => bot.say(`%[Nieuwe hypotheek](postback:hypotheektype_nieuw)`))
+            .then(() => bot.say(`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
             .then(() => 'askName')
           break;
-      case 'Starters Hypotheek':
-          return bot.say(`Wat voor type woning zoek je? `)
-          .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) %[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
+        case 'Starters Hypotheek':
+          return bot.say('Wat voor type woning zoek je? ')
+          .then(() => bot.say(`%[🏬 Appartement](postback:hypotheekkeuze_appartement) `))
+          .then(() => bot.say(`%[🏠 Huis](postback:hypotheekkeuze_huis) %[📭 Vakantiewoning](postback:hypotheekkeuze_vakantiewoning)`))
           .then(() => 'woningType')
               break;
         case 'Nieuwe hypotheek':
           return bot.say(`😞 Helaas biedt Independer momenteel alleen Starters een hypotheek aan.`)
-          .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. %[💼 Zoek Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/jelocatie.aspx)`))
+            .then(() => bot.say(`Via onderstaande link kun je de beste hypotheekadviseur voor jou vinden. `))
+            .then(() => bot.say(`%[💼 Zoek Hypotheek Adviseur](https://www.independer.nl/hypotheekadviseur/jelocatie.aspx)`))
             .then(() => 'finish')
           break;
         case 'Hypotheek oversluiten':
@@ -149,7 +154,7 @@ selecteerHypotheek: {
             .then(() => 'updateOntvangen')
           break;
         default:
-          return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
+          return bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`)
             .then(() => 'processing')
           break;
       }
@@ -160,7 +165,7 @@ updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
           case 'Ja, dat wil ik wel':
-            return bot.say('👍 Leuk, dan houd ik  je op de hoogte zodra er weer nieuws is.')
+            return bot.say(`👍 Leuk, dan houd ik  je op de hoogte zodra er weer nieuws is.`)
             .then(() => 'update_ja');
           break;
           case 'Nee, dat hoeft niet':
@@ -229,7 +234,9 @@ vervolgVragen: {
 },
 
 lastCheck: {
-    prompt: (bot) => bot.say(' Is er nog iets waar ik  je bij kan helpen?  🔶  %[Ik zoek meer informatie](postback:meerInfo) %[Nee hoor](postback:bye)'),
+    prompt: (bot) => bot.say(`Is er nog iets waar ik  je bij kan helpen?  🔶 ?`))
+    .then(() => bot.say(`%[Ik zoek meer informatie](postback:meerInfo)`))
+    .then(() => bot.say(`%[Nee hoor](postback:bye)`)),
           receive: (bot, message) => {
             switch(message.text) {
               case 'Nee hoor':
