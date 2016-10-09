@@ -1,3 +1,4 @@
+<!-- The following line is essential for the "position: fixed" property to work correctly in IE -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -25,21 +26,17 @@ var skPromise = Smooch.init({
                 frontendEmailChannelDescription: 'Email je liever? Stuur ons dan gewoon een email. Je krijgt dan zsm bericht van ons:',
                 notificationSettingsChannelsTitle: 'Andere Apps',
                 notificationSettingsChannelsDescription: 'Blijf op de hoogte en kies jouw favoriete app.',
-                notificationSettingsConnectedAs: `Ingelogd als {username}`,
+                notificationSettingsConnectedAs: 'Ingelogd als {username}',
             },
     soundNotificationEnabled: true,
     emailCaptureEnabled: true,
     givenName: 'Hypo',
     surname: 'theek',
-    userId: 'sample',
     email: 'hypotheek@test.com',
     properties: {
-        'Doel': '',
-        'Woning': '',
-        'Update': ''
+        'customProp': 'whatever you please'
     }
 });
-
 
 // This event triggers when the user sends a message
 Smooch.on('message:sent', function(message) {
@@ -60,7 +57,7 @@ skPromise.then( function() {
   function handlePostback(req, res) {
 
     const postback = req.body.postbacks[0];
-    const userId = 'ind' ;
+    const userId = 'testUserId';
     const store = new MemoryStore();
     const lock = new MemoryLock();
     const bot = new ConsoleBot({
