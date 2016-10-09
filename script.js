@@ -216,9 +216,9 @@ woningType: {
           return bot.say('Gezellig')
           .then(() => 'vervolgVragen')
           break;
-      default:
-        receive => 'processing'
-        break;
+          default:
+            receive() => 'processing')
+            break;
         }
     }
 },
@@ -249,7 +249,7 @@ lastCheck: {
                   receive: () => 'bye'
                   break;
             default:
-              return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
+              return bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`)
                 .then(() => 'processing')
               break;
             }
