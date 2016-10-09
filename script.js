@@ -144,11 +144,12 @@ selecteerHypotheek: {
           break;
         case 'Hypotheek oversluiten':
           return bot.say(`😟 Het spijt me maar op dit moment biedt Independer alleen  Starters een hypotheek.`)
-          .then(()=> bot.say(`Als het allemaal wel zo ver is, wil je dan een update ontvangen? %[Ja, dat wil ik wel](postback:update_ja) %[Nee, dat hoeft niet](postback:update_nee)`))
+            .then(()=> bot.say('Als het allemaal wel zo ver is, wil je dan een update ontvangen? '))
+            .then(() => bot.say(`%[Ja, dat wil ik wel](postback:update_ja) %[Nee, dat hoeft niet](postback:update_nee)`))
             .then(() => 'updateOntvangen')
           break;
         default:
-          return bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`)
+          return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
             .then(() => 'processing')
           break;
       }
@@ -158,15 +159,15 @@ selecteerHypotheek: {
 updateOntvangen: {
     receive: (bot, message) => {
       switch(message.text) {
-        case 'Ja, dat wil ik wel':
-            return bot.say(`👍 Leuk, dan houd ik  je op de hoogte zodra er weer nieuws is.`)
+          case 'Ja, dat wil ik wel':
+            return bot.say('👍 Leuk, dan houd ik  je op de hoogte zodra er weer nieuws is.')
             .then(() => 'update_ja');
           break;
           case 'Nee, dat hoeft niet':
               receive: () => 'bye'
-              break;
+          break;
           default:
-            receive => 'processing'
+            receive: () => 'processing'
             break;
       }
     }
@@ -199,15 +200,15 @@ woningType: {
   receive: (bot, message) => {
     switch(message.text) {
         case '🏬 Appartement':
-          return bot.say(`Nice!`)
+          return bot.say('Nice!')
           .then(() => 'vervolgVragen')
           break;
       case '🏠 Huis':
-          return bot.say(`Leuk`)
+          return bot.say('Leuk')
           .then(() => 'vervolgVragen')
           break;
     case '📭 Vakantiewoning':
-          return bot.say(`Gezellig`)
+          return bot.say('Gezellig')
           .then(() => 'vervolgVragen')
           break;
       default:
@@ -218,7 +219,7 @@ woningType: {
 },
 
 vervolgVragen: {
-  prompt: (bot) => bot.say(`Hoe heet je eigelijk? 😋`),
+  prompt: (bot) => bot.say('Hoe heet je eigelijk? 😋'),
           receive: (bot, message) => {
               const Name = message.text;
               return bot.setProp('Name', Name)
