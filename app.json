@@ -1,9 +1,9 @@
 {
-  "name": "Independer Bot",
+  "name": "Independer Chat Bot",
   "description": "Independer, bot.",
   "keywords": ["Independer", "bot", "express"],
   "website": "https://www.independer.nl",
-  "repository": "https://github.com/bieg/independerChat",
+  "repository": "https://github.com/bieg/independerchat",
   "logo": "https://www.independer-static.nl/images/logos/IndependerLogo_standaard.jpg",
   "env": {
     "SMOOCH_APP_TOKEN": {
