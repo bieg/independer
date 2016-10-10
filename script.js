@@ -166,7 +166,7 @@ updateOntvangen: {
               receive: () => 'bye'
               break;
           default:
-            receive => 'processing'
+            receive: ()  => 'processing'
             break;
       }
     }
@@ -220,7 +220,7 @@ vervolgVragen: {
           receive: (bot, message) => {
               const Name = message.text.trim().toUpperCase();
               return bot.setProp('Name', Name)
-                  .then(() => bot.say('Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.'))
+                  .then(() => bot.say(`Hoi ${Name}. 📋 Ik heb nog wat vragen voor je om verder te kunnen.`))
                   .then(() => 'processing')
             }
 },
@@ -233,14 +233,13 @@ lastCheck: {
                   receive: ()  => 'bye'
                   break;
              case 'Ik zoek meer informatie':
-                  receive: () => 'speak'
+                  receive: () => 'processing'
                   break;
             case 'Nee':
                   receive: () => 'bye'
                   break;
             default:
-              return bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)')
-                .then(() => 'processing')
+              receive:() => 'processing'
               break;
             }
         }
