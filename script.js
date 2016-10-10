@@ -55,7 +55,7 @@ setTimeout(resolve, ms);
 module.exports = new Script({
 
 processing: {
-  prompt: (bot) => bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`),
+  //prompt: (bot) => bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`),
    receive: () => 'processing'
  },
 
@@ -67,7 +67,7 @@ start: {
         .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
         .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
         .then(() => 'selecteerHypotheek');
-    }
+      }
 }
 
 
