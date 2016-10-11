@@ -1,58 +1,38 @@
 'use strict';
 
-const _ = require('lodash');
-const smoochBot = require('smooch-bot');
-
-const scriptRules = require('./script.json');
+const _ = require('lodash')
 const Script = require('smooch-bot').Script;
+const scriptRules = require('./script.json');
 
-const Bot = smoochBot.Bot;
+var myDate = new Date();
+var groet = '';
 
-const MemoryStore = smoochBot.MemoryStore;
-const MemoryLock = smoochBot.MemoryLock;
-
-const StateMachine = smoochBot.StateMachine;
-
-module.exports = new Script({
-
-        processing: {
-              prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
-               receive: () => 'processing'
-         },
-
-        start: {
-              receive: (bot,message) => {
-                  return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
-                  .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
-                  .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
-                  .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
-                  .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
-                  .then(() => 'selecteerHypotheek');
-            }
-            }
-});
-
-const userId = 'testUserId';
-const store = new MemoryStore();
-const lock = new MemoryLock();
-const bot = new ConsoleBot({
-    store,
-    lock,
-    userId
-});
-
-const stateMachine = new StateMachine({
-    script,
-    bot,
-    userId
-});
-
-process.stdin.on('data', function(data) {
-    stateMachine.receiveMessage({
-        text: data.toString().trim()
-    })
-        .catch((err) => {
-            console.error(err);
-            console.error(err.stack);
-        });
-});
+/* hour is before noon */
+if ( myDate.getHours() < 8 )
+{
+  groet = "Goeiemorgen 🌝.  Bedankt voor je bezoek maar op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot verder praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
+}
+else
+if ( myDate.getHours() >= 8 && myDate.getHours() <=12 )
+{
+  groet = "Goeiemorgen 🌝 ";
+}
+else  /* Hour is from noon to 5pm (actually to 5:59 pm) */
+if ( myDate.getHours() >= 12 && myDate.getHours() <= 17 )
+{
+groet = "Goedendag 🌞";
+}
+else  /* the hour is after 5pm, so it is between 6pm and midnight */
+if ( myDate.getHours() > 17&& myDate.getHours() <= 20 )
+{
+groet = "Goedenavond 🌙";
+}
+else
+if (myDate.getHours() > 20  || myDate.getHours() <= 24 )
+{
+  groet = "Goedenavond 🌙  Bedankt voor je bezoek maar op dit moment is Independer echter gesloten. 🕘 Uiteraard kun je met onze IndyBot verder praten maar er is helaas niemand die jouw vraag specifiek kan beantwoorden. Je kan je vraag ook doormailen 📩 naar info@independer. Dan komt het altijd goed.";
+}
+else  /* the hour is not between 0 and 24, so something is wrong */
+{
+groet = "Welkom. ";
+}
