@@ -13,6 +13,8 @@ const scriptRules = require('./script.json')
 
 module.exports = new Script({
 
+alert("hello");
+
 // //  processing: {
 // // prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
 // //  receive: () => 'processing'
