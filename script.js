@@ -2,18 +2,18 @@
 //
 const _ = require('lodash');
 const Script = require('smooch-bot').Script;
-const ms = 500;
+var ms = 500;
 const scriptRules = require('./script.json')
 
-// function wait(ms) {
-// return new Promise((resolve) => {
-// setTimeout(resolve, ms);
-// });
-// }
-
-module.exports = new Script({
-  console.log("hello");
+function wait(ms) {
+return new Promise((resolve) => {
+setTimeout(resolve, ms);
 });
+}
+
+// module.exports = new Script({
+//   console.log("hello");
+// });
 
 // //  processing: {
 // // prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
