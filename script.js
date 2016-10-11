@@ -2,13 +2,10 @@
 //
 const _ = require('lodash');
 const Script = require('smooch-bot').Script;
-var ms = 500;
-const scriptRules = require('./script.json')
+const scriptRules = require('./script.json');
 
 function wait(ms) {
-return new Promise((resolve) => {
-setTimeout(resolve, ms);
-});
+return new Promise((resolve) => {setTimeout(resolve, ms) })
 }
 
 // module.exports = new Script({
