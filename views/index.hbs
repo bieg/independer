@@ -29,8 +29,7 @@ var skPromise = Smooch.init({
                 notificationSettingsConnectedAs: 'Ingelogd als {username}',
             },
     soundNotificationEnabled: true,
-    email: 'wbiegstraaten@independer.nl',
-
+    email: 'hypotheek@test.nl',
     emailCaptureEnabled: true,
 });
 
@@ -42,13 +41,11 @@ Smooch.on('message:received', function(message) {
   console.log('Message received', message);
 });
 Smooch.on('widget:opened', function(message) {
-//  alert("The beginning");
-Smooch.sendMessage('Hoi');
+    Smooch.sendMessage('Hoi');
   console.log('Widget opened', message);
 });
 Smooch.on('widget:closed', function(message) {
-  console.log('Widget closed');
-  // alert("See you later");
+console.log('Widget closed');
 });
 
 
