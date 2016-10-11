@@ -13,25 +13,32 @@
     </style>
 
 <script>
-    var skPromise = Smooch.init({
-        appToken: '5vyxec5l3ims0hpyywpqhkodq',
-        customText: {
-                    headerText: 'Waar kan ik je mee helpen?',
-                    inputPlaceholder: 'wat wil je weten?',
-                    sendButtonText: 'verstuur',
-                    introductionText: 'Je kunt me dag en nacht bereiken - daar ben ik de bot voor.  Heb je een vraag? Ben je op zoek naar een Startershypotheek?',
-                    introAppText: 'Laat het me weten via jouw favoriete app!',
-                    settingsText: 'Laat je email adres achter en ik neem contact met je op.',
-                    connectNotificationText: 'Ga verder binnen je favoriete app',
-                    frontendEmailChannelDescription: 'Email je liever? Stuur ons dan gewoon een email. Je krijgt dan zsm bericht van ons:',
-                    notificationSettingsChannelsTitle: 'Andere Apps',
-                    notificationSettingsChannelsDescription: 'Blijf op de hoogte en kies jouw favoriete app.',
-                    notificationSettingsConnectedAs: 'Ingelogd als {username}',
-                },
-        soundNotificationEnabled: true,
-        email: 'hypotheek@test.nl',
-        emailCaptureEnabled: true,
-    });
+var skPromise = Smooch.init({
+    appToken: '5vyxec5l3ims0hpyywpqhkodq',
+    customText: {
+                headerText: 'Waar kan ik je mee helpen?',
+                inputPlaceholder: 'wat wil je weten?',
+                sendButtonText: 'verstuur',
+                introductionText: 'Je kunt me dag en nacht bereiken - daar ben ik de bot voor.  Heb je een vraag? Ben je op zoek naar een Startershypotheek?',
+                introAppText: 'Laat het me weten via jouw favoriete app!',
+                settingsText: 'Laat je email adres achter en ik neem contact met je op.',
+                connectNotificationText: 'Ga verder binnen je favoriete app',
+                frontendEmailChannelDescription: 'Email je liever? Stuur ons dan gewoon een email. Je krijgt dan zsm bericht van ons:',
+                notificationSettingsChannelsTitle: 'Andere Apps',
+                notificationSettingsChannelsDescription: 'Blijf op de hoogte en kies jouw favoriete app.',
+                notificationSettingsConnectedAs: 'Ingelogd als {username}',
+            },
+    soundNotificationEnabled: true,
+    emailCaptureEnabled: true,
+    givenName: 'Hypo',
+    surname: 'theek',
+    email: 'hypotheek@test.com',
+    properties: {
+        'Doel': '',
+        'Woning': '',
+        'Update': ''
+    }
+});
 
     // This event triggers when the user sends a message
     Smooch.on('message:sent', function(message) {
