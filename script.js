@@ -22,34 +22,25 @@ class ConsoleBot extends Bot {
             resolve();
         });
     }
-}
+};
 
-const script = new Script({
-    start: {
-        receive: (bot) => {
-            return bot.say('Hi! I\'m Smooch Bot!')
-                .then(() => 'askName');
-        }
-    },
+module.exports = new Script({
 
-    askName: {
-        prompt: (bot) => bot.say('What\'s your name'),
-        receive: (bot, message) => {
-            const name = message.text.trim();
-            bot.setProp('name', name);
-            return bot.say(`I'll call you ${name}! Great!`)
-                .then(() => 'finish');
-        }
-    },
+ processing: {
+prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
+ receive: () => 'processing'
+ },
 
-    finish: {
-        receive: (bot, message) => {
-            return bot.getProp('name')
-                .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
-                        'teach me how to do anything else!'))
-                .then(() => 'finish');
-        }
+start: {
+    receive: (bot,message) => {
+        return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
+        .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
+        .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
+        .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
+        .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
+        .then(() => 'selecteerHypotheek');
     }
+}
 });
 
 const userId = 'testUserId';
