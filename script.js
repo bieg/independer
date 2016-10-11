@@ -5,14 +5,14 @@ const Script = require('smooch-bot').Script;
 const ms = 500;
 const scriptRules = require('./script.json')
 
-function wait(ms) {
-return new Promise((resolve) => {
-setTimeout(resolve, ms);
-});
-}
+// function wait(ms) {
+// return new Promise((resolve) => {
+// setTimeout(resolve, ms);
+// });
+// }
 
-// module.exports = new Script({
-//
+module.exports = new Script({
+
 // //  processing: {
 // // prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
 // //  receive: () => 'processing'
@@ -224,5 +224,5 @@ setTimeout(resolve, ms);
 // // finish: {
 // // receive: () => 'finish'
 // // }
-//
-// });
+
+});
