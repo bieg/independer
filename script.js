@@ -2,25 +2,16 @@
 
 const _ = require('lodash');
 const smoochBot = require('smooch-bot');
+
+const scriptRules = require('./script.json');
+const Script = require('smooch-bot').Script;
+
+const Bot = smoochBot.Bot;
+
 const MemoryStore = smoochBot.MemoryStore;
 const MemoryLock = smoochBot.MemoryLock;
-const Bot = smoochBot.Bot;
-const Script = require('smooch-bot').Script;
+
 const StateMachine = smoochBot.StateMachine;
-const scriptRules = require('./script.json');
-
-class ConsoleBot extends Bot {
-    constructor(options) {
-        super(options);
-    }
-
-    say(text) {
-        return new Promise((resolve) => {
-            console.log(text);
-            resolve();
-        });
-    }
-};
 
 module.exports = new Script({
 
