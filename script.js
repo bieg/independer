@@ -12,8 +12,8 @@ const scriptRules = require('./script.json')
 // }
 
 module.exports = new Script({
-
-alert("hello");
+  console.log("hello");
+});
 
 // //  processing: {
 // // prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
@@ -226,5 +226,3 @@ alert("hello");
 // // finish: {
 // // receive: () => 'finish'
 // // }
-
-});
