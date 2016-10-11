@@ -4,8 +4,12 @@ const smoochBot = require('smooch-bot');
 const MemoryStore = smoochBot.MemoryStore;
 const MemoryLock = smoochBot.MemoryLock;
 const Bot = smoochBot.Bot;
-const Script = smoochBot.Script;
+//const Script = smoochBot.Script;
 const StateMachine = smoochBot.StateMachine;
+
+const _ = require('lodash');
+const Script = require('smooch-bot').Script;
+const scriptRules = require('./script.json');
 
 class ConsoleBot extends Bot {
     constructor(options) {
@@ -58,7 +62,7 @@ const script = new Script({
     }
 });
 
-const userId = 'testUserId';
+const userId = 666;
 const store = new MemoryStore();
 const lock = new MemoryLock();
 const bot = new ConsoleBot({
