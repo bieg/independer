@@ -22,10 +22,10 @@ class ConsoleBot extends Bot {
 
 const script = new Script({
 
-  processing: {
-  prompt: (bot) => bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`),
-  receive: () => 'processing'
-  },
+  // processing: {
+  // prompt: (bot) => bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`),
+  // receive: () => 'processing'
+  // },
 
   start: {
       receive: (bot) => {
