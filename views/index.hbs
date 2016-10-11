@@ -40,21 +40,24 @@ var skPromise = Smooch.init({
     }
 });
 // This event triggers when the user sends a message
-Smooch.on('message:sent', function(message) {
-    console.log('the user sent a message', message);
-});
-Smooch.on('message:received', function(message) {
-  console.log('Message received', message);
-});
-Smooch.on('widget:opened', function(message) {
+// Smooch.on('message:sent', function(message) {
+//     console.log('the user sent a message', message);
+// });
+// Smooch.on('message:received', function(message) {
+//   console.log('Message received', message);
+// });
+
+//Smooch.on('widget:opened', function(message) {
 //  alert("The beginning");
-Smooch.sendMessage('Hoi');
-  console.log('Widget opened', message);
-});
-Smooch.on('widget:closed', function(message) {
-  console.log('Widget closed');
+//Smooch.sendMessage('Hoi');
+//  console.log('Widget opened', message);
+//});
+
+//Smooch.on('widget:closed', function(message) {
+  //console.log('Widget closed');
   // alert("See you later");
-});
+//});
+
 skPromise.then( function() {
   function handlePostback(req, res) {
     const postback = req.body.postbacks[0];
@@ -75,8 +78,8 @@ skPromise.then( function() {
         bot: createBot(req.body.appUser)
     });
    const msg = postback;
-   console.log('Payload: '+msg.action.payload);
-   console.log('MSG:  '+msg.action.text);
+  //  console.log('Payload: '+msg.action.payload);
+  //  console.log('MSG:  '+msg.action.text);
     /*if you want the payload instead just do msg.action.payload*/
 msg.text = msg.action.text;
 msg.text = msg.action.payload;
@@ -92,5 +95,4 @@ msg.text = msg.action.payload;
 
 </head>
 <body style="background: url(http://www.bieg.nl/beeld/hypotheek.png) no-repeat 0 0;background-size: 100%;">
-
 </html>
