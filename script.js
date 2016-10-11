@@ -7,7 +7,7 @@ const Bot = smoochBot.Bot;
 const Script = smoochBot.Script;
 const StateMachine = smoochBot.StateMachine;
 
-const _ = require('lodash');
+//const _ = require('lodash');
 //const Script = require('smooch-bot').Script;
 const scriptRules = require('./script.json');
 
