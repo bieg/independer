@@ -34,7 +34,7 @@ const script = new Script({
             .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
             .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
             .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
-            .then(() => 'selecteerHypotheek');
+            .then(() => 'processing');
       }
   },
 
