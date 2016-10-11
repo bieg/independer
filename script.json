@@ -1,6 +1,5 @@
 {
-
-  "TEST": "phrase here %[buttonlabel](postback:btn)",
+"TEST": "phrase here %[buttonlabel](postback:btn)",
   "TEST": "phrase here %[buttonlabel](postback:btn)",
   "buttonlabel": "text from when buttons pushed",
 "MORE" : "meer",
@@ -23,7 +22,5 @@
  "No" : "Niks",
     "CONNECT ME": "",
 "Hypotheek" : "Which do you prefer? %[Star Trek](reply:STAR_TREK) %[Star Wars](reply:STAR_WARS)",
-
-
-    "DISCONNECT": "Ok - tot ziens - IndependerBot is back."
+"DISCONNECT": "Ok - tot ziens - IndependerBot is back."
 }
