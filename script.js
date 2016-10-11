@@ -1,8 +1,8 @@
 'use strict';
 //
-const _ = require('lodash');
-const Script = require('smooch-bot').Script;
-const scriptRules = require('./script.json');
+const _ = require('lodash')
+const Script = require('smooch-bot').Script
+const scriptRules = require('./script.json')
 
 // function wait(ms) {
 // return new Promise((resolve) => {setTimeout(resolve, ms) })
