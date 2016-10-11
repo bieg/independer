@@ -1,14 +1,15 @@
 'use strict';
 
-const _ = require('lodash');
-const scriptRules = require('./script.json');
-
 const smoochBot = require('smooch-bot');
 const MemoryStore = smoochBot.MemoryStore;
 const MemoryLock = smoochBot.MemoryLock;
 const Bot = smoochBot.Bot;
 const Script = smoochBot.Script;
 const StateMachine = smoochBot.StateMachine;
+
+const _ = require('lodash');
+//const Script = require('smooch-bot').Script;
+const scriptRules = require('./script.json');
 
 class ConsoleBot extends Bot {
     constructor(options) {
