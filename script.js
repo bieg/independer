@@ -28,13 +28,13 @@ const script = new Script({
   },
 
   start: {
-      receive: (bot,message) => {
-          return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
-          .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
-          .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
-          .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
-          .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
-          .then(() => 'selecteerHypotheek');
+      receive: (bot) => {
+            return bot.say(`${groet}... Wat voor soort hypotheek zoek je? `)
+            .then(() => bot.say(`![](http://www.bieg.nl/beeld/woningen.jpg)`))
+            .then(() => bot.say(`%[Starters Hypotheek](postback:hypotheektype_starter)`))
+            .then(() => bot.say (`%[Nieuwe hypotheek](postback:hypotheektype_nieuw) `))
+            .then(() => bot.say (`%[Hypotheek oversluiten](postback:hypotheektype_oversluiten)`))
+            .then(() => 'selecteerHypotheek');
       }
   },
 
