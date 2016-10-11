@@ -1,9 +1,87 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-     <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="304workaround" content="2013-10-24 21:17:23">
     <script src="https://cdn.smooch.io/smooch.min.js"></script>
+
+    <style type="text/css">
+      .btn-sk-primary {color: white !important;}
+      #sk-holder #sk-container .btn {padding: 6px 7px !important;}
+    </style>
+
+<script>
+var skPromise = Smooch.init({
+    appToken: '5vyxec5l3ims0hpyywpqhkodq',
+    customText: {
+                headerText: 'Waar kan ik je mee helpen?',
+                inputPlaceholder: 'wat wil je weten?',
+                sendButtonText: 'verstuur',
+                introductionText: 'Je kunt me dag en nacht bereiken - daar ben ik de bot voor.  Heb je een vraag? Ben je op zoek naar een Startershypotheek?',
+                introAppText: 'Laat het me weten via jouw favoriete app!',
+                settingsText: 'Laat je email adres achter en ik neem contact met je op.',
+                connectNotificationText: 'Ga verder binnen je favoriete app',
+                frontendEmailChannelDescription: 'Email je liever? Stuur ons dan gewoon een email. Je krijgt dan zsm bericht van ons:',
+                notificationSettingsChannelsTitle: 'Andere Apps',
+                notificationSettingsChannelsDescription: 'Blijf op de hoogte en kies jouw favoriete app.',
+                notificationSettingsConnectedAs: 'Ingelogd als {username}',
+            },
+    soundNotificationEnabled: true,
+    email: 'wbiegstraaten@independer.nl',
+
+    emailCaptureEnabled: true,
+});
+
+// This event triggers when the user sends a message
+Smooch.on('message:sent', function(message) {
+    console.log('the user sent a message', message);
+});
+Smooch.on('message:received', function(message) {
+  console.log('Message received', message);
+});
+Smooch.on('widget:opened', function(message) {
+//  alert("The beginning");
+Smooch.sendMessage('Hoi');
+  console.log('Widget opened', message);
+});
+Smooch.on('widget:closed', function(message) {
+  console.log('Widget closed');
+  // alert("See you later");
+});
+
+
+skPromise.then( function() {
+  function handlePostback(req, res) {
+
+    const postback = req.body.postbacks[0];
+
+    if (!postback || !postback.action)
+        res.end();
+
+    const stateMachine = new StateMachine({
+        script,
+        bot: createBot(req.body.appUser)
+    });
+
+    const msg = postback;
+
+    // if you want the payload instead just do msg.action.paylod
+    //msg.text = msg.action.text;
+msg.text = msg.action.payload;
+
+    stateMachine.receiveMessage(msg)
+      .then(() => res.end())
+      .catch((err) => {
+        console.error('SmoochBot error:', err);
+        res.end();
+      });
+  }
+}) ;
+</script>
+
 </head>
 <body style="background: url(http://www.bieg.nl/beeld/hypotheek.png) no-repeat 0 0;background-size: 100%;">
+
 </html>
