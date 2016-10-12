@@ -48,7 +48,6 @@ var skPromise = Smooch.init({
       console.log('Message received', message);
     });
     Smooch.on('widget:opened', function(message) {
-        Smooch.sendMessage('Hoi');
       console.log('Widget opened', message);
     });
     Smooch.on('widget:closed', function(message) {

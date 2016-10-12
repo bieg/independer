@@ -4,6 +4,7 @@ const _ = require('lodash');
 const Script = require('smooch-bot').Script;
 
 const scriptRules = require('./script.json');
+
 var myDate = new Date();
 var groet = '';
 
@@ -46,7 +47,7 @@ setTimeout(resolve, ms);
 module.exports = new Script({
 
 processing: {
-prompt: (bot) => bot.say(`![](http://www.bieg.nl/beeld/speechbubble.gif)`),
+prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
  receive: () => 'processing'
  },
 
