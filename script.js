@@ -38,11 +38,13 @@ else  /* the hour is not between 0 and 24, so something is wrong */
 groet = "Welkom. ";
 }
 
-// function wait(ms) {
-// return new Promise((resolve) => {
-// setTimeout(resolve, ms);
-// });
-// }
+const ms = 10
+
+function wait(ms) {
+return new Promise((resolve) => {
+setTimeout(resolve, ms);
+});
+}
 
 module.exports = new Script({
 
