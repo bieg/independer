@@ -38,6 +38,8 @@ else  /* the hour is not between 0 and 24, so something is wrong */
 groet = "Welkom. ";
 }
 
+
+
 function wait(ms) {
 return new Promise((resolve) => {
 setTimeout(resolve, ms);
@@ -47,8 +49,11 @@ setTimeout(resolve, ms);
 module.exports = new Script({
 
 processing: {
-prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
- receive: () => 'processing'
+
+//prompt: (bot) => bot.say('![](http://www.bieg.nl/beeld/speechbubble.gif)'),
+prompt: (bot) => bot.say('![](http://weblog.independer.nl/pictures/FB_autoschade.jpg)'),
+
+receive: () => 'processing'
  },
 
 start: {
